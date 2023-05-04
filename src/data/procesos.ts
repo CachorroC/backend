@@ -124,36 +124,74 @@ const llaves: string[] = [
 
 ];
 const rows: unknown[] = [];
-export async function fetchProcesoRama ( llaveProceso: string ) {
-  const res = await fetch(
+
+const not23: string[] = [];
+
+const finally23: string[] = [];
+
+const ConsultaNumeroRadicacion: intConsultaNumeroRadicacion[] = [];
+const errorConsulta: unknown[] = [];
+
+const fulfilledFetch: intConsultaNumeroRadicacion[] = [];
+
+const rejectedFetch: unknown[] = [];
+
+export async function fetchProcesoRama ( llaveProceso: string ): Promise<intConsultaNumeroRadicacion> {
+  const req = await fetch(
     `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${ llaveProceso }&SoloActivos=false`
   );
-
-  if ( !res.ok ) {
-    throw new Error( "no pudimos consultar el numero del radicado" );
+  if ( !req.ok ) {
+    const err = await req.json();
+    console.log( JSON.stringify( err ) );
+    rejectedFetch.push( err );
+    fs.writeFile( 'src/data/rejectedFetch.procesos.json', JSON.stringify( rejectedFetch ) );
+    return err;
   }
-  const dataRaw = ( await res.json() ) as intConsultaNumeroRadicacion;
-  console.log( JSON.stringify( dataRaw ) ); //
-  rows.push( dataRaw );
-  const rowsString = JSON.stringify( rows );
-  fs.writeFile( "src/middleware/rows.fetchProcesos.json", rowsString );
-  return dataRaw;
+  if ( req.ok ) {
+    const res = ( await req.json() ) as intConsultaNumeroRadicacion;
+    console.log( JSON.stringify( res ) );
+    fulfilledFetch.push( res );
+    fs.writeFile( 'src/data/fulfilledFetch.procesos.json', JSON.stringify( fulfilledFetch ) );
+    return res;
+  }
+  const res = ( await req.json() ) as intConsultaNumeroRadicacion;
+  console.log( JSON.stringify( res ) );
+  rows.push( res );
+  fs.writeFile( "src/data/rows.procesos.json", JSON.stringify( rows ) );
+  return res;
 }
 
-export const getProcesosRama = llaves.forEach(
-  ( llave, index ) => {
-    setTimeout(
-      () => {
-        return fetchProcesoRama( llave ).then(
-          ( intConsultaNumeroRadicacion ) => {
-            return console.log(
-              JSON.stringify( intConsultaNumeroRadicacion )
-            );
-          },
-          ( error ) => {
-            return fs.writeFile( "src/middleware/error.fetchProcesos.json", JSON.stringify( error ) );
-          }
-        );
-      }, index * 1000 );
+
+export const fetchConsultaNumeroRadicacionfromRama = llaves.forEach(
+  ( llaveProceso, index ) => {
+    if ( llaveProceso.length !== 23 ) {
+      console.log( JSON.stringify( not23 ) );
+      not23.push( llaveProceso );
+      fs.writeFile( 'src/data/not23.procesos.json', JSON.stringify( not23 ) );
+    }
+    if ( llaveProceso.length === 23 ) {
+      console.log( JSON.stringify( finally23 ) );
+      finally23.push( llaveProceso );
+      setTimeout(
+        () => {
+          return fetchProcesoRama( llaveProceso ).then(
+            ( CNR ) => {
+              console.log( JSON.stringify( CNR ) );
+              ConsultaNumeroRadicacion.push( CNR );
+              fs.writeFile( 'src/data/ConsultaNumeroRadicacion.procesos.json', JSON.stringify( ConsultaNumeroRadicacion ) );
+            }, ( error ) => {
+              console.log( JSON.stringify( error ) );
+              errorConsulta.push( error );
+              fs.writeFile( 'src/data/error.procesos.json', JSON.stringify( errorConsulta ) );
+            }
+          );
+        }, index * 10
+      );
+
+      fs.writeFile( 'src/data/finally23.procesos.json', JSON.stringify( finally23 ) );
+    }
   }
 );
+
+console.log( fetchConsultaNumeroRadicacionfromRama );
+fetchConsultaNumeroRadicacionfromRama;

@@ -1,4 +1,4 @@
-export declare const getProcesosfromRadicados: (({
+export declare const getProcesosfromRadicados: ({
     idProceso: number;
     idConexion: number;
     llaveProceso: string;
@@ -20,27 +20,5 @@ export declare const getProcesosfromRadicados: (({
     sujetosProcesales: string;
     esPrivado: boolean;
     cantFilas: number;
-})[] | ({
-    idProceso: number;
-    idConexion: number;
-    llaveProceso: string;
-    fechaProceso: string;
-    fechaUltimaActuacion: string;
-    despacho: string;
-    departamento: string;
-    sujetosProcesales: string;
-    esPrivado: boolean;
-    cantFilas: number;
-} | {
-    idProceso: number;
-    idConexion: number;
-    llaveProceso: string;
-    fechaProceso: null;
-    fechaUltimaActuacion: null;
-    despacho: string;
-    departamento: string;
-    sujetosProcesales: string;
-    esPrivado: boolean;
-    cantFilas: number;
-})[])[];
-export declare const polishProcesos: (number | void)[];
+})[][];
+export declare const polishProcesos: void[];
