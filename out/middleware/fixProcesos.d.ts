@@ -1,5 +1,4 @@
-export default cleanProcesos;
-declare const cleanProcesos: ({
+export declare const getProcesosfromRadicados: (({
     idProceso: number;
     idConexion: number;
     llaveProceso: string;
@@ -21,6 +20,17 @@ declare const cleanProcesos: ({
     sujetosProcesales: string;
     esPrivado: boolean;
     cantFilas: number;
+})[] | ({
+    idProceso: number;
+    idConexion: number;
+    llaveProceso: string;
+    fechaProceso: string;
+    fechaUltimaActuacion: string;
+    despacho: string;
+    departamento: string;
+    sujetosProcesales: string;
+    esPrivado: boolean;
+    cantFilas: number;
 } | {
     idProceso: number;
     idConexion: number;
@@ -32,4 +42,5 @@ declare const cleanProcesos: ({
     sujetosProcesales: string;
     esPrivado: boolean;
     cantFilas: number;
-})[];
+})[])[];
+export declare const polishProcesos: (number | void)[];
