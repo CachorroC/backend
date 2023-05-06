@@ -15,6 +15,7 @@
     "@types/eslint": "^8",
     "@types/express": "^4",
     "@types/koa": "^2",
+    "@types/node": "^18.16.3",
     "@types/prettier": "^2"
   },
   "description": "",
@@ -23,7 +24,8 @@
   "scripts": {
     "test": " eslint --fix .",
     "tsc": " tsc && yarn eslint --fix .",
-    "get": " node out/middleware/fetchProcesos.js"
+    "get": " node out/middleware/fetchProcesos.js",
+    "data": "node out/data/procesos.js -v"
   },
   "author": "CachorroC",
   "license": "ISC"

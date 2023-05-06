@@ -85,3 +85,4 @@ export const Procesos = cleanProcesos.map((proceso) => {
   return Proceso;
 });
 fs.writeFile("src/middleware/Procesos.polishProcesos.json", JSON.stringify(Procesos));
+//# sourceMappingURL=polishProcesos.js.map

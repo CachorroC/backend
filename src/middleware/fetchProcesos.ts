@@ -1,6 +1,6 @@
 import { intConsultaNumeroRadicacion } from "#@/interface/procesos.js";
 import * as fs from "fs/promises";
-process.env[ "NODE_TLS_REJECT_UNAUTHORIZED" ] = "0";
+process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
 const llaves: string[] = [
   "11001400300320170088400",
   "11001400303420170083600",
@@ -121,39 +121,36 @@ const llaves: string[] = [
   "11001400302620170129300",
   "25843410300120180049900",
   "11001400302420180014300",
-
 ];
 const rows: unknown[] = [];
-export async function fetchProcesoRama ( llaveProceso: string ) {
+export async function fetchProcesoRama(llaveProceso: string) {
   const res = await fetch(
-    `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${ llaveProceso }&SoloActivos=false`
+    `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${llaveProceso}&SoloActivos=false`
   );
 
-  if ( !res.ok ) {
-    throw new Error( "no pudimos consultar el numero del radicado" );
+  if (!res.ok) {
+    throw new Error("no pudimos consultar el numero del radicado");
   }
-  const dataRaw = ( await res.json() ) as intConsultaNumeroRadicacion;
-  console.log( JSON.stringify( dataRaw ) ); //
-  rows.push( dataRaw );
-  const rowsString = JSON.stringify( rows );
-  fs.writeFile( "src/middleware/rows.fetchProcesos.json", rowsString );
+  const dataRaw = (await res.json()) as intConsultaNumeroRadicacion;
+  console.log(JSON.stringify(dataRaw)); //
+  rows.push(dataRaw);
+  const rowsString = JSON.stringify(rows);
+  fs.writeFile("src/middleware/rows.fetchProcesos.json", rowsString);
   return dataRaw;
 }
 
-export const getProcesosRama = llaves.forEach(
-  ( llave, index ) => {
-    setTimeout(
-      () => {
-        return fetchProcesoRama( llave ).then(
-          ( intConsultaNumeroRadicacion ) => {
-            return console.log(
-              JSON.stringify( intConsultaNumeroRadicacion )
-            );
-          },
-          ( error ) => {
-            return fs.writeFile( "src/middleware/error.fetchProcesos.json", JSON.stringify( error ) );
-          }
+export const getProcesosRama = llaves.forEach((llave, index) => {
+  setTimeout(() => {
+    return fetchProcesoRama(llave).then(
+      (intConsultaNumeroRadicacion) => {
+        return console.log(JSON.stringify(intConsultaNumeroRadicacion));
+      },
+      (error) => {
+        return fs.writeFile(
+          "src/middleware/error.fetchProcesos.json",
+          JSON.stringify(error)
         );
-      }, index * 1000 );
-  }
-);
+      }
+    );
+  }, index * 1000);
+});

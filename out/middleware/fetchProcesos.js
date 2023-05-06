@@ -143,3 +143,4 @@ export const getProcesosRama = llaves.forEach((llave, index) => {
     });
   }, index * 1000);
 });
+//# sourceMappingURL=fetchProcesos.js.map

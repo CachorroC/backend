@@ -31,6 +31,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/eslint", "npm:8.37.0"],\
             ["@types/express", "npm:4.17.17"],\
             ["@types/koa", "npm:2.13.6"],\
+            ["@types/node", "npm:18.16.3"],\
             ["@types/prettier", "npm:2.7.2"],\
             ["@typescript-eslint/eslint-plugin", "virtual:24a2afa684041946db59f5dbdebbe67c99b2a23dd72aae34eda02b7912c4dc5334c29de845a7d17b2bb9c402b97495cce149e19763da3872eecfac66a336d6b5#npm:5.59.2"],\
             ["@typescript-eslint/parser", "virtual:24a2afa684041946db59f5dbdebbe67c99b2a23dd72aae34eda02b7912c4dc5334c29de845a7d17b2bb9c402b97495cce149e19763da3872eecfac66a336d6b5#npm:5.59.2"],\
@@ -346,13 +347,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/mime", "npm:1.3.2"]\
           ],\
           "linkType": "HARD"\
-        }],\
-        ["npm:3.0.1", {\
-          "packageLocation": "./.yarn/cache/@types-mime-npm-3.0.1-dec03536dc-4040fac73f.zip/node_modules/@types/mime/",\
-          "packageDependencies": [\
-            ["@types/mime", "npm:3.0.1"]\
-          ],\
-          "linkType": "HARD"\
         }]\
       ]],\
       ["@types/node", [\
@@ -416,7 +410,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-serve-static-npm-1.15.1-27b3deb72c-2e078bdc1e.zip/node_modules/@types/serve-static/",\
           "packageDependencies": [\
             ["@types/serve-static", "npm:1.15.1"],\
-            ["@types/mime", "npm:3.0.1"],\
+            ["@types/mime", "npm:1.3.2"],\
             ["@types/node", "npm:18.16.3"]\
           ],\
           "linkType": "HARD"\
@@ -871,6 +865,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/eslint", "npm:8.37.0"],\
             ["@types/express", "npm:4.17.17"],\
             ["@types/koa", "npm:2.13.6"],\
+            ["@types/node", "npm:18.16.3"],\
             ["@types/prettier", "npm:2.7.2"],\
             ["@typescript-eslint/eslint-plugin", "virtual:24a2afa684041946db59f5dbdebbe67c99b2a23dd72aae34eda02b7912c4dc5334c29de845a7d17b2bb9c402b97495cce149e19763da3872eecfac66a336d6b5#npm:5.59.2"],\
             ["@typescript-eslint/parser", "virtual:24a2afa684041946db59f5dbdebbe67c99b2a23dd72aae34eda02b7912c4dc5334c29de845a7d17b2bb9c402b97495cce149e19763da3872eecfac66a336d6b5#npm:5.59.2"],\
