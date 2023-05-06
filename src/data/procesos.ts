@@ -152,6 +152,7 @@ export async function fetchProcesoRama (
     return err;
   }
   if ( req.ok ) {
+    
     const res = ( await req.json() ) as intConsultaNumeroRadicacion;
     console.log( JSON.stringify( res ) );
     fulfilledFetch.push( res );
@@ -162,21 +163,24 @@ export async function fetchProcesoRama (
     return res;
   }
   const res = ( await req.json() ) as intConsultaNumeroRadicacion;
-  console.log( JSON.stringify( res ) );
   rows.push( res );
   fs.writeFile( "src/data/rows.procesos.json", JSON.stringify( rows ) );
   return res;
 }
 console.log( llaves.length );
 export const fetchConsultaNumeroRadicacionfromRama = llaves.forEach(
-  ( llaveProceso, index ) => {
+  ( llaveProceso, index, array ) => {
+    console.log(  array.length - index );
     if ( llaveProceso.length !== 23 ) {
-      console.log( JSON.stringify( not23 ) );
+
+      console.log( JSON.stringify( not23 ) + index );
+    
       not23.push( llaveProceso );
       fs.writeFile( "src/data/not23.procesos.json", JSON.stringify( not23 ) );
     }
     if ( llaveProceso.length === 23 ) {
-      console.log( JSON.stringify( finally23 ) );
+      console.log( JSON.stringify( finally23 ) + index );
+        
       finally23.push( llaveProceso );
       setTimeout( () => {
         return fetchProcesoRama( llaveProceso ).then(
@@ -199,10 +203,12 @@ export const fetchConsultaNumeroRadicacionfromRama = llaves.forEach(
         );
       }, index * 1000 );
 
-      fs.writeFile(
-        "src/data/finally23.procesos.json",
-        JSON.stringify( finally23 )
-      );
+      if ( index === array.length ) {
+        fs.writeFile(
+          "src/data/finally23.procesos.json",
+          JSON.stringify( finally23 )
+        );
+      }
     }
   }
 );
