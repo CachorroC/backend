@@ -3,40 +3,76 @@
     "es2021": true,
     "node": true
   },
-  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
   "overrides": [],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint"],
+  "plugins": [
+    "@typescript-eslint"
+  ],
   "rules": {
-    "indent": ["error", 2],
-    "linebreak-style": ["error", "unix"],
-    "semi": "error",
-    "no-unreachable": "error",
-    "getter-return": "error",
-    "curly": "error",
+    "array-bracket-newline": [
+      "error",
+      "consistent"
+    ],
+    "array-bracket-spacing": [
+      "error",
+      "always"
+    ],
+    "array-callback-return": "error",
+    "arrow-body-style": [
+      "error",
+      "always"
+    ],
+    "brace-style": [
+      "error",
+      "stroustrup"
+    ],
     "consistent-return": "error",
-    "array-bracket-newline": ["error", "consistent"],
-    "brace-style": ["error", "stroustrup"],
-    "arrow-body-style": ["error", "always"],
-    "array-bracket-spacing": ["error", "always"],
-    "array-callback-return": [
+    "curly": "error",
+    "function-call-argument-newline": [
+      "error",
+      "always"
+    ],
+    "function-paren-newline": [
       "error",
       {
-        "checkForEach": true
+        "minItems": 1
       }
     ],
+    "getter-return": "error",
+    "indent": [
+      "error",
+      2
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "multiline-ternary": [
+      "error",
+      "always"
+    ],
+    "no-dupe-else-if": "error",
+    "no-dupe-args": "error",
     "no-else-return": [
       "error",
       {
         "allowElseIf": false
       }
     ],
-    "multiline-ternary": ["error", "always"],
+    "no-unreachable": "error",
     "object-property-newline": "error",
-    "template-tag-spacing": ["error", "always"]
+    "semi": "error",
+    "template-tag-spacing": [
+      "error",
+      "always"
+    ]
   }
 }

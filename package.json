@@ -1,6 +1,6 @@
 {
   "name": "com.rsasesorjuridico.backend",
-  "type": "module",
+
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "latest",
     "@typescript-eslint/parser": "latest",
