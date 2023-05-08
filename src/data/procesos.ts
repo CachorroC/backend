@@ -1,7 +1,7 @@
 import { intConsultaNumeroRadicacion } from "../interface/procesos.js";
 import * as fs from "fs/promises";
-process.env[ "NODE_TLS_REJECT_UNAUTHORIZED" ] = "0";
-import procesos from '../json/llaves.json' assert { type: 'json' };
+process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
+import procesos from "../json/llaves.json" assert { type: "json" };
 const rows: unknown[] = [];
 
 const not23: string[] = [];
@@ -15,13 +15,13 @@ const fulfilledFetch: intConsultaNumeroRadicacion[] = [];
 
 const rejectedFetch: unknown[] = [];
 
-export async function fetchProcesoRama (
+export async function fetchProcesoRama(
   llaveProceso: string
 ): Promise<intConsultaNumeroRadicacion> {
   const req = await fetch(
-    `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${ llaveProceso }&SoloActivos=false`
+    `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${llaveProceso}&SoloActivos=false`
   );
-  if ( !req.ok ) {
+  if (!req.ok) {
     const err = await req.json();
     console.log(
       JSON.stringify(
@@ -39,9 +39,8 @@ export async function fetchProcesoRama (
     );
     return err;
   }
-  if ( req.ok ) {
-
-    const res = ( await req.json() ) as intConsultaNumeroRadicacion;
+  if (req.ok) {
+    const res = (await req.json()) as intConsultaNumeroRadicacion;
     console.log(
       JSON.stringify(
         res
@@ -58,7 +57,7 @@ export async function fetchProcesoRama (
     );
     return res;
   }
-  const res = ( await req.json() ) as intConsultaNumeroRadicacion;
+  const res = (await req.json()) as intConsultaNumeroRadicacion;
   rows.push(
     res
   );
@@ -80,8 +79,7 @@ export const fetchConsultaNumeroRadicacionfromRama = procesos.llaves.forEach(
     console.log(
       array.length - index
     );
-    if ( llaveProceso.length !== 23 ) {
-
+    if (llaveProceso.length !== 23) {
       console.log(
         JSON.stringify(
           not23
@@ -98,7 +96,7 @@ export const fetchConsultaNumeroRadicacionfromRama = procesos.llaves.forEach(
         )
       );
     }
-    if ( llaveProceso.length === 23 ) {
+    if (llaveProceso.length === 23) {
       console.log(
         JSON.stringify(
           finally23
@@ -154,7 +152,7 @@ export const fetchConsultaNumeroRadicacionfromRama = procesos.llaves.forEach(
         index * 400
       );
 
-      if ( index === array.length ) {
+      if (index === array.length) {
         fs.writeFile(
           "src/data/finally23.procesos.json",
           JSON.stringify(

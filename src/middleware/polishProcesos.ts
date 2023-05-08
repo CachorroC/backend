@@ -1,8 +1,7 @@
-import * as fs from 'fs/promises';
+import * as fs from "fs/promises";
 //import rows from '../data/ConsultaNumeroRadicacion.procesos.json' assert { type: 'json' };
-import { intConsultaNumeroRadicacion } from '#@/interface/procesos.js';
-import rows from '../data/rows.js';
-
+import { intConsultaNumeroRadicacion } from "#@/interface/procesos.js";
+import rows from "../data/rows.js";
 
 export const cleanProcesos = rows.flatMap(
   (
@@ -15,38 +14,38 @@ export const cleanProcesos = rows.flatMap(
   }
 );
 cleanProcesos;
-export function fixFechas (
+export function fixFechas(
   fechaUltimaActuacion: string | null | undefined
 ) {
-  if ( fechaUltimaActuacion === null ) {
-    return 'no hay contenido';
+  if (fechaUltimaActuacion === null) {
+    return "no hay contenido";
   }
-  if ( fechaUltimaActuacion === undefined ) {
-    return 'no se ha definido el contenido';
+  if (fechaUltimaActuacion === undefined) {
+    return "no se ha definido el contenido";
   }
   const date = new Date(
     fechaUltimaActuacion
   );
   const months = [
-    'enero',
-    'febrero',
-    'marzo',
-    'abril',
-    'mayo',
-    'junio',
-    'julio',
-    'agosto',
-    'septiembre',
-    'octubre',
-    'noviembre',
-    'diciembre',
+    "enero",
+    "febrero",
+    "marzo",
+    "abril",
+    "mayo",
+    "junio",
+    "julio",
+    "agosto",
+    "septiembre",
+    "octubre",
+    "noviembre",
+    "diciembre",
   ];
-  const month = months[ date.getMonth() ];
+  const month = months[date.getMonth()];
   const dia = date.getDate();
   const ano = date.getFullYear();
-  return dia + ' de ' + month + ' de ' + ano;
+  return dia + " de " + month + " de " + ano;
 }
-export function fixDemandado (
+export function fixDemandado(
   sujetosProcesales: string
 ): string {
   const locateDemandado = sujetosProcesales.search(
@@ -55,8 +54,8 @@ export function fixDemandado (
   console.log(
     locateDemandado
   );
-  if ( locateDemandado === -1 ) {
-    return 'missing demandado';
+  if (locateDemandado === -1) {
+    return "missing demandado";
   }
   const extractDemandado = sujetosProcesales
     .slice(
@@ -68,13 +67,13 @@ export function fixDemandado (
   );
   const trimDemandado = extractDemandado.replace(
     /^\s+|\s+$/gm,
-    ''
+    ""
   );
   console.log(
     trimDemandado
   );
   const splitDemandado = trimDemandado.split(
-    ' '
+    " "
   );
   console.log(
     splitDemandado
@@ -83,29 +82,29 @@ export function fixDemandado (
     (
       nombreOapellido, index
     ) => {
-      if ( index >= 5 ) {
-        return '';
+      if (index >= 5) {
+        return "";
       }
       console.log(
         nombreOapellido
       );
-      if ( nombreOapellido === '|' ) {
-        return '';
+      if (nombreOapellido === "|") {
+        return "";
       }
-      if ( nombreOapellido.includes(
-        's.a.s'
-      ) ) {
-        return '';
+      if (nombreOapellido.includes(
+        "s.a.s"
+      )) {
+        return "";
       }
-      if ( nombreOapellido.includes(
-        'sas'
-      ) ) {
-        return '';
+      if (nombreOapellido.includes(
+        "sas"
+      )) {
+        return "";
       }
-      if ( nombreOapellido.includes(
-        '(emplazado)'
-      ) ) {
-        return '';
+      if (nombreOapellido.includes(
+        "(emplazado)"
+      )) {
+        return "";
       }
       return nombreOapellido.replace(
         /^./,
@@ -121,7 +120,7 @@ export function fixDemandado (
     splitDemandadotoUnify
   );
   const unifyDemandado = splitDemandadotoUnify.join(
-    ' '
+    " "
   );
   return unifyDemandado;
 }
@@ -141,16 +140,14 @@ export const Procesos = cleanProcesos.map(
         proceso.fechaUltimaActuacion
       ),
       despacho: proceso.despacho.toLowerCase(),
-      departamento: proceso.departamento
-        .toLowerCase()
-        .replace(
-          /^./,
-          (
-            str
-          ) => {
-            return str.toUpperCase();
-          }
-        ),
+      departamento: proceso.departamento.toLowerCase().replace(
+        /^./,
+        (
+          str
+        ) => {
+          return str.toUpperCase();
+        }
+      ),
       sujetosProcesales: fixDemandado(
         proceso.sujetosProcesales
       ),
@@ -165,7 +162,7 @@ export const Procesos = cleanProcesos.map(
 );
 
 fs.writeFile(
-  'src/middleware/Procesos.polishProcesos.json',
+  "src/middleware/Procesos.polishProcesos.json",
   JSON.stringify(
     Procesos
   )

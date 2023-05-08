@@ -1,0 +1,7 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "https://rsasesorjuridico.com/",
+  "title": "llaves",
+  "description": "el número de expediente de los procesos activos en base 23",
+  "type": "array"
+}
