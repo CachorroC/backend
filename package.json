@@ -15,8 +15,7 @@
     "@types/eslint": "^8",
     "@types/express": "^4",
     "@types/koa": "^2",
-    "@types/node": "^18.16.3",
-    "@types/prettier": "^2"
+    "@types/node": "^18.16.3"
   },
   "description": "",
   "version": "1.0.0",
