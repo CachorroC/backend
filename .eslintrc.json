@@ -3,23 +3,47 @@
     "es2021": true,
     "node": true
   },
-  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
   "overrides": [],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint"],
+  "plugins": [
+    "@typescript-eslint"
+  ],
   "rules": {
-    "array-bracket-newline": ["error", "consistent"],
-    "array-bracket-spacing": ["error", "always"],
+    "array-bracket-newline": [
+      "error",
+      "consistent"
+    ],
+    "array-bracket-spacing": [
+      "error",
+      "always"
+    ],
     "array-callback-return": "error",
-    "arrow-body-style": ["error", "always"],
-    "brace-style": ["error", "stroustrup"],
+    "arrow-body-style": [
+      "error",
+      "always"
+    ],
+    "brace-style": [
+      "error",
+      "stroustrup"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
     "consistent-return": "error",
     "curly": "error",
-    "function-call-argument-newline": ["error", "always"],
+    "function-call-argument-newline": [
+      "error",
+      "always"
+    ],
     "function-paren-newline": [
       "error",
       {
@@ -27,9 +51,18 @@
       }
     ],
     "getter-return": "error",
-    "indent": ["error", 2],
-    "linebreak-style": ["error", "unix"],
-    "multiline-ternary": ["error", "always"],
+    "indent": [
+      "error",
+      2
+    ],
+    "linebreak-style": [
+      "error",
+      "unix"
+    ],
+    "multiline-ternary": [
+      "error",
+      "always"
+    ],
     "no-dupe-else-if": "error",
     "no-dupe-args": "error",
     "no-else-return": [
@@ -41,6 +74,9 @@
     "no-unreachable": "error",
     "object-property-newline": "error",
     "semi": "error",
-    "template-tag-spacing": ["error", "always"]
+    "template-tag-spacing": [
+      "error",
+      "always"
+    ]
   }
 }

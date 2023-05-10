@@ -1,7 +1,7 @@
-import { intConsultaNumeroRadicacion } from "../interface/procesos.js";
-import * as fs from "fs/promises";
-process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
-import procesos from "../json/llaves.json" assert { type: "json" };
+import { intConsultaNumeroRadicacion } from '../interface/procesos.js';
+import * as fs from 'fs/promises';
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
+import procesos from '../json/llaves.json' assert { type: 'json' };
 const rows: unknown[] = [];
 
 const not23: string[] = [];
@@ -32,7 +32,7 @@ export async function fetchProcesoRama(
       err
     );
     fs.writeFile(
-      "src/data/rejectedFetch.procesos.json",
+      'src/data/rejectedFetch.procesos.json',
       JSON.stringify(
         rejectedFetch
       )
@@ -50,7 +50,7 @@ export async function fetchProcesoRama(
       res
     );
     fs.writeFile(
-      "src/data/fulfilledFetch.procesos.json",
+      'src/data/fulfilledFetch.procesos.json',
       JSON.stringify(
         fulfilledFetch
       )
@@ -62,7 +62,7 @@ export async function fetchProcesoRama(
     res
   );
   fs.writeFile(
-    "src/data/rows.procesos.json",
+    'src/data/rows.procesos.json',
     JSON.stringify(
       rows
     )
@@ -90,7 +90,7 @@ export const fetchConsultaNumeroRadicacionfromRama = procesos.llaves.forEach(
         llaveProceso
       );
       fs.writeFile(
-        "src/data/not23.procesos.json",
+        'src/data/not23.procesos.json',
         JSON.stringify(
           not23
         )
@@ -123,7 +123,7 @@ export const fetchConsultaNumeroRadicacionfromRama = procesos.llaves.forEach(
                 CNR
               );
               fs.writeFile(
-                "src/data/ConsultaNumeroRadicacion.procesos.json",
+                'src/data/ConsultaNumeroRadicacion.procesos.json',
                 JSON.stringify(
                   ConsultaNumeroRadicacion
                 )
@@ -141,7 +141,7 @@ export const fetchConsultaNumeroRadicacionfromRama = procesos.llaves.forEach(
                 error
               );
               fs.writeFile(
-                "src/data/error.procesos.json",
+                'src/data/error.procesos.json',
                 JSON.stringify(
                   errorConsulta
                 )
@@ -154,7 +154,7 @@ export const fetchConsultaNumeroRadicacionfromRama = procesos.llaves.forEach(
 
       if (index === array.length) {
         fs.writeFile(
-          "src/data/finally23.procesos.json",
+          'src/data/finally23.procesos.json',
           JSON.stringify(
             finally23
           )
