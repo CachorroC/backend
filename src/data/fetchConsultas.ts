@@ -1,7 +1,7 @@
-import { intConsultaNumeroRadicacion, intProceso } from "#@/interface/procesos.js";
-import llaves from "../json/llaves.json";
+import { intConsultaNumeroRadicacion, intProceso } from '#@/interface/procesos.js';
+import llaves from '../json/llaves.json';
 import * as fs from 'fs';
-process.env[ "NODE_TLS_REJECT_UNAUTHORIZED" ] = "0";
+process.env[ 'NODE_TLS_REJECT_UNAUTHORIZED' ] = '0';
 
 const reqNoOk: string[] = [];
 const missingProcesos: string[] = [];

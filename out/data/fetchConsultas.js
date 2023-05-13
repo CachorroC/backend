@@ -37,7 +37,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const llaves_json_1 = __importDefault(require("../json/llaves.json"));
 const fs = __importStar(require("fs"));
-process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 const reqNoOk = [];
 const missingProcesos = [];
 const rawprocesos = [];

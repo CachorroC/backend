@@ -36,69 +36,69 @@ exports.cleanProcesos = rows_js_1.default.flatMap((radicado) => {
 exports.cleanProcesos;
 function fixFechas(fechaUltimaActuacion) {
     if (fechaUltimaActuacion === null) {
-        return "no hay contenido";
+        return 'no hay contenido';
     }
     if (fechaUltimaActuacion === undefined) {
-        return "no se ha definido el contenido";
+        return 'no se ha definido el contenido';
     }
     const date = new Date(fechaUltimaActuacion);
     const months = [
-        "enero",
-        "febrero",
-        "marzo",
-        "abril",
-        "mayo",
-        "junio",
-        "julio",
-        "agosto",
-        "septiembre",
-        "octubre",
-        "noviembre",
-        "diciembre",
+        'enero',
+        'febrero',
+        'marzo',
+        'abril',
+        'mayo',
+        'junio',
+        'julio',
+        'agosto',
+        'septiembre',
+        'octubre',
+        'noviembre',
+        'diciembre',
     ];
     const month = months[date.getMonth()];
     const dia = date.getDate();
     const ano = date.getFullYear();
-    return dia + " de " + month + " de " + ano;
+    return dia + ' de ' + month + ' de ' + ano;
 }
 exports.fixFechas = fixFechas;
 function fixDemandado(sujetosProcesales) {
     const locateDemandado = sujetosProcesales.search(/(demandado|causante)+:(?:\s*?|'\s*?')/gi);
     console.log(locateDemandado);
     if (locateDemandado === -1) {
-        return "missing demandado";
+        return 'missing demandado';
     }
     const extractDemandado = sujetosProcesales
         .slice(locateDemandado + 10)
         .toLocaleLowerCase();
     console.log(extractDemandado);
-    const trimDemandado = extractDemandado.replace(/^\s+|\s+$/gm, "");
+    const trimDemandado = extractDemandado.replace(/^\s+|\s+$/gm, '');
     console.log(trimDemandado);
-    const splitDemandado = trimDemandado.split(" ");
+    const splitDemandado = trimDemandado.split(' ');
     console.log(splitDemandado);
     const splitDemandadotoUnify = splitDemandado.map((nombreOapellido, index) => {
         if (index >= 5) {
-            return "";
+            return '';
         }
         console.log(nombreOapellido);
-        if (nombreOapellido === "|") {
-            return "";
+        if (nombreOapellido === '|') {
+            return '';
         }
-        if (nombreOapellido.includes("s.a.s")) {
-            return "";
+        if (nombreOapellido.includes('s.a.s')) {
+            return '';
         }
-        if (nombreOapellido.includes("sas")) {
-            return "";
+        if (nombreOapellido.includes('sas')) {
+            return '';
         }
-        if (nombreOapellido.includes("(emplazado)")) {
-            return "";
+        if (nombreOapellido.includes('(emplazado)')) {
+            return '';
         }
         return nombreOapellido.replace(/^./, (str) => {
             return str.toUpperCase();
         });
     });
     console.log(splitDemandadotoUnify);
-    const unifyDemandado = splitDemandadotoUnify.join(" ");
+    const unifyDemandado = splitDemandadotoUnify.join(' ');
     return unifyDemandado;
 }
 exports.fixDemandado = fixDemandado;
@@ -120,5 +120,5 @@ exports.Procesos = exports.cleanProcesos.map((proceso) => {
     console.log(Proceso);
     return Proceso;
 });
-fs.writeFile("src/middleware/Procesos.polishProcesos.json", JSON.stringify(exports.Procesos));
+fs.writeFile('src/middleware/Procesos.polishProcesos.json', JSON.stringify(exports.Procesos));
 //# sourceMappingURL=polishProcesos.js.map
