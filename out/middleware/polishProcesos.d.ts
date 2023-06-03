@@ -1,4 +1,4 @@
-export declare const cleanProcesos: import("#@/interface/procesos.js").intProceso[];
+export declare const cleanProcesos: import('#@/interface/procesos.js').intProceso[];
 export declare function fixFechas(
   fechaUltimaActuacion: string | null | undefined
 ): string;
