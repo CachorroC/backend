@@ -1,13 +1,39 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
+var __awaiter =
+    (this && this.__awaiter) ||
+    function (thisArg, _arguments, P, generator) {
+        function adopt(value) {
+            return value instanceof P
+                ? value
+                : new P(function (resolve) {
+                      resolve(value);
+                  });
+        }
+        return new (P || (P = Promise))(function (resolve, reject) {
+            function fulfilled(value) {
+                try {
+                    step(generator.next(value));
+                } catch (e) {
+                    reject(e);
+                }
+            }
+            function rejected(value) {
+                try {
+                    step(generator["throw"](value));
+                } catch (e) {
+                    reject(e);
+                }
+            }
+            function step(result) {
+                result.done
+                    ? resolve(result.value)
+                    : adopt(result.value).then(fulfilled, rejected);
+            }
+            step(
+                (generator = generator.apply(thisArg, _arguments || [])).next()
+            );
+        });
+    };
 Object.defineProperty(exports, "__esModule", { value: true });
 process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
 const rows = [];
@@ -130,22 +156,28 @@ const llaves = [
 ];
 function fetchProceso(llaveProceso) {
     return __awaiter(this, void 0, void 0, function* () {
-        const req = yield fetch(`https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${llaveProceso}&SoloActivos=false`); /*? req*/
+        const req = yield fetch(
+            `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${llaveProceso}&SoloActivos=false`
+        ); /*? req*/
         if (!req.ok) {
             throw new Error("falló la nuevaconsulta");
         }
-        const res = (yield req.json());
+        const res = yield req.json();
         return res;
     });
 }
 function fetchProcesosByllaveProceso(llaveProceso, index) {
     return __awaiter(this, void 0, void 0, function* () {
         const sumPromise = new Promise((resolve, reject) => {
-            setTimeout(() => __awaiter(this, void 0, void 0, function* () {
-                const nuevaConsulta = yield fetchProceso(llaveProceso);
-                console.log(nuevaConsulta);
-                resolve(nuevaConsulta);
-            }), index * 400);
+            setTimeout(
+                () =>
+                    __awaiter(this, void 0, void 0, function* () {
+                        const nuevaConsulta = yield fetchProceso(llaveProceso);
+                        console.log(nuevaConsulta);
+                        resolve(nuevaConsulta);
+                    }),
+                index * 400
+            );
         });
         const result = yield sumPromise;
         rows.push(result);
