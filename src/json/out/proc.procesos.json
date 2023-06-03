@@ -36,18 +36,6 @@
         "cantFilas": -1
     },
     {
-        "idProceso": 28937944,
-        "idConexion": 310,
-        "llaveProceso": "11001310302520170073600",
-        "fechaProceso": "2017-10-03T00:00:00",
-        "fechaUltimaActuacion": "2022-06-15T00:00:00",
-        "despacho": "JUZGADO 002 CIVIL DEL CIRCUITO DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
-        "departamento": "BOGOTÁ",
-        "sujetosProcesales": "Demandante: BANCOLOMBIA S. A. | Demandado: MIGUEL ANGEL HUERTAS VALENCIA ",
-        "esPrivado": false,
-        "cantFilas": -1
-    },
-    {
         "idProceso": 50764880,
         "idConexion": 259,
         "llaveProceso": "11001400300120170130900",
@@ -128,6 +116,18 @@
         "despacho": "JUZGADO 003 CIVIL MUNICIPAL DE BOGOTÁ ",
         "departamento": "BOGOTÁ",
         "sujetosProcesales": "Demandante: BANCOLOMBIA S.A. | Demandado: NIDIA DORANCY GOMEZ BLANCO ",
+        "esPrivado": false,
+        "cantFilas": -1
+    },
+    {
+        "idProceso": 28937944,
+        "idConexion": 310,
+        "llaveProceso": "11001310302520170073600",
+        "fechaProceso": "2017-10-03T00:00:00",
+        "fechaUltimaActuacion": "2022-06-15T00:00:00",
+        "despacho": "JUZGADO 002 CIVIL DEL CIRCUITO DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+        "departamento": "BOGOTÁ",
+        "sujetosProcesales": "Demandante: BANCOLOMBIA S. A. | Demandado: MIGUEL ANGEL HUERTAS VALENCIA ",
         "esPrivado": false,
         "cantFilas": -1
     },
