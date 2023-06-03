@@ -1641,12 +1641,23 @@ const fullfiledActuaciones = [];
 const fullfiledActuacionesWR = [];
 const noFullfiledActuacionesWR = [];
 const notFullfiledActuaciones = [];
+const reqOk = [];
+const reqOkWR = [];
+const reqNoOk = [];
+const reqNoOkWR = [];
+const reqOknoActuaciones = [];
+const reqOknoActuacionesWR = [];
+const reqOkHasActuaciones = [];
+const reqOkHasActuacionesWR = [];
+const rawReq = [];
+const rawReqWR = [];
 const fetchActuaciones = (idProceso, iOfA) =>
     __awaiter(void 0, void 0, void 0, function* () {
         fs.mkdir(`src/json/out/actuaciones/${idProceso}`, { recursive: true });
         const req = yield fetch(
             `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${idProceso}`
         );
+        console.log(req.status);
         if (!req.ok) {
             const err = req.status;
             const errHead = req.headers;
@@ -1656,9 +1667,10 @@ const fetchActuaciones = (idProceso, iOfA) =>
                 idProceso: idProceso,
                 iOfA: iOfA,
             };
-            fs.appendFile(
+            reqNoOk.push(errorMaker);
+            fs.writeFile(
                 `src/json/out/actuaciones/${idProceso}/reqNoOk.actuaciones.json`,
-                JSON.stringify(errorMaker)
+                JSON.stringify(reqNoOk)
             );
         }
         if (req.ok) {
@@ -1669,9 +1681,10 @@ const fetchActuaciones = (idProceso, iOfA) =>
                     idProceso: idProceso,
                     iOfA: iOfA,
                 });
-                fs.appendFile(
-                    `src/json/out/actuaciones/${idProceso}/reqOkhasNoActuaciones.actuaciones.json`,
-                    JSON.stringify(hasNoActuaciones)
+                reqOknoActuaciones.push(hasNoActuaciones);
+                fs.writeFile(
+                    `src/json/out/actuaciones/${idProceso}/reqOknoActuaciones.actuaciones.json`,
+                    JSON.stringify(reqOknoActuaciones)
                 );
             }
             if (actuaciones.length > 0) {
@@ -1679,18 +1692,20 @@ const fetchActuaciones = (idProceso, iOfA) =>
                     idProceso: idProceso,
                     iOfA: iOfA,
                 });
-                fs.appendFile(
+                reqOkHasActuaciones.push(hasActuaciones);
+                fs.writeFile(
                     `src/json/out/actuaciones/${idProceso}/reqOkhasActuaciones.actuaciones.json`,
-                    JSON.stringify(hasActuaciones)
+                    JSON.stringify(reqOkHasActuaciones)
                 );
             }
             const requestOk = Object.assign(Object.assign({}, res), {
                 idProceso: idProceso,
                 iOfA: iOfA,
             });
-            fs.appendFile(
+            reqOk.push(requestOk);
+            fs.writeFile(
                 `src/json/out/actuaciones/${idProceso}/reqOk.actuaciones.json`,
-                JSON.stringify(requestOk)
+                JSON.stringify(reqOk)
             );
         }
         if (req.body) {
@@ -1698,18 +1713,20 @@ const fetchActuaciones = (idProceso, iOfA) =>
                 idProceso: idProceso,
                 iOfA: iOfA,
             });
-            fs.appendFile(
-                `src/json/out/actuaciones/${idProceso}/request.actuaciones.json`,
-                JSON.stringify(request)
+            reqOk.push(request);
+            fs.writeFile(
+                `src/json/out/actuaciones/${idProceso}/reqOk.body.actuaciones.json`,
+                JSON.stringify(reqOk)
             );
         }
         const request = {
             idProceso: idProceso,
             iOfA: iOfA,
         };
-        fs.appendFile(
-            `src/json/out/actuaciones/${idProceso}/request.actuaciones.json`,
-            JSON.stringify(request)
+        rawReq.push(request);
+        fs.writeFile(
+            `src/json/out/actuaciones/${idProceso}/rawRequest.actuaciones.json`,
+            JSON.stringify(rawReq)
         );
     });
 const fetchActuacioneswithreturn = (idProceso, iOfA) =>
@@ -1728,9 +1745,10 @@ const fetchActuacioneswithreturn = (idProceso, iOfA) =>
                 idProceso: idProceso,
                 iOfA: iOfA,
             };
-            fs.appendFile(
-                `src/json/out/actuaciones/${idProceso}/WRreqNoOk.actuaciones.json`,
-                JSON.stringify(errorMaker)
+            reqNoOkWR.push(errorMaker);
+            fs.writeFile(
+                `src/json/out/actuaciones/${idProceso}/WR.reqNoOk.actuaciones.json`,
+                JSON.stringify(reqNoOkWR)
             );
             return errorMaker;
         }
@@ -1742,9 +1760,10 @@ const fetchActuacioneswithreturn = (idProceso, iOfA) =>
                     idProceso: idProceso,
                     iOfA: iOfA,
                 });
-                fs.appendFile(
-                    `src/json/out/actuaciones/${idProceso}/WRreqOkhasNoActuaciones.actuaciones.json`,
-                    JSON.stringify(hasNoActuaciones)
+                reqOknoActuacionesWR.push(hasNoActuaciones);
+                fs.writeFile(
+                    `src/json/out/actuaciones/${idProceso}/WR.reqOknoActuaciones.actuaciones.json`,
+                    JSON.stringify(reqOknoActuacionesWR)
                 );
                 return hasNoActuaciones;
             }
@@ -1754,9 +1773,10 @@ const fetchActuacioneswithreturn = (idProceso, iOfA) =>
                     idProceso: idProceso,
                     iOfA: iOfA,
                 };
-                fs.appendFile(
-                    `src/json/out/actuaciones/${idProceso}/WRreqOkhasActuaciones.actuaciones.json`,
-                    JSON.stringify(hasActuaciones)
+                reqOkHasActuacionesWR.push(hasActuaciones);
+                fs.writeFile(
+                    `src/json/out/actuaciones/${idProceso}/WR.reqOkhasActuaciones.actuaciones.json`,
+                    JSON.stringify(reqOkHasActuacionesWR)
                 );
                 return hasActuaciones;
             }
@@ -1764,9 +1784,10 @@ const fetchActuacioneswithreturn = (idProceso, iOfA) =>
                 idProceso: idProceso,
                 iOfA: iOfA,
             });
-            fs.appendFile(
-                `src/json/out/actuaciones/${idProceso}/WRreqOk.actuaciones.json`,
-                JSON.stringify(requestOk)
+            reqOkWR.push(requestOk);
+            fs.writeFile(
+                `src/json/out/actuaciones/${idProceso}/WR.reqOk.actuaciones.json`,
+                JSON.stringify(reqOkWR)
             );
             return requestOk;
         }
@@ -1775,9 +1796,10 @@ const fetchActuacioneswithreturn = (idProceso, iOfA) =>
                 idProceso: idProceso,
                 iOfA: iOfA,
             });
-            fs.appendFile(
-                `src/json/out/actuaciones/${idProceso}/WRrequest.actuaciones.json`,
-                JSON.stringify(request)
+            reqOkWR.push(request);
+            fs.writeFile(
+                `src/json/out/actuaciones/${idProceso}/WR.reqOk.body.actuaciones.json`,
+                JSON.stringify(reqOkWR)
             );
             return request;
         }
@@ -1785,9 +1807,10 @@ const fetchActuacioneswithreturn = (idProceso, iOfA) =>
             idProceso: idProceso,
             iOfA: iOfA,
         };
-        fs.appendFile(
-            `src/json/out/actuaciones/${idProceso}/WRrequest.actuaciones.json`,
-            JSON.stringify(request)
+        rawReqWR.push(request);
+        fs.writeFile(
+            `src/json/out/actuaciones/${idProceso}/WR.rawRequest.actuaciones.json`,
+            JSON.stringify(rawReqWR)
         );
         return request;
     });
@@ -1803,7 +1826,7 @@ const forEachProceso = procesos.forEach((proceso, index, procArr) => {
                     iOfA: iOfA,
                 };
                 fullfiledActuaciones.push(onFullfiled);
-                fs.appendFile(
+                fs.writeFile(
                     "src/json/out/actuaciones/fullfiled.actuaciones.json",
                     JSON.stringify(fullfiledActuaciones)
                 );
@@ -1815,7 +1838,7 @@ const forEachProceso = procesos.forEach((proceso, index, procArr) => {
                     iOfA: iOfA,
                 });
                 notFullfiledActuaciones.push(notFullfiled);
-                fs.appendFile(
+                fs.writeFile(
                     "src/json/out/actuaciones/notFullfiled.actuaciones.json",
                     JSON.stringify(notFullfiledActuaciones)
                 );
@@ -1828,7 +1851,7 @@ const forEachProceso = procesos.forEach((proceso, index, procArr) => {
                     iOfA: iOfA,
                 });
                 fullfiledActuacionesWR.push(onFullfiledwr);
-                fs.appendFile(
+                fs.writeFile(
                     "src/json/out/actuaciones/WRfullfiled.actuaciones.json",
                     JSON.stringify(fullfiledActuacionesWR)
                 );
@@ -1841,16 +1864,13 @@ const forEachProceso = procesos.forEach((proceso, index, procArr) => {
                     iOfA: iOfA,
                 });
                 noFullfiledActuacionesWR.push(notFullfiledwr);
-                fs.appendFile(
+                fs.writeFile(
                     "src/json/out/actuaciones/WRnotFullfiled.actuaciones.json",
                     JSON.stringify(noFullfiledActuacionesWR)
                 );
                 return notFullfiledwr;
             }
         );
-        if (procArr.length === index) {
-            console.log("ultimo index");
-        }
     }, index * 1000);
 });
 console.log(forEachProceso);
@@ -1866,7 +1886,7 @@ const messyMap = procesos.map((proceso, index, array) => {
                 iOfA: iOfA,
             };
             fullfiledActuacionesMap.push(onFullfiled);
-            fs.appendFile(
+            fs.writeFile(
                 "src/json/out/actuaciones/fullfiled.Map.actuaciones.json",
                 JSON.stringify(fullfiledActuacionesMap)
             );
@@ -1878,7 +1898,7 @@ const messyMap = procesos.map((proceso, index, array) => {
                 iOfA: iOfA,
             });
             notFullfiledActuacionesMap.push(notFullfiled);
-            fs.appendFile(
+            fs.writeFile(
                 "src/json/out/actuaciones/notFullfiled.Map.actuaciones.json",
                 JSON.stringify(notFullfiledActuacionesMap)
             );
@@ -1891,7 +1911,7 @@ const messyMap = procesos.map((proceso, index, array) => {
                 iOfA: iOfA,
             });
             fullfiledActuacionesWRMap.push(onFullfiledwr);
-            fs.appendFile(
+            fs.writeFile(
                 "src/json/out/actuaciones/WRfullfiled.Map.actuaciones.json",
                 JSON.stringify(fullfiledActuacionesWRMap)
             );
@@ -1904,7 +1924,7 @@ const messyMap = procesos.map((proceso, index, array) => {
                 iOfA: iOfA,
             });
             noFullfiledActuacionesWRMap.push(notFullfiledwr);
-            fs.appendFile(
+            fs.writeFile(
                 "src/json/out/actuaciones/notFullfiledWR.Map.actuaciones.json",
                 JSON.stringify(noFullfiledActuacionesWRMap)
             );
