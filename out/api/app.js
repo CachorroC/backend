@@ -1,183 +1,58 @@
-'use strict';
-var __awaiter =
-    (this && this.__awaiter) ||
-    function (
-        thisArg, _arguments, P, generator
-    ) {
-        function adopt(
-            value
-        ) {
-            return value instanceof P
-                ? value
-                : new P(
-                    function (
-                        resolve
-                    ) {
-                        resolve(
-                            value
-                        );
-                    }
-                );
-        }
-        return new (P || (P = Promise))(
-            function (
-                resolve, reject
-            ) {
-                function fulfilled(
-                    value
-                ) {
-                    try {
-                        step(
-                            generator.next(
-                                value
-                            )
-                        );
-                    }
-                    catch (e) {
-                        reject(
-                            e
-                        );
-                    }
-                }
-                function rejected(
-                    value
-                ) {
-                    try {
-                        step(
-                            generator['throw'](
-                                value
-                            )
-                        );
-                    }
-                    catch (e) {
-                        reject(
-                            e
-                        );
-                    }
-                }
-                function step(
-                    result
-                ) {
-                    result.done
-                        ? resolve(
-                            result.value
-                        )
-                        : adopt(
-                            result.value
-                        ).then(
-                            fulfilled,
-                            rejected
-                        );
-                }
-                step(
-                    (generator = generator.apply(
-                        thisArg,
-                        _arguments || []
-                    )).next()
-                );
-            }
-        );
-    };
-Object.defineProperty(
-    exports,
-    '__esModule',
-    { value: true }
-);
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.GET = void 0;
-function GET(
-    request
-) {
-    return __awaiter(
-        this,
-        void 0,
-        void 0,
-        function* () {
-            const { searchParams } = new URL(
-                request.url
-            );
-            const delay = searchParams.get(
-                'delay'
-            );
-            if (delay) {
-                yield new Promise(
-                    (
-                        resolve
-                    ) => {
-                        return setTimeout(
-                            resolve,
-                            Number(
-                                delay
-                            )
-                        );
-                    }
-                );
-            }
-            const idProceso = searchParams.get(
-                'idProceso'
-            );
-            if (idProceso) {
-                const procesos = Procesos.find(
-                    (
-                        proceso
-                    ) => {
-                        return proceso.idProceso.toString() === idProceso;
-                    }
-                );
-                return new Response(
-                    JSON.stringify(
-                        procesos
-                    ),
-                    {
-                        status: 200,
-                        headers: {
-                            'content-type': 'application/json',
-                        },
-                    }
-                );
-            }
-            const llaveProceso = searchParams.get(
-                'llaveProceso'
-            );
-            if (llaveProceso) {
-                const procesos = Procesos.filter(
-                    (
-                        proceso
-                    ) => {
-                        return proceso.llaveProceso === llaveProceso;
-                    }
-                );
-                return new Response(
-                    JSON.stringify(
-                        procesos
-                    ),
-                    {
-                        status: 200,
-                        headers: {
-                            'content-type': 'application/json',
-                        },
-                    }
-                );
-            }
-            const procesos = Procesos.map(
-                (
-                    Proceso
-                ) => {
-                    return Proceso;
-                }
-            );
-            return new Response(
-                JSON.stringify(
-                    procesos
-                ),
-                {
-                    status: 200,
-                    headers: {
-                        'content-type': 'application/json',
-                    },
-                }
-            );
+function GET(request) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const { searchParams } = new URL(request.url);
+        const delay = searchParams.get('delay');
+        if (delay) {
+            yield new Promise((resolve) => {
+                return setTimeout(resolve, Number(delay));
+            });
         }
-    );
+        const idProceso = searchParams.get('idProceso');
+        if (idProceso) {
+            const procesos = Procesos.find((proceso) => {
+                return proceso.idProceso.toString() === idProceso;
+            });
+            return new Response(JSON.stringify(procesos), {
+                status: 200,
+                headers: {
+                    'content-type': 'application/json',
+                },
+            });
+        }
+        const llaveProceso = searchParams.get('llaveProceso');
+        if (llaveProceso) {
+            const procesos = Procesos.filter((proceso) => {
+                return proceso.llaveProceso === llaveProceso;
+            });
+            return new Response(JSON.stringify(procesos), {
+                status: 200,
+                headers: {
+                    'content-type': 'application/json',
+                },
+            });
+        }
+        const procesos = Procesos.map((Proceso) => {
+            return Proceso;
+        });
+        return new Response(JSON.stringify(procesos), {
+            status: 200,
+            headers: {
+                'content-type': 'application/json',
+            },
+        });
+    });
 }
 exports.GET = GET;
 const Procesos = [
@@ -187,8 +62,7 @@ const Procesos = [
         llaveProceso: '11001400303420170083600',
         fechaProceso: '21 de junio de 2017',
         fechaUltimaActuacion: '27 de abril de 2023',
-        despacho:
-            'juzgado 012 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 012 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Luis Esneider Orduz Farfan',
         esPrivado: false,
@@ -236,8 +110,7 @@ const Procesos = [
         llaveProceso: '11001400302520170090300',
         fechaProceso: '29 de agosto de 2017',
         fechaUltimaActuacion: '30 de marzo de 2023',
-        despacho:
-            'juzgado 018 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 018 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Darnelly Hernandez Martinez',
         esPrivado: false,
@@ -249,8 +122,7 @@ const Procesos = [
         llaveProceso: '11001400300120170100100',
         fechaProceso: '9 de agosto de 2017',
         fechaUltimaActuacion: '28 de marzo de 2023',
-        despacho:
-            'juzgado 017 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 017 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Wilson Alfonso Jimenez Mendieta',
         esPrivado: false,
@@ -262,8 +134,7 @@ const Procesos = [
         llaveProceso: '11001400300820170113400',
         fechaProceso: '19 de septiembre de 2017',
         fechaUltimaActuacion: '1 de marzo de 2023',
-        despacho:
-            'juzgado 006 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 006 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Fanor Diaz Agudelo',
         esPrivado: false,
@@ -275,8 +146,7 @@ const Procesos = [
         llaveProceso: '11001400303720170139100',
         fechaProceso: '11 de octubre de 2017',
         fechaUltimaActuacion: '9 de marzo de 2022',
-        despacho:
-            'juzgado 011 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 011 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Jose Noel Puerta Jaramillo      ',
         esPrivado: false,
@@ -288,8 +158,7 @@ const Procesos = [
         llaveProceso: '11001400301520170139400',
         fechaProceso: '13 de octubre de 2017',
         fechaUltimaActuacion: '8 de noviembre de 2021',
-        despacho:
-            'juzgado 011 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 011 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Ana Lucia Aguilar  Demandado:       ',
         esPrivado: false,
@@ -301,8 +170,7 @@ const Procesos = [
         llaveProceso: '11001400304820170097400',
         fechaProceso: '9 de octubre de 2017',
         fechaUltimaActuacion: '1 de diciembre de 2022',
-        despacho:
-            'juzgado 007 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 007 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Anderson Revelo Santos',
         esPrivado: false,
@@ -314,8 +182,7 @@ const Procesos = [
         llaveProceso: '11001400302120170153200',
         fechaProceso: '11 de octubre de 2017',
         fechaUltimaActuacion: '14 de abril de 2023',
-        despacho:
-            'juzgado 015 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 015 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Libardo Alfonso Gonzalez Triviño',
         esPrivado: false,
@@ -339,8 +206,7 @@ const Procesos = [
         llaveProceso: '11001400305620180022100',
         fechaProceso: '1 de marzo de 2018',
         fechaUltimaActuacion: '11 de noviembre de 2022',
-        despacho:
-            'juzgado 007 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 007 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Creas Consultores ',
         esPrivado: false,
@@ -352,8 +218,7 @@ const Procesos = [
         llaveProceso: '11001400302120180023600',
         fechaProceso: '23 de febrero de 2018',
         fechaUltimaActuacion: '22 de marzo de 2023',
-        despacho:
-            'juzgado 013 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 013 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Arturo Lince Gomez',
         esPrivado: false,
@@ -365,8 +230,7 @@ const Procesos = [
         llaveProceso: '11001418901420190065600',
         fechaProceso: '4 de abril de 2019',
         fechaUltimaActuacion: '12 de abril de 2023',
-        despacho:
-            'juzgado 014 de pequeñas causas  y competencia múltiple de bogotá ',
+        despacho: 'juzgado 014 de pequeñas causas  y competencia múltiple de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Leidy Yaneth Vidal Rodríguez',
         esPrivado: false,
@@ -378,8 +242,7 @@ const Procesos = [
         llaveProceso: '11001418901420190065600',
         fechaProceso: '3 de abril de 2019',
         fechaUltimaActuacion: '12 de septiembre de 2022',
-        despacho:
-            'juzgado 014 de pequeñas causas  y competencia múltiple de bogotá ',
+        despacho: 'juzgado 014 de pequeñas causas  y competencia múltiple de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Leidy Yaneth Vidal Rodriguez ',
         esPrivado: false,
@@ -391,8 +254,7 @@ const Procesos = [
         llaveProceso: '11001418900820180078500',
         fechaProceso: '24 de marzo de 2021',
         fechaUltimaActuacion: '27 de febrero de 2023',
-        despacho:
-            'juzgado 005 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 005 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Sandra Patricia Pacheco Ramirez',
         esPrivado: false,
@@ -428,8 +290,7 @@ const Procesos = [
         llaveProceso: '11001400308520170084900',
         fechaProceso: '23 de mayo de 2019',
         fechaUltimaActuacion: '27 de abril de 2023',
-        despacho:
-            'juzgado 011 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 011 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Jose Edwin Garces Ardila',
         esPrivado: false,
@@ -453,8 +314,7 @@ const Procesos = [
         llaveProceso: '11001310301120170033500',
         fechaProceso: '31 de mayo de 2017',
         fechaUltimaActuacion: '10 de marzo de 2023',
-        despacho:
-            'juzgado 001 civil del circuito de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 001 civil del circuito de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Omar Dario Zea Galvis',
         esPrivado: false,
@@ -466,8 +326,7 @@ const Procesos = [
         llaveProceso: '11001400304320180038400',
         fechaProceso: '12 de abril de 2018',
         fechaUltimaActuacion: '27 de abril de 2023',
-        despacho:
-            'juzgado 018 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 018 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Jhonatan Andres Bernal Parra',
         esPrivado: false,
@@ -479,8 +338,7 @@ const Procesos = [
         llaveProceso: '11001400302620170051100',
         fechaProceso: '31 de mayo de 2017',
         fechaUltimaActuacion: '13 de abril de 2023',
-        despacho:
-            'juzgado 003 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 003 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Luis Carlos Gutierrez Velandia     ',
         esPrivado: false,
@@ -504,8 +362,7 @@ const Procesos = [
         llaveProceso: '11001400300620170030200',
         fechaProceso: '21 de junio de 2017',
         fechaUltimaActuacion: '24 de abril de 2023',
-        despacho:
-            'juzgado 013 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 013 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Ana Rita Guzman Gomez',
         esPrivado: false,
@@ -517,8 +374,7 @@ const Procesos = [
         llaveProceso: '11001400300620170041900',
         fechaProceso: '26 de julio de 2017',
         fechaUltimaActuacion: '25 de abril de 2023',
-        despacho:
-            'juzgado 011 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 011 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Derly Catherine Castro Izquierdo',
         esPrivado: false,
@@ -530,8 +386,7 @@ const Procesos = [
         llaveProceso: '11001400304220170076000',
         fechaProceso: '20 de junio de 2017',
         fechaUltimaActuacion: '10 de noviembre de 2022',
-        despacho:
-            'juzgado 010 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 010 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Jose Uriel Paerez Perdomo',
         esPrivado: false,
@@ -543,8 +398,7 @@ const Procesos = [
         llaveProceso: '11001400302220170056700',
         fechaProceso: '15 de junio de 2017',
         fechaUltimaActuacion: '14 de febrero de 2023',
-        despacho:
-            'juzgado 002 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 002 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Rhonald Meza  Tarapues',
         esPrivado: false,
@@ -556,8 +410,7 @@ const Procesos = [
         llaveProceso: '11001400308220170068000',
         fechaProceso: '29 de enero de 2019',
         fechaUltimaActuacion: '28 de abril de 2023',
-        despacho:
-            'juzgado 018 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 018 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Eduardo Enrique Arango Chacon',
         esPrivado: false,
@@ -581,8 +434,7 @@ const Procesos = [
         llaveProceso: '11001400300420170057500',
         fechaProceso: '15 de junio de 2017',
         fechaUltimaActuacion: '26 de abril de 2023',
-        despacho:
-            'juzgado 018 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 018 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Sonia Mazuera',
         esPrivado: false,
@@ -594,8 +446,7 @@ const Procesos = [
         llaveProceso: '11001400305920170048300',
         fechaProceso: '20 de junio de 2017',
         fechaUltimaActuacion: '27 de febrero de 2023',
-        despacho:
-            'juzgado 015 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 015 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Daniel Hernandez Gonzalez',
         esPrivado: false,
@@ -607,8 +458,7 @@ const Procesos = [
         llaveProceso: '11001310302520170073600',
         fechaProceso: '3 de octubre de 2017',
         fechaUltimaActuacion: '15 de junio de 2022',
-        despacho:
-            'juzgado 002 civil del circuito de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 002 civil del circuito de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Miguel Angel Huertas Valencia',
         esPrivado: false,
@@ -620,8 +470,7 @@ const Procesos = [
         llaveProceso: '11001400307020170056600',
         fechaProceso: '22 de junio de 2017',
         fechaUltimaActuacion: '13 de diciembre de 2021',
-        despacho:
-            'juzgado 014 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 014 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Nicolas Fernando Montoya',
         esPrivado: false,
@@ -657,8 +506,7 @@ const Procesos = [
         llaveProceso: '11001400304520170090500',
         fechaProceso: '26 de julio de 2017',
         fechaUltimaActuacion: '25 de febrero de 2022',
-        despacho:
-            'juzgado 002 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 002 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Uriel Ruiz Diaz',
         esPrivado: false,
@@ -670,8 +518,7 @@ const Procesos = [
         llaveProceso: '11001400307620170063500',
         fechaProceso: '22 de noviembre de 2018',
         fechaUltimaActuacion: '5 de diciembre de 2022',
-        despacho:
-            'juzgado 004 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 004 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Fredy Meneses',
         esPrivado: false,
@@ -695,8 +542,7 @@ const Procesos = [
         llaveProceso: '11001400301120170108400',
         fechaProceso: '6 de octubre de 2017',
         fechaUltimaActuacion: '27 de abril de 2023',
-        despacho:
-            'juzgado 002 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 002 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Javier Gonzalez Tagua',
         esPrivado: false,
@@ -732,8 +578,7 @@ const Procesos = [
         llaveProceso: '11001400307920170108200',
         fechaProceso: '9 de agosto de 2018',
         fechaUltimaActuacion: '19 de enero de 2023',
-        despacho:
-            'juzgado 001 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 001 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Jhon Alexander Valencia Marquez',
         esPrivado: false,
@@ -757,8 +602,7 @@ const Procesos = [
         llaveProceso: '11001400301220170097100',
         fechaProceso: '30 de agosto de 2017',
         fechaUltimaActuacion: '17 de marzo de 2022',
-        despacho:
-            'juzgado 015 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 015 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Fabio Alberto Rivera Mesa       ',
         esPrivado: false,
@@ -782,8 +626,7 @@ const Procesos = [
         llaveProceso: '11001400306420170119100',
         fechaProceso: '31 de agosto de 2017',
         fechaUltimaActuacion: '19 de noviembre de 2021',
-        despacho:
-            'juzgado 007 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 007 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Cesar Umaña Cañon',
         esPrivado: false,
@@ -819,8 +662,7 @@ const Procesos = [
         llaveProceso: '11001400305520170086000',
         fechaProceso: '4 de septiembre de 2017',
         fechaUltimaActuacion: '27 de marzo de 2023',
-        despacho:
-            'juzgado 015 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 015 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Gerardo Antonio Moncada Vega',
         esPrivado: false,
@@ -832,8 +674,7 @@ const Procesos = [
         llaveProceso: '11001400302820170084900',
         fechaProceso: '5 de septiembre de 2017',
         fechaUltimaActuacion: '16 de junio de 2022',
-        despacho:
-            'juzgado 016 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 016 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Jose Luis Torres Tamayo',
         esPrivado: false,
@@ -857,8 +698,7 @@ const Procesos = [
         llaveProceso: '11001400301620170087500',
         fechaProceso: '6 de septiembre de 2017',
         fechaUltimaActuacion: '28 de abril de 2023',
-        despacho:
-            'juzgado 018 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 018 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Jorge Alberto Martinez Bendeck',
         esPrivado: false,
@@ -882,8 +722,7 @@ const Procesos = [
         llaveProceso: '11001400301320170116200',
         fechaProceso: '5 de septiembre de 2017',
         fechaUltimaActuacion: '26 de abril de 2023',
-        despacho:
-            'juzgado 016 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 016 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Carlos Javier Becerra Benavides',
         esPrivado: false,
@@ -895,8 +734,7 @@ const Procesos = [
         llaveProceso: '11001400300820170105800',
         fechaProceso: '5 de septiembre de 2017',
         fechaUltimaActuacion: '21 de julio de 2022',
-        despacho:
-            'juzgado 001 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 001 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Andres Felipe Gutierrez Trujillo',
         esPrivado: false,
@@ -908,8 +746,7 @@ const Procesos = [
         llaveProceso: '11001400300920170127900',
         fechaProceso: '28 de noviembre de 2017',
         fechaUltimaActuacion: '26 de enero de 2022',
-        despacho:
-            'juzgado 018 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 018 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Jose Hernando Sanchez Valbuena',
         esPrivado: false,
@@ -945,8 +782,7 @@ const Procesos = [
         llaveProceso: '11001400301820170152200',
         fechaProceso: '18 de septiembre de 2017',
         fechaUltimaActuacion: '16 de septiembre de 2022',
-        despacho:
-            'juzgado 016 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 016 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Jose Ahinsonjover Toro Vargas',
         esPrivado: false,
@@ -958,8 +794,7 @@ const Procesos = [
         llaveProceso: '11001400306320170092400',
         fechaProceso: '22 de septiembre de 2017',
         fechaUltimaActuacion: '27 de abril de 2023',
-        despacho:
-            'juzgado 001 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 001 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Hernando Pulecio Paredes',
         esPrivado: false,
@@ -983,8 +818,7 @@ const Procesos = [
         llaveProceso: '11001400306820170130600',
         fechaProceso: '10 de octubre de 2017',
         fechaUltimaActuacion: '27 de septiembre de 2022',
-        despacho:
-            'juzgado 015 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 015 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Nestor Julio Martinez Orjuela',
         esPrivado: false,
@@ -996,8 +830,7 @@ const Procesos = [
         llaveProceso: '11001400303320170147400',
         fechaProceso: '9 de octubre de 2017',
         fechaUltimaActuacion: '7 de marzo de 2022',
-        despacho:
-            'juzgado 002 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 002 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Luis Augusto Sanchez Ortiz',
         esPrivado: false,
@@ -1009,8 +842,7 @@ const Procesos = [
         llaveProceso: '11001400300120170130900',
         fechaProceso: '9 de octubre de 2017',
         fechaUltimaActuacion: '8 de marzo de 2023',
-        despacho:
-            'juzgado 010 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 010 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Ana Beatriz Corredor De Osorio',
         esPrivado: false,
@@ -1022,8 +854,7 @@ const Procesos = [
         llaveProceso: '11001400304820170097400',
         fechaProceso: '9 de octubre de 2017',
         fechaUltimaActuacion: '1 de diciembre de 2022',
-        despacho:
-            'juzgado 007 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 007 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Anderson Revelo Santos',
         esPrivado: false,
@@ -1035,8 +866,7 @@ const Procesos = [
         llaveProceso: '11001400307620170101600',
         fechaProceso: '23 de noviembre de 2018',
         fechaUltimaActuacion: '30 de marzo de 2023',
-        despacho:
-            'juzgado 017 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 017 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Blanca Nubia Lopez Cifuentes       ',
         esPrivado: false,
@@ -1060,8 +890,7 @@ const Procesos = [
         llaveProceso: '11001400307820170097500',
         fechaProceso: '26 de octubre de 2018',
         fechaUltimaActuacion: '21 de abril de 2023',
-        despacho:
-            'juzgado 012 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 012 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Jogli Joaquin Otero Vargas',
         esPrivado: false,
@@ -1073,8 +902,7 @@ const Procesos = [
         llaveProceso: '11001400301720170133600',
         fechaProceso: '18 de octubre de 2017',
         fechaUltimaActuacion: '28 de marzo de 2022',
-        despacho:
-            'juzgado 015 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 015 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Natalia Cuestas Mondragon',
         esPrivado: false,
@@ -1086,8 +914,7 @@ const Procesos = [
         llaveProceso: '11001400302220170120800',
         fechaProceso: '1 de noviembre de 2017',
         fechaUltimaActuacion: '31 de enero de 2023',
-        despacho:
-            'juzgado 020 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 020 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Calzado Rivoli         ',
         esPrivado: false,
@@ -1111,8 +938,7 @@ const Procesos = [
         llaveProceso: '11001400305020170133600',
         fechaProceso: '21 de noviembre de 2017',
         fechaUltimaActuacion: '19 de enero de 2023',
-        despacho:
-            'juzgado 014 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 014 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Leonardo Sanabria Sanabra',
         esPrivado: false,
@@ -1124,8 +950,7 @@ const Procesos = [
         llaveProceso: '11001400300420170126600',
         fechaProceso: '21 de noviembre de 2017',
         fechaUltimaActuacion: '4 de febrero de 2022',
-        despacho:
-            'juzgado 009 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 009 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Gilberto Jaime Betancourt',
         esPrivado: false,
@@ -1137,8 +962,7 @@ const Procesos = [
         llaveProceso: '11001400306420170162300',
         fechaProceso: '27 de noviembre de 2017',
         fechaUltimaActuacion: '13 de marzo de 2023',
-        despacho:
-            'juzgado 016 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 016 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Orlando Enrique Novoa Barreto',
         esPrivado: false,
@@ -1150,8 +974,7 @@ const Procesos = [
         llaveProceso: '11001400307120170125000',
         fechaProceso: '13 de diciembre de 2017',
         fechaUltimaActuacion: '10 de marzo de 2022',
-        despacho:
-            'juzgado 007 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 007 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Oscar Humberto Gomez Chuchin',
         esPrivado: false,
@@ -1163,8 +986,7 @@ const Procesos = [
         llaveProceso: '11001400307820170116400',
         fechaProceso: '26 de octubre de 2018',
         fechaUltimaActuacion: '29 de marzo de 2022',
-        despacho:
-            'juzgado 016 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 016 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Nestor Alberto Cristancho Lopez',
         esPrivado: false,
@@ -1200,8 +1022,7 @@ const Procesos = [
         llaveProceso: '11001400305920180009000',
         fechaProceso: '6 de febrero de 2018',
         fechaUltimaActuacion: '25 de marzo de 2022',
-        despacho:
-            'juzgado 007 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 007 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Maria Marin De Orozco',
         esPrivado: false,
@@ -1213,8 +1034,7 @@ const Procesos = [
         llaveProceso: '11001400303720180011100',
         fechaProceso: '6 de febrero de 2018',
         fechaUltimaActuacion: '2 de febrero de 2023',
-        despacho:
-            'juzgado 008 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 008 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Sandra Patricia Beltran  Oviedo',
         esPrivado: false,
@@ -1226,8 +1046,7 @@ const Procesos = [
         llaveProceso: '11001400305220180011700',
         fechaProceso: '6 de febrero de 2018',
         fechaUltimaActuacion: '13 de abril de 2023',
-        despacho:
-            'juzgado 017 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 017 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Darley Julied Paez',
         esPrivado: false,
@@ -1239,8 +1058,7 @@ const Procesos = [
         llaveProceso: '11001400300420180047500',
         fechaProceso: '26 de abril de 2018',
         fechaUltimaActuacion: '27 de febrero de 2023',
-        despacho:
-            'juzgado 007 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 007 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Adolfo Leon Daza Fernandez',
         esPrivado: false,
@@ -1264,8 +1082,7 @@ const Procesos = [
         llaveProceso: '11001400300620180045400',
         fechaProceso: '30 de abril de 2018',
         fechaUltimaActuacion: '10 de abril de 2023',
-        despacho:
-            'juzgado 017 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 017 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Smartitech   Demandado: Edisson   ',
         esPrivado: false,
@@ -1289,8 +1106,7 @@ const Procesos = [
         llaveProceso: '11001418901620190108500',
         fechaProceso: '12 de marzo de 2021',
         fechaUltimaActuacion: '28 de febrero de 2023',
-        despacho:
-            'juzgado 002 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 002 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Angelica Nathaly Rozo Franco',
         esPrivado: false,
@@ -1302,8 +1118,7 @@ const Procesos = [
         llaveProceso: '11001400308120180051400',
         fechaProceso: '17 de mayo de 2019',
         fechaUltimaActuacion: '14 de marzo de 2023',
-        despacho:
-            'juzgado 001 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 001 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Maria Clara Reyes Reyes',
         esPrivado: false,
@@ -1315,8 +1130,7 @@ const Procesos = [
         llaveProceso: '11001400305120180085000',
         fechaProceso: '16 de julio de 2018',
         fechaUltimaActuacion: '25 de enero de 2023',
-        despacho:
-            'juzgado 004 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 004 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Sandra Liliana Cruz Beltran',
         esPrivado: false,
@@ -1328,8 +1142,7 @@ const Procesos = [
         llaveProceso: '11001400303620180081800',
         fechaProceso: '13 de julio de 2018',
         fechaUltimaActuacion: '27 de marzo de 2023',
-        despacho:
-            'juzgado 015 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 015 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Adriana Lucia Mora Plata',
         esPrivado: false,
@@ -1341,8 +1154,7 @@ const Procesos = [
         llaveProceso: '11001400301420180092900',
         fechaProceso: '1 de agosto de 2018',
         fechaUltimaActuacion: '15 de marzo de 2023',
-        despacho:
-            'juzgado 009 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 009 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Jose Rodrigo Garcia Quintero',
         esPrivado: false,
@@ -1354,8 +1166,7 @@ const Procesos = [
         llaveProceso: '11001400308220180096400',
         fechaProceso: '15 de febrero de 2019',
         fechaUltimaActuacion: '24 de marzo de 2022',
-        despacho:
-            'juzgado 014 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 014 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Jose Ramon Estrada Castillo',
         esPrivado: false,
@@ -1379,8 +1190,7 @@ const Procesos = [
         llaveProceso: '11001418901220180064400',
         fechaProceso: '15 de noviembre de 2019',
         fechaUltimaActuacion: '28 de abril de 2023',
-        despacho:
-            'juzgado 017 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 017 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Bibiana Patricia Esguerra Vasquez',
         esPrivado: false,
@@ -1392,8 +1202,7 @@ const Procesos = [
         llaveProceso: '11001418901220180095100',
         fechaProceso: '28 de junio de 2019',
         fechaUltimaActuacion: '2 de mayo de 2022',
-        despacho:
-            'juzgado 011 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 011 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Rosalia Charry Sarmiento',
         esPrivado: false,
@@ -1405,8 +1214,7 @@ const Procesos = [
         llaveProceso: '11001400300220170100200',
         fechaProceso: '17 de octubre de 2017',
         fechaUltimaActuacion: '14 de marzo de 2023',
-        despacho:
-            'juzgado 013 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 013 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Jogli Joaquin Otero Vargas',
         esPrivado: false,
@@ -1418,8 +1226,7 @@ const Procesos = [
         llaveProceso: '11001400306320170129000',
         fechaProceso: '13 de diciembre de 2017',
         fechaUltimaActuacion: '16 de marzo de 2023',
-        despacho:
-            'juzgado 019 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 019 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Diana Patricia Barreto Osma',
         esPrivado: false,
@@ -1479,8 +1286,7 @@ const Procesos = [
         llaveProceso: '11001400301620170015700',
         fechaProceso: '8 de febrero de 2017',
         fechaUltimaActuacion: '11 de agosto de 2022',
-        despacho:
-            'juzgado 002 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 002 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Wilson Gonzalez',
         esPrivado: false,
@@ -1492,8 +1298,7 @@ const Procesos = [
         llaveProceso: '11001400303720170083900',
         fechaProceso: '15 de junio de 2017',
         fechaUltimaActuacion: '1 de febrero de 2019',
-        despacho:
-            'juzgado 014 civil municipal de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 014 civil municipal de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Javier Romero Reyes',
         esPrivado: false,
@@ -1529,8 +1334,7 @@ const Procesos = [
         llaveProceso: '11001310303720170045300',
         fechaProceso: '11 de septiembre de 2017',
         fechaUltimaActuacion: '20 de septiembre de 2019',
-        despacho:
-            'juzgado 003 civil del circuito de ejecución de sentencias de bogotá ',
+        despacho: 'juzgado 003 civil del circuito de ejecución de sentencias de bogotá ',
         departamento: 'Bogotá',
         sujetosProcesales: 'Diana Vanessa Naranjo Hernandez',
         esPrivado: false,

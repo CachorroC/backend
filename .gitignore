@@ -33,3 +33,7 @@ package-lock.json
 
 json/NumerodeRadicados/*
 json/NumerodeRadicados
+
+out
+**/out/*
+**/out
