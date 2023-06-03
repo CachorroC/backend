@@ -27,16 +27,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const rawprocesos_fetchConsultas_json_1 = __importDefault(require("../json/rawprocesos.fetchConsultas.json"));
-const polishProcesos_js_1 = require("../../out/middleware/polishProcesos.js");
+const polishProcesos_js_1 = require("#@/middleware/polishProcesos.js");
 const fs = __importStar(require("fs"));
 const updateProcesosArray = rawprocesos_fetchConsultas_json_1.default.map((proceso) => {
     const newProcesoBuilder = {
         llaveProceso: proceso.llaveProceso,
         sujetosProcesales: (0, polishProcesos_js_1.fixDemandado)(proceso.sujetosProcesales),
-        idProceso: proceso.idProceso
+        idProceso: proceso.idProceso,
     }; /*? newProcesoBuilder*/
     return newProcesoBuilder;
 });
 console.log(updateProcesosArray);
-fs.writeFileSync('src/json/newProcesos.json', JSON.stringify(updateProcesosArray));
+fs.writeFileSync("src/json/newProcesos.json", JSON.stringify(updateProcesosArray));
 //# sourceMappingURL=newProcesos.js.map

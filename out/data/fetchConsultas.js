@@ -37,7 +37,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const llaves_json_1 = __importDefault(require("../json/llaves.json"));
 const fs = __importStar(require("fs"));
-process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
+process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
 const reqNoOk = [];
 const missingProcesos = [];
 const rawprocesos = [];
@@ -71,25 +71,25 @@ llaves_json_1.default.forEach((llave, index, array) => {
             const Procesos = rawprocesos.flatMap((proceso) => {
                 return proceso;
             });
-            lastIteration(reqNoOk, /*? reqNoOk*/ Procesos, missingProcesos);
+            lastIteration(reqNoOk /*? reqNoOk*/, Procesos, missingProcesos);
         }
     }, index * 1000);
 });
 function fetchProcesoSuccess(output) {
     console.log(output);
     fps.push(output);
-    fs.writeFileSync('successful.fetchConsultas.json', JSON.stringify(fps));
+    fs.writeFileSync("successful.fetchConsultas.json", JSON.stringify(fps));
     return;
 }
 function fetchProcesoError(error, llave) {
     console.log(error);
     fpe.push(error);
-    fs.writeFileSync('error.fetchConsultas.json', JSON.stringify(fpe + llave));
+    fs.writeFileSync("error.fetchConsultas.json", JSON.stringify(fpe + llave));
     return;
 }
 function lastIteration(a, b, c) {
-    fs.writeFileSync('src/json/reqNoOk.fetchConsultas.json', JSON.stringify(a /*? a*/));
-    fs.writeFileSync('src/json/rawprocesos.fetchConsultas.json', JSON.stringify(b /*? b*/));
-    fs.writeFileSync('src/json/missingProcesos.fetchConsultas.json', JSON.stringify(c /*? c*/));
+    fs.writeFileSync("src/json/reqNoOk.fetchConsultas.json", JSON.stringify(a /*? a*/));
+    fs.writeFileSync("src/json/rawprocesos.fetchConsultas.json", JSON.stringify(b /*? b*/));
+    fs.writeFileSync("src/json/missingProcesos.fetchConsultas.json", JSON.stringify(c /*? c*/));
 }
 //# sourceMappingURL=fetchConsultas.js.map

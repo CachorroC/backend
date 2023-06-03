@@ -1,7 +1,60 @@
-import { intConsultaNumeroRadicacion } from "#@/interface/procesos.js";
-import * as fs from "fs/promises";
+import * as fs from "fs";
 process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
+const rows: unknown[] = [];
+export interface intConsultaNumeroRadicacion {
+  tipoConsulta: string;
+  procesos: intProceso[];
+  parametros: intParametros;
+  paginacion: intPaginacion;
+}
+
+export interface intPaginacion {
+  cantidadRegistros: number;
+  registrosPagina: number;
+  cantidadPaginas: number;
+  pagina: number;
+  paginas: null;
+}
+
+export interface intParametros {
+  numero: string;
+  nombre: null;
+  tipoPersona: null;
+  idSujeto: null;
+  ponente: null;
+  claseProceso: null;
+  codificacionDespacho: null;
+  soloActivos: boolean;
+}
+
+export interface intProceso {
+  idProceso: number;
+  idConexion: number;
+  llaveProceso: string;
+  fechaProceso?: string | null;
+  fechaUltimaActuacion?: string | null;
+  despacho: string;
+  departamento: string;
+  sujetosProcesales: string;
+  esPrivado: boolean;
+  cantFilas: number;
+}
+
 const llaves: string[] = [
+  "25754418900320170075500",
+  "25245408900120170023900",
+  "11001400302120170153200",
+  "11001400300320170088400",
+  "25175408900320180060200",
+  "25377408900120180037100",
+  "11001400303720170139100",
+  "11001400304820170097400",
+  "25754400300120170032300",
+  "11001400301520170139400",
+  "11001400305620180022100",
+  "11001400306820200102100",
+  "11001418901320190070800",
+
   "11001400300320170088400",
   "11001400303420170083600",
   "25245408900120170023900",
@@ -23,6 +76,7 @@ const llaves: string[] = [
   "25377408900120180037100",
   "11001400304220200053500",
   "11001400306820200102100",
+
   "11001400308520170084900",
   "11001310301120170033500",
   "11001400304320180038400",
@@ -83,6 +137,7 @@ const llaves: string[] = [
   "25899400300220170013100",
   "11001400306420170162300",
   "11001400307820170116400",
+  "11001400302020170147700",
   "11001400307120170125000",
   "25126408900220180004800",
   "11001400301420180040600",
@@ -95,7 +150,6 @@ const llaves: string[] = [
   "11001400300620180045400",
   "11001418901620190108500",
   "11001400308120180051400",
-  "2589940010020200028900",
   "11001400305120180085000",
   "11001400303620180081800",
   "11001400301420180092900",
@@ -104,53 +158,35 @@ const llaves: string[] = [
   "11001418901220180095100",
   "11001400300220170100200",
   "11001400306320170129000",
-  "25754418900420180000600",
-  "25320310300120170019500",
-  "11001400302920170055700",
-  "11001400307920170114200",
-  "11001400302020100050100",
-  "11001400306420180102900",
-  "11001400301620170015700",
-  "11001400303720170083900",
-  "11001400303620170084100",
-  "11001310303720170045300",
-  "11001400307620180005200",
-  "25899400300320180042900",
-  "11001400304520170116400",
-  "11001400307320170141100",
-  "11001400302620170129300",
-  "25843410300120180049900",
-  "11001400302420180014300",
 ];
-const rows: unknown[] = [];
-export async function fetchProcesoRama(llaveProceso: string) {
-  const res = await fetch(
+async function fetchProceso(llaveProceso: string) {
+  const req = await fetch(
     `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${llaveProceso}&SoloActivos=false`
-  );
-
-  if (!res.ok) {
-    throw new Error("no pudimos consultar el numero del radicado");
+  ); /*? req*/
+  if (!req.ok) {
+    throw new Error("falló la nuevaconsulta");
   }
-  const dataRaw = (await res.json()) as intConsultaNumeroRadicacion;
-  console.log(JSON.stringify(dataRaw)); //
-  rows.push(dataRaw);
-  const rowsString = JSON.stringify(rows);
-  fs.writeFile("src/middleware/rows.fetchProcesos.json", rowsString);
-  return dataRaw;
+  const res = (await req.json()) as intConsultaNumeroRadicacion;
+  return res;
 }
 
-export const getProcesosRama = llaves.forEach((llave, index) => {
-  setTimeout(() => {
-    return fetchProcesoRama(llave).then(
-      (intConsultaNumeroRadicacion) => {
-        return console.log(JSON.stringify(intConsultaNumeroRadicacion));
-      },
-      (error) => {
-        return fs.writeFile(
-          "src/middleware/error.fetchProcesos.json",
-          JSON.stringify(error)
-        );
-      }
-    );
-  }, index * 1000);
+async function fetchProcesosByllaveProceso(
+  llaveProceso: string,
+  index: number
+) {
+  const sumPromise = new Promise((resolve, reject) => {
+    setTimeout(async () => {
+      const nuevaConsulta = await fetchProceso(llaveProceso);
+      console.log(nuevaConsulta);
+      resolve(nuevaConsulta);
+    }, index * 400);
+  });
+  const result = await sumPromise;
+  rows.push(result);
+  return result;
+  /*? result*/
+}
+
+llaves.forEach((llave, index) => {
+  return fetchProcesosByllaveProceso(llave, index);
 });

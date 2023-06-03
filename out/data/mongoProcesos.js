@@ -12,11 +12,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const polishProcesos_js_1 = require("../../out/middleware/polishProcesos.js");
+const polishProcesos_js_1 = require("#@/middleware/polishProcesos.js");
 const rawprocesos_fetchConsultas_json_1 = __importDefault(require("../json/rawprocesos.fetchConsultas.json"));
 const mongodb_1 = require("mongodb");
 // Replace the uri string with your MongoDB deployment's connection string.
-const uri = 'mongodb+srv://cachorro_cami:Tengo1amo@cluster0.ffbyjzl.mongodb.net/?retryWrites=true&w=majority';
+const uri = "mongodb+srv://cachorro_cami:Tengo1amo@cluster0.ffbyjzl.mongodb.net/?retryWrites=true&w=majority";
 const client = new mongodb_1.MongoClient(uri);
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -24,16 +24,18 @@ function run() {
             const newProcesoBuilder = {
                 llaveProceso: proceso.llaveProceso,
                 sujetosProcesales: (0, polishProcesos_js_1.fixDemandado)(proceso.sujetosProcesales),
-                idProceso: proceso.idProceso
+                idProceso: proceso.idProceso,
             }; /*? newProcesoBuilder*/
             return newProcesoBuilder;
         });
         try {
-            const database = client.db('RyS');
+            const database = client.db("RyS");
             // Specifying a schema is optional, but it enables type hints on
             // finds and inserts
-            const foods = database.collection('Procesos');
-            const result = yield foods.insertMany(updateProcesosArray, { ordered: true });
+            const foods = database.collection("Procesos");
+            const result = yield foods.insertMany(updateProcesosArray, {
+                ordered: true,
+            });
             console.log(`${result.insertedCount} documents were inserted`);
         }
         finally {

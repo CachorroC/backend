@@ -1,27 +1,4 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
-};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -32,10 +9,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getProcesosRama = exports.fetchProcesoRama = void 0;
-const fs = __importStar(require("fs/promises"));
 process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
+const rows = [];
 const llaves = [
+    "25754418900320170075500",
+    "25245408900120170023900",
+    "11001400302120170153200",
+    "11001400300320170088400",
+    "25175408900320180060200",
+    "25377408900120180037100",
+    "11001400303720170139100",
+    "11001400304820170097400",
+    "25754400300120170032300",
+    "11001400301520170139400",
+    "11001400305620180022100",
+    "11001400306820200102100",
+    "11001418901320190070800",
     "11001400300320170088400",
     "11001400303420170083600",
     "25245408900120170023900",
@@ -117,6 +106,7 @@ const llaves = [
     "25899400300220170013100",
     "11001400306420170162300",
     "11001400307820170116400",
+    "11001400302020170147700",
     "11001400307120170125000",
     "25126408900220180004800",
     "11001400301420180040600",
@@ -129,7 +119,6 @@ const llaves = [
     "11001400300620180045400",
     "11001418901620190108500",
     "11001400308120180051400",
-    "2589940010020200028900",
     "11001400305120180085000",
     "11001400303620180081800",
     "11001400301420180092900",
@@ -138,47 +127,33 @@ const llaves = [
     "11001418901220180095100",
     "11001400300220170100200",
     "11001400306320170129000",
-    "25754418900420180000600",
-    "25320310300120170019500",
-    "11001400302920170055700",
-    "11001400307920170114200",
-    "11001400302020100050100",
-    "11001400306420180102900",
-    "11001400301620170015700",
-    "11001400303720170083900",
-    "11001400303620170084100",
-    "11001310303720170045300",
-    "11001400307620180005200",
-    "25899400300320180042900",
-    "11001400304520170116400",
-    "11001400307320170141100",
-    "11001400302620170129300",
-    "25843410300120180049900",
-    "11001400302420180014300",
 ];
-const rows = [];
-function fetchProcesoRama(llaveProceso) {
+function fetchProceso(llaveProceso) {
     return __awaiter(this, void 0, void 0, function* () {
-        const res = yield fetch(`https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${llaveProceso}&SoloActivos=false`);
-        if (!res.ok) {
-            throw new Error("no pudimos consultar el numero del radicado");
+        const req = yield fetch(`https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Procesos/Consulta/NumeroRadicacion?numero=${llaveProceso}&SoloActivos=false`); /*? req*/
+        if (!req.ok) {
+            throw new Error("falló la nuevaconsulta");
         }
-        const dataRaw = (yield res.json());
-        console.log(JSON.stringify(dataRaw)); //
-        rows.push(dataRaw);
-        const rowsString = JSON.stringify(rows);
-        fs.writeFile("src/middleware/rows.fetchProcesos.json", rowsString);
-        return dataRaw;
+        const res = (yield req.json());
+        return res;
     });
 }
-exports.fetchProcesoRama = fetchProcesoRama;
-exports.getProcesosRama = llaves.forEach((llave, index) => {
-    setTimeout(() => {
-        return fetchProcesoRama(llave).then((intConsultaNumeroRadicacion) => {
-            return console.log(JSON.stringify(intConsultaNumeroRadicacion));
-        }, (error) => {
-            return fs.writeFile("src/middleware/error.fetchProcesos.json", JSON.stringify(error));
+function fetchProcesosByllaveProceso(llaveProceso, index) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const sumPromise = new Promise((resolve, reject) => {
+            setTimeout(() => __awaiter(this, void 0, void 0, function* () {
+                const nuevaConsulta = yield fetchProceso(llaveProceso);
+                console.log(nuevaConsulta);
+                resolve(nuevaConsulta);
+            }), index * 400);
         });
-    }, index * 1000);
+        const result = yield sumPromise;
+        rows.push(result);
+        return result;
+        /*? result*/
+    });
+}
+llaves.forEach((llave, index) => {
+    return fetchProcesosByllaveProceso(llave, index);
 });
-//# sourceMappingURL=fetchProcesos.js.map
+//# sourceMappingURL=prueba_async.js.map
