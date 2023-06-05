@@ -1615,7 +1615,7 @@ const fetchActuaciones = async (
       iOfA: iOfA,
       status: req.status,
       msg: req.statusText,
-      headers: req.headers
+      headers: req.headers,
     };
     errors.push(
       request
@@ -1634,12 +1634,12 @@ const fetchActuaciones = async (
     );
     return request;
   }
-  const request = {
+  const request: basicaMiAmiga = {
     idProceso: idProceso,
     iOfA: iOfA,
     status: req.status,
     msg: req.statusText,
-    headers: req.headers
+    headers: req.headers,
   };
   rawReq.push(
     request
@@ -1671,6 +1671,7 @@ const forEachProceso = procesos.forEach(
           idProceso,
           iOfA
         );
+        helper;
         helpers.push(
           helper
         );
@@ -1691,38 +1692,7 @@ const forEachProceso = procesos.forEach(
     );
   }
 );
-const mapRaw: unknown[] = [];
-const mapProceso = procesos.map(
-  async (
-    proceso, index, mapArr
-  ) => {
-    const iOfA = `${ index + 1 }-${ mapArr.length }`;
-    const idProceso = proceso.idProceso;
-    const helper = await fetchActuaciones(
-      idProceso,
-      iOfA
-    );
-    mapRaw.push(
-      helper
-    );
-    fs.writeFile(
-      `out/actuaciones/${ iOfA }.map.actuaciones.json`,
-      JSON.stringify(
-        helper
-      )
-    );
-    fs.writeFile(
-      `out/actuaciones/${ iOfA }.mapers.actuaciones.json`,
-      JSON.stringify(
-        mapRaw
-      )
-    );
-  }
-);
 
-console.log(
-  mapProceso
-);
 console.log(
   forEachProceso
 );
