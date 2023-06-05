@@ -1592,34 +1592,42 @@ fs.mkdir(
   'out/actuaciones',
   { recursive: true }
 );
+
+export interface basicaMiAmiga {
+  idProceso: number;
+  iOfA: string;
+  status: number;
+  msg: string;
+  headers: Headers;
+}
 const fetchActuaciones = async (
   idProceso: number, iOfA: string
 ) => {
   const req = await fetch(
-    `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${idProceso}`
+    `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ idProceso }`
   );
   console.log(
     'request status = ' + req.status.toString() + 'iOfA = ' + iOfA
   );
-  const res = await req.json();
-  if (!req.ok) {
-    const request = {
+  if ( !req.ok ) {
+    const request: basicaMiAmiga = {
       idProceso: idProceso,
       iOfA: iOfA,
       status: req.status,
       msg: req.statusText,
+      headers: req.headers
     };
     errors.push(
       request
     );
     fs.writeFile(
-      `out/actuaciones/${iOfA}.error.actuaciones.json`,
+      `out/actuaciones/${ iOfA }.error.actuaciones.json`,
       JSON.stringify(
         request
       )
     );
     fs.writeFile(
-      `out/actuaciones/${iOfA}.errors.actuaciones.json`,
+      `out/actuaciones/${ iOfA }.errors.actuaciones.json`,
       JSON.stringify(
         errors
       )
@@ -1629,20 +1637,21 @@ const fetchActuaciones = async (
   const request = {
     idProceso: idProceso,
     iOfA: iOfA,
-    res: res,
-    raw: req,
+    status: req.status,
+    msg: req.statusText,
+    headers: req.headers
   };
   rawReq.push(
     request
   );
   fs.writeFile(
-    `src/json/out/actuaciones/${iOfA}.Request.actuaciones.json`,
+    `out/actuaciones/${ iOfA }.Request.actuaciones.json`,
     JSON.stringify(
       request
     )
   );
   fs.writeFile(
-    `src/json/out/actuaciones/${iOfA}.rawRequest.actuaciones.json`,
+    `out/actuaciones/${ iOfA }.rawRequest.actuaciones.json`,
     JSON.stringify(
       rawReq
     )
@@ -1654,7 +1663,7 @@ const forEachProceso = procesos.forEach(
   (
     proceso, index, procArr
   ) => {
-    const iOfA = `${index + 1}-${procArr.length}`;
+    const iOfA = `${ index + 1 }-${ procArr.length }`;
     setTimeout(
       async () => {
         const idProceso = proceso.idProceso;
@@ -1666,13 +1675,13 @@ const forEachProceso = procesos.forEach(
           helper
         );
         fs.writeFile(
-          `src/json/out/actuaciones/${iOfA}.helper.actuaciones.json`,
+          `out/actuaciones/${ iOfA }.helper.actuaciones.json`,
           JSON.stringify(
             helper
           )
         );
         fs.writeFile(
-          `src/json/out/actuaciones/${iOfA}.HelperS.actuaciones.json`,
+          `out/actuaciones/${ iOfA }.HelperS.actuaciones.json`,
           JSON.stringify(
             helpers
           )
@@ -1687,7 +1696,7 @@ const mapProceso = procesos.map(
   async (
     proceso, index, mapArr
   ) => {
-    const iOfA = `${index + 1}-${mapArr.length}`;
+    const iOfA = `${ index + 1 }-${ mapArr.length }`;
     const idProceso = proceso.idProceso;
     const helper = await fetchActuaciones(
       idProceso,
@@ -1697,13 +1706,13 @@ const mapProceso = procesos.map(
       helper
     );
     fs.writeFile(
-      `src/json/out/actuaciones/${iOfA}.map.actuaciones.json`,
+      `out/actuaciones/${ iOfA }.map.actuaciones.json`,
       JSON.stringify(
         helper
       )
     );
     fs.writeFile(
-      `src/json/out/actuaciones/${iOfA}.HelperS.actuaciones.json`,
+      `out/actuaciones/${ iOfA }.mapers.actuaciones.json`,
       JSON.stringify(
         mapRaw
       )
@@ -1713,4 +1722,7 @@ const mapProceso = procesos.map(
 
 console.log(
   mapProceso
+);
+console.log(
+  forEachProceso
 );
