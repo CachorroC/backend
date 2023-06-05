@@ -1,1 +1,8 @@
-{"res":{"StatusCode":500,"Message":"Object reference not set to an instance of an object."},"idProceso":86212261,"iOfA":"110-113"}
+{
+  "res": {
+    "StatusCode": 500,
+    "Message": "Object reference not set to an instance of an object."
+  },
+  "idProceso": 86212261,
+  "iOfA": "110-113"
+}

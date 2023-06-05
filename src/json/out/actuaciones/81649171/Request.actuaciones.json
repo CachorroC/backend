@@ -1,1 +1,8 @@
-{"res":{"StatusCode":404,"Message":"No se pueden ver actuaciones de un proceso privado"},"idProceso":81649171,"iOfA":"18-113"}
+{
+  "res": {
+    "StatusCode": 404,
+    "Message": "No se pueden ver actuaciones de un proceso privado"
+  },
+  "idProceso": 81649171,
+  "iOfA": "18-113"
+}

@@ -1,32 +1,32 @@
 {
-    "name": "com.rsasesorjuridico.backend",
-    "dependencies": {
-        "@typescript-eslint/eslint-plugin": "^5.59.8",
-        "@typescript-eslint/parser": "latest",
-        "eslint": "latest",
-        "express": "^4.18.2",
-        "koa": "^2.14.2",
-        "mongodb": "^5.6.0",
-        "prettier": "^2.8.8",
-        "quokka": "^0.0.7",
-        "ts-node": "^10.9.1",
-        "typescript": "^5.1.3"
-    },
-    "devDependencies": {
-        "@types/eslint": "^8.40.0",
-        "@types/express": "^4.17.17",
-        "@types/koa": "^2.13.6",
-        "@types/node": "^18.16.16"
-    },
-    "description": "",
-    "version": "1.0.0",
-    "main": "out/index.js",
-    "scripts": {
-        "test": " eslint --fix .",
-        "tsc": " tsc && yarn eslint --fix .",
-        "get": " node out/middleware/fetchProcesos.js",
-        "data": "node out/data/procesos.js -v"
-    },
-    "author": "CachorroC",
-    "license": "ISC"
+  "name": "com.rsasesorjuridico.backend",
+  "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.59.8",
+    "@typescript-eslint/parser": "latest",
+    "eslint": "latest",
+    "express": "^4.18.2",
+    "koa": "^2.14.2",
+    "mongodb": "^5.6.0",
+    "prettier": "^2.8.8",
+    "quokka": "^0.0.7",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.3"
+  },
+  "devDependencies": {
+    "@types/eslint": "^8.40.0",
+    "@types/express": "^4.17.17",
+    "@types/koa": "^2.13.6",
+    "@types/node": "^18.16.16"
+  },
+  "description": "",
+  "version": "1.0.0",
+  "main": "out/index.js",
+  "scripts": {
+    "test": " eslint --fix .",
+    "tsc": " tsc && yarn eslint --fix .",
+    "get": " node out/middleware/fetchProcesos.js",
+    "data": "node out/data/procesos.js -v"
+  },
+  "author": "CachorroC",
+  "license": "ISC"
 }

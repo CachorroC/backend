@@ -1,36 +1,36 @@
 [
-    {
-        "cause": {
-            "name": "SocketError",
-            "code": "UND_ERR_SOCKET",
-            "socket": {
-                "localAddress": "192.168.1.101",
-                "localPort": 47216,
-                "remoteAddress": "190.217.24.69",
-                "remotePort": 448,
-                "remoteFamily": "IPv4",
-                "bytesWritten": 28809,
-                "bytesRead": 92662
-            }
-        },
-        "llaveProceso": "25126408900220180004800",
-        "iOfA": "100-120"
+  {
+    "cause": {
+      "name": "SocketError",
+      "code": "UND_ERR_SOCKET",
+      "socket": {
+        "localAddress": "192.168.1.101",
+        "localPort": 47216,
+        "remoteAddress": "190.217.24.69",
+        "remotePort": 448,
+        "remoteFamily": "IPv4",
+        "bytesWritten": 28809,
+        "bytesRead": 92662
+      }
     },
-    {
-        "cause": {
-            "name": "SocketError",
-            "code": "UND_ERR_SOCKET",
-            "socket": {
-                "localAddress": "192.168.1.101",
-                "localPort": 41216,
-                "remoteAddress": "190.217.24.69",
-                "remotePort": 448,
-                "remoteFamily": "IPv4",
-                "bytesWritten": 291,
-                "bytesRead": 0
-            }
-        },
-        "llaveProceso": "25148408900120170009600",
-        "iOfA": "101-120"
-    }
+    "llaveProceso": "25126408900220180004800",
+    "iOfA": "100-120"
+  },
+  {
+    "cause": {
+      "name": "SocketError",
+      "code": "UND_ERR_SOCKET",
+      "socket": {
+        "localAddress": "192.168.1.101",
+        "localPort": 41216,
+        "remoteAddress": "190.217.24.69",
+        "remotePort": 448,
+        "remoteFamily": "IPv4",
+        "bytesWritten": 291,
+        "bytesRead": 0
+      }
+    },
+    "llaveProceso": "25148408900120170009600",
+    "iOfA": "101-120"
+  }
 ]

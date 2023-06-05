@@ -3,16 +3,16 @@ import { fixDemandado, fixFechas } from "#@/middleware/polishProcesos.js";
 import * as fs from "fs";
 
 const updateProcesosArray = procesos.map((proceso) => {
-    const newProcesoBuilder = {
-        llaveProceso: proceso.llaveProceso,
-        sujetosProcesales: fixDemandado(proceso.sujetosProcesales),
-        idProceso: proceso.idProceso,
-    }; /*? newProcesoBuilder*/
-    return newProcesoBuilder;
+  const newProcesoBuilder = {
+    llaveProceso: proceso.llaveProceso,
+    sujetosProcesales: fixDemandado(proceso.sujetosProcesales),
+    idProceso: proceso.idProceso,
+  }; /*? newProcesoBuilder*/
+  return newProcesoBuilder;
 });
 console.log(updateProcesosArray);
 
 fs.writeFileSync(
-    "src/json/newProcesos.json",
-    JSON.stringify(updateProcesosArray)
+  "src/json/newProcesos.json",
+  JSON.stringify(updateProcesosArray)
 );

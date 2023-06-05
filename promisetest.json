@@ -1,8 +1,8 @@
 {
-    "message": "notFound",
-    "errHead": {
-        "x": "y"
-    },
-    "err": 200,
-    "idProceso": 9928282990
+  "message": "notFound",
+  "errHead": {
+    "x": "y"
+  },
+  "err": 200,
+  "idProceso": 9928282990
 }
