@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 import * as fs from "fs/promises";
+=======
+import { intConsultaActuaciones } from '#@/interface/procesos';
+import * as fs from 'fs/promises';
+>>>>>>> 2e92fe5 (Signed-off-by: CachorroC <juankpato87@gmail.com>)
 export interface intFulfilledFetchProcesos {
   tipoConsulta: TipoConsulta;
   procesos: Proceso[];
@@ -1594,6 +1599,7 @@ const fetchActuaciones = async (idProceso: number, iOfA: string) => {
   const req = await fetch(
     `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${idProceso}`
   );
+<<<<<<< HEAD
   console.log("request status = " + req.status.toString() + "iOfA = " + iOfA);
   if (!req.ok) {
     const bb = req.headers;
@@ -1603,6 +1609,18 @@ const fetchActuaciones = async (idProceso: number, iOfA: string) => {
       status: req.status,
       msg: req.statusText,
       bb: bb,
+=======
+  console.log(
+    'request status = ' + JSON.stringify(req) + 'iOfA = ' + iOfA
+  );
+
+  if ( !req.ok ) {
+     const text = await req.text()
+    const request = {
+      idProceso: idProceso,
+      iOfA: iOfA,
+      text: JSON.parse(text),
+>>>>>>> 2e92fe5 (Signed-off-by: CachorroC <juankpato87@gmail.com>)
     };
     errors.push(request);
     rawReq.push(request);
@@ -1616,13 +1634,16 @@ const fetchActuaciones = async (idProceso: number, iOfA: string) => {
     );
     return request;
   }
-  const bb = await req.json();
+  const bb = ( await req.json() ) as intConsultaActuaciones;
+
   const request = {
     idProceso: idProceso,
     iOfA: iOfA,
-    status: req.status,
-    msg: req.statusText,
-    bb: bb,
+    text: {
+      StatusCode: req.status,
+      Message: req.statusText
+    },
+    acts: bb.actuaciones,
   };
   rawReq.push(request);
   fs.writeFile(
@@ -1636,6 +1657,7 @@ const fetchActuaciones = async (idProceso: number, iOfA: string) => {
   return request;
 };
 
+<<<<<<< HEAD
 const forEachProceso = procesos.forEach((proceso, index, procArr) => {
   const iOfA = `${index + 1}-${procArr.length}`;
   setTimeout(async () => {
@@ -1646,6 +1668,38 @@ const forEachProceso = procesos.forEach((proceso, index, procArr) => {
     fs.writeFile(
       `out/actuaciones/${iOfA}.helper.actuaciones.json`,
       JSON.stringify(helper)
+=======
+const forEachProceso = procesos.forEach(
+  (
+    proceso, index, procArr
+  ) => {
+    const iOfA = `${ index + 1 }-${ procArr.length }`;
+    setTimeout(
+      async () => {
+        const idProceso = proceso.idProceso;
+        const helper = await fetchActuaciones(
+          idProceso,
+          iOfA
+        );
+        helper;
+        helpers.push(
+          helper
+        );
+        fs.writeFile(
+          `out/actuaciones/${ iOfA }.helper.actuaciones.json`,
+          JSON.stringify(
+            helper
+          )
+        );
+        fs.writeFile(
+          `out/actuaciones/${ iOfA }.HelperS.actuaciones.json`,
+          JSON.stringify(
+            helpers
+          )
+        );
+      },
+      index * 500
+>>>>>>> 2e92fe5 (Signed-off-by: CachorroC <juankpato87@gmail.com>)
     );
     fs.writeFile(
       `out/actuaciones/${iOfA}.HelperS.actuaciones.json`,

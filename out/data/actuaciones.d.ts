@@ -36,10 +36,19 @@ export interface Proceso {
   cantFilas: number;
 }
 export declare enum Departamento {
+<<<<<<< HEAD
   Antioquia = "ANTIOQUIA",
   Bogotá = "BOGOT\u00C1",
   Cundinamarca = "CUNDINAMARCA",
 }
 export declare enum TipoConsulta {
   NumeroRadicacion = "NumeroRadicacion",
+=======
+    Antioquia = 'ANTIOQUIA',
+    Bogotá = 'BOGOT\u00C1',
+    Cundinamarca = 'CUNDINAMARCA'
+}
+export declare enum TipoConsulta {
+    NumeroRadicacion = 'NumeroRadicacion'
+>>>>>>> 2e92fe5 (Signed-off-by: CachorroC <juankpato87@gmail.com>)
 }
