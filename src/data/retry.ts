@@ -1593,13 +1593,7 @@ fs.mkdir(
   { recursive: true }
 );
 
-export interface basicaMiAmiga {
-  idProceso: number;
-  iOfA: string;
-  status: number;
-  msg: string;
-  headers: Headers;
-}
+
 const fetchActuaciones = async (
   idProceso: number, iOfA: string
 ) => {
@@ -1610,14 +1604,18 @@ const fetchActuaciones = async (
     'request status = ' + req.status.toString() + 'iOfA = ' + iOfA
   );
   if ( !req.ok ) {
-    const request: basicaMiAmiga = {
+    const bb = req.headers;
+    const request = {
       idProceso: idProceso,
       iOfA: iOfA,
       status: req.status,
       msg: req.statusText,
-      headers: req.headers,
+      bb: bb
     };
     errors.push(
+      request
+    );
+    rawReq.push(
       request
     );
     fs.writeFile(
@@ -1634,12 +1632,13 @@ const fetchActuaciones = async (
     );
     return request;
   }
-  const request: basicaMiAmiga = {
+  const bb = await req.json();
+  const request = {
     idProceso: idProceso,
     iOfA: iOfA,
     status: req.status,
     msg: req.statusText,
-    headers: req.headers,
+    bb: bb,
   };
   rawReq.push(
     request
