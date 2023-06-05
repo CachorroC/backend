@@ -1587,14 +1587,6 @@ const procesos = [
   },
 ];
 
-const rawReq: {
-  res: intConsultaActuaciones;
-  idProceso: number;
-  iOfA: string;
-}[] = [];
-const error: { status: number; ok: false }[] = [];
-const helpers: { acts: intActuaciones[]; idProceso: number; iOfA: string }[] =
-  [];
 fs.mkdir(
   'src/json/out/actuaciones',
   { recursive: true }
@@ -1602,18 +1594,32 @@ fs.mkdir(
 const fetchActuaciones = async (
   idProceso: number, iOfA: string
 ) => {
+  const rawReq: {
+    res: intConsultaActuaciones;
+    idProceso: number;
+    iOfA: string;
+  }[] = [];
+  const error: { status: number; ok: false }[] = [];
 
-  const req = await fetch(`https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${idProceso}`);
-  console.log('request status = ' + req.status.toString() + 'iOfA = ' + iOfA);
+  const req = await fetch(
+    `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${idProceso}`
+  );
+  console.log(
+    'request status = ' + req.status.toString() + 'iOfA = ' + iOfA
+  );
   if (!req.ok) {
     const res = {
       status: req.status,
       ok: req.ok,
     };
-    error.push(res);
+    error.push(
+      res
+    );
     fs.writeFile(
       `src/json/out/actuaciones/${iOfA}.error.actuaciones.json`,
-      JSON.stringify(error)
+      JSON.stringify(
+        error
+      )
     );
   }
   const res = (await req.json()) as intConsultaActuaciones;
@@ -1622,14 +1628,20 @@ const fetchActuaciones = async (
     idProceso: idProceso,
     iOfA: iOfA,
   };
-  rawReq.push(request);
+  rawReq.push(
+    request
+  );
   fs.writeFile(
     `src/json/out/actuaciones/${iOfA}.Request.actuaciones.json`,
-    JSON.stringify(request)
+    JSON.stringify(
+      request
+    )
   );
   fs.writeFile(
     `src/json/out/actuaciones/${iOfA}.rawRequest.actuaciones.json`,
-    JSON.stringify(rawReq)
+    JSON.stringify(
+      rawReq
+    )
   );
   const bb = {
     acts: res.actuaciones,
@@ -1639,30 +1651,42 @@ const fetchActuaciones = async (
   return bb;
 };
 
-const forEachProceso = procesos.forEach((
-  proceso, index, procArr
-) => {
-  const iOfA = `${index + 1}-${procArr.length}`;
-  setTimeout(
-    async () => {
-      const idProceso = proceso.idProceso;
-      const helper = await fetchActuaciones(
-        idProceso,
-        iOfA
-      );
-      helpers.push(helper);
-      fs.writeFile(
-        `src/json/out/actuaciones/${iOfA}.helper.actuaciones.json`,
-        JSON.stringify(helper)
-      );
-      fs.writeFile(
-        `src/json/out/actuaciones/${iOfA}.HelperS.actuaciones.json`,
-        JSON.stringify(helpers)
-      );
-    },
-    index * 1000
-  );
-});
+const forEachProceso = procesos.forEach(
+  (
+    proceso, index, procArr
+  ) => {
+    const helpers: { acts: intActuaciones[]; idProceso: number; iOfA: string }[] =
+    [];
+    const iOfA = `${index + 1}-${procArr.length}`;
+    setTimeout(
+      async () => {
+        const idProceso = proceso.idProceso;
+        const helper = await fetchActuaciones(
+          idProceso,
+          iOfA
+        );
+        helpers.push(
+          helper
+        );
+        fs.writeFile(
+          `src/json/out/actuaciones/${iOfA}.helper.actuaciones.json`,
+          JSON.stringify(
+            helper
+          )
+        );
+        fs.writeFile(
+          `src/json/out/actuaciones/${iOfA}.HelperS.actuaciones.json`,
+          JSON.stringify(
+            helpers
+          )
+        );
+      },
+      index * 1000
+    );
+  }
+);
 
-console.log(forEachProceso);
+console.log(
+  forEachProceso
+);
 forEachProceso;

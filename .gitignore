@@ -28,3 +28,10 @@ package-lock.json
 
 
 **/.vscode/*
+
+**/out
+
+out
+**/out/*
+out/*
+out/
