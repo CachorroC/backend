@@ -1,6 +1,7 @@
 {
   "name": "com.rsasesorjuridico.backend",
   "dependencies": {
+    "@types/tinycolor2": "^1.4.3",
     "@typescript-eslint/eslint-plugin": "^5.59.8",
     "@typescript-eslint/parser": "latest",
     "dayjs": "^1.11.7",
@@ -10,6 +11,7 @@
     "mongodb": "^5.6.0",
     "prettier": "^2.8.8",
     "quokka": "^0.0.7",
+    "tinycolor2": "^1.6.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.3"
   },

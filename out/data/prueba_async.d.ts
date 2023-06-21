@@ -1,35 +1,35 @@
 export interface intConsultaNumeroRadicacion {
-    tipoConsulta: string;
-    procesos: intProceso[];
-    parametros: intParametros;
-    paginacion: intPaginacion;
+  tipoConsulta: string;
+  procesos: intProceso[];
+  parametros: intParametros;
+  paginacion: intPaginacion;
 }
 export interface intPaginacion {
-    cantidadRegistros: number;
-    registrosPagina: number;
-    cantidadPaginas: number;
-    pagina: number;
-    paginas: null;
+  cantidadRegistros: number;
+  registrosPagina: number;
+  cantidadPaginas: number;
+  pagina: number;
+  paginas: null;
 }
 export interface intParametros {
-    numero: string;
-    nombre: null;
-    tipoPersona: null;
-    idSujeto: null;
-    ponente: null;
-    claseProceso: null;
-    codificacionDespacho: null;
-    soloActivos: boolean;
+  numero: string;
+  nombre: null;
+  tipoPersona: null;
+  idSujeto: null;
+  ponente: null;
+  claseProceso: null;
+  codificacionDespacho: null;
+  soloActivos: boolean;
 }
 export interface intProceso {
-    idProceso: number;
-    idConexion: number;
-    llaveProceso: string;
-    fechaProceso?: string | null;
-    fechaUltimaActuacion?: string | null;
-    despacho: string;
-    departamento: string;
-    sujetosProcesales: string;
-    esPrivado: boolean;
-    cantFilas: number;
+  idProceso: number;
+  idConexion: number;
+  llaveProceso: string;
+  fechaProceso?: string | null;
+  fechaUltimaActuacion?: string | null;
+  despacho: string;
+  departamento: string;
+  sujetosProcesales: string;
+  esPrivado: boolean;
+  cantFilas: number;
 }
