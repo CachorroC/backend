@@ -1,0 +1,83 @@
+[
+  {
+    "_id": "648a3af68bdb86903b18714c",
+    "nota": "vas a sentirte bien",
+    "tareas": [
+      {
+        "tarea": "hay que revisar el proceso de javi ",
+        "isDone": false,
+        "dueDate": "2023-06-23"
+      },
+      { "tarea": "más seguido ", "isDone": true, "dueDate": "2023-06-28" }
+    ],
+    "llaveProceso": "11001400301120170108400",
+    "pathname": "/Procesos/11001400301120170108400",
+    "fecha": "2023-06-14T22:11:01.037Z"
+  },
+  {
+    "_id": "648a87639fa9b53e5de823ed",
+    "nota": "jose antonio castillon ",
+    "tareas": [
+      { "tarea": "cortes", "isDone": true, "dueDate": "2023-06-22" },
+      { "tarea": "el otro ", "isDone": false, "dueDate": "2023-06-29" },
+      { "tarea": "una ultima", "isDone": false, "dueDate": "2023-08-24" }
+    ],
+    "llaveProceso": "11001400302120180016300",
+    "pathname": "/Procesos/11001400302120180016300",
+    "fecha": "2023-06-15T03:37:05.653Z"
+  },
+  {
+    "_id": "648a89969fa9b53e5de823ee",
+    "nota": "agregue su nota",
+    "tareas": [
+      { "tarea": "idk", "isDone": false, "dueDate": "2023-06-15T03:45:47.096Z" }
+    ],
+    "llaveProceso": "11001400302120180016300",
+    "pathname": "/Procesos/11001400302120180016300",
+    "fecha": "2023-06-15T03:46:29.348Z"
+  },
+  {
+    "_id": "648b17df64ec94f3f604d928",
+    "nota": "auto aprueba liquidacion ",
+    "tareas": [
+      {
+        "tarea": "descargar el auto a la nube ",
+        "isDone": false,
+        "dueDate": "2023-06-16"
+      }
+    ],
+    "llaveProceso": "11001418901420190065600",
+    "pathname": "/Procesos/11001418901420190065600",
+    "fecha": "2023-06-15T13:53:33.959Z"
+  },
+  {
+    "_id": "648cebe9ee7f54977459b406",
+    "nota": "jkjj",
+    "tareas": [
+      { "tarea": "", "isDone": "", "dueDate": "2023-06-16T23:10:11.700Z" }
+    ],
+    "llaveProceso": "11001400302520170080700",
+    "pathname": "/Procesos/11001400302520170080700",
+    "fecha": "2023-06-16T23:10:30.618Z"
+  },
+  {
+    "_id": "648cf777ee7f54977459b407",
+    "nota": "yiberish done wrong ",
+    "tareas": [
+      { "tarea": "yiberish", "isDone": true, "dueDate": "2023-06-30" }
+    ],
+    "llaveProceso": "11001400302520170080700",
+    "pathname": "/Procesos/11001400302520170080700",
+    "fecha": "2023-06-16T23:59:38.202Z"
+  },
+  {
+    "_id": "6491d656fcd58feefd16b10e",
+    "nota": "He",
+    "tareas": [
+      { "tarea": "", "isDone": false, "dueDate": "2023-06-20T16:38:55.413Z" }
+    ],
+    "llaveProceso": "11001418901420190065600",
+    "pathname": "/",
+    "fecha": "2023-06-20T16:39:41.475Z"
+  }
+]

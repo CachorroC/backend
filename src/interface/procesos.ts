@@ -36,23 +36,60 @@ export interface intProceso {
   esPrivado: boolean;
   cantFilas: number;
 }
+// To parse this data:
+//
+//   import { Convert } from "./file";
+//
+//   const intConsultaActuaciones = Convert.toIntConsultaActuaciones(json);
+// To parse this data:
+//
+//   import { Convert } from "./file";
+//
+//   const intConsultaActuaciones = Convert.toIntConsultaActuaciones(json);
 
 export interface intConsultaActuaciones {
-  actuaciones: intActuaciones[];
-  paginacion: intPaginacion;
+  actuaciones: intActuacion[];
+  paginacion: Paginacion;
 }
 
-export interface intActuaciones {
+export interface intActuacion {
   idRegActuacion: number;
   llaveProceso: string;
   consActuacion: number;
-  fechaActuacion: string;
+  fechaActuacion: Date | string;
   actuacion: string;
-  anotacion: null | string;
-  fechaInicial: null | string;
-  fechaFinal: null | string;
-  fechaRegistro: string;
+  anotacion: string;
+  fechaInicial: Date | string | null;
+  fechaFinal: Date | string | null;
+  fechaRegistro: Date | string;
   codRegla: string;
   conDocumentos: boolean;
   cant: number;
+}
+
+export interface Paginacion {
+  cantidadRegistros: number;
+  registrosPagina: number;
+  cantidadPaginas: number;
+  pagina: number;
+  paginas: null;
+}
+
+// Converts JSON strings to/from your types
+export class Convert {
+  public static toIntConsultaActuaciones (
+    json: string
+  ): intConsultaActuaciones[] {
+    return JSON.parse(
+      json
+    );
+  }
+
+  public static intConsultaActuacionesToJson (
+    value: intConsultaActuaciones[]
+  ): string {
+    return JSON.stringify(
+      value
+    );
+  }
 }

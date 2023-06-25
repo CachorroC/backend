@@ -1,5 +1,6 @@
 {
   "env": {
+    "browser": true,
     "es2021": true,
     "node": true
   },
@@ -12,7 +13,8 @@
   },
   "plugins": ["@typescript-eslint"],
   "rules": {
-    "array-bracket-newline": ["error", "consistent"],
+    "array-bracket-newline": ["error", { "multiline": true, "minItems": 2 }],
+    "array-element-newline": ["error", { "multiline": true, "minItems": 2 }],
     "array-bracket-spacing": ["error", "always"],
     "array-callback-return": "error",
     "arrow-body-style": [
@@ -33,7 +35,11 @@
       }
     ],
     "getter-return": "error",
-    "indent": ["error", 2],
+    "indent": [
+      "error",
+      2,
+      { "FunctionDeclaration": { "parameters": "first" } }
+    ],
     "linebreak-style": ["error", "unix"],
     "multiline-ternary": ["error", "always"],
     "no-dupe-else-if": "error",

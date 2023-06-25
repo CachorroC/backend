@@ -1,54 +1,45 @@
 export interface intFulfilledFetchProcesos {
-  tipoConsulta: TipoConsulta;
-  procesos: Proceso[];
-  parametros: Parametros;
-  paginacion: Paginacion;
-  llaveProceso: string;
-  iOfA: string;
+    tipoConsulta: TipoConsulta;
+    procesos: Proceso[];
+    parametros: Parametros;
+    paginacion: Paginacion;
+    llaveProceso: string;
+    iOfA: string;
 }
 export interface Paginacion {
-  cantidadRegistros: number;
-  registrosPagina: number;
-  cantidadPaginas: number;
-  pagina: number;
-  paginas: null;
+    cantidadRegistros: number;
+    registrosPagina: number;
+    cantidadPaginas: number;
+    pagina: number;
+    paginas: null;
 }
 export interface Parametros {
-  numero: string;
-  nombre: null;
-  tipoPersona: null;
-  idSujeto: null;
-  ponente: null;
-  claseProceso: null;
-  codificacionDespacho: null;
-  soloActivos: boolean;
+    numero: string;
+    nombre: null;
+    tipoPersona: null;
+    idSujeto: null;
+    ponente: null;
+    claseProceso: null;
+    codificacionDespacho: null;
+    soloActivos: boolean;
 }
 export interface Proceso {
-  idProceso: number;
-  idConexion: number;
-  llaveProceso: string;
-  fechaProceso: Date | null;
-  fechaUltimaActuacion: Date | null;
-  despacho: string;
-  departamento: Departamento;
-  sujetosProcesales: string;
-  esPrivado: boolean;
-  cantFilas: number;
+    idProceso: number;
+    idConexion: number;
+    llaveProceso: string;
+    fechaProceso: Date | null;
+    fechaUltimaActuacion: Date | null;
+    despacho: string;
+    departamento: Departamento;
+    sujetosProcesales: string;
+    esPrivado: boolean;
+    cantFilas: number;
 }
 export declare enum Departamento {
-<<<<<<< HEAD
-  Antioquia = "ANTIOQUIA",
-  Bogotá = "BOGOT\u00C1",
-  Cundinamarca = "CUNDINAMARCA",
+    Antioquia = "ANTIOQUIA",
+    Bogotá = "BOGOT\u00C1",
+    Cundinamarca = "CUNDINAMARCA"
 }
 export declare enum TipoConsulta {
-  NumeroRadicacion = "NumeroRadicacion",
-=======
-    Antioquia = 'ANTIOQUIA',
-    Bogotá = 'BOGOT\u00C1',
-    Cundinamarca = 'CUNDINAMARCA'
-}
-export declare enum TipoConsulta {
-    NumeroRadicacion = 'NumeroRadicacion'
->>>>>>> 2e92fe5 (Signed-off-by: CachorroC <juankpato87@gmail.com>)
+    NumeroRadicacion = "NumeroRadicacion"
 }
