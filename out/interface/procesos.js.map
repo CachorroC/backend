@@ -1,1 +1,0 @@
-{"version":3,"file":"procesos.js","sourceRoot":"","sources":["../../src/interface/procesos.ts"],"names":[],"mappings":";;;AA6EA,2CAA2C;AAC3C,MAAa,OAAO;IACX,MAAM,CAAC,wBAAwB,CACpC,IAAY;QAEZ,OAAO,IAAI,CAAC,KAAK,CACf,IAAI,CACL,CAAC;IACJ,CAAC;IAEM,MAAM,CAAC,4BAA4B,CACxC,KAA+B;QAE/B,OAAO,IAAI,CAAC,SAAS,CACnB,KAAK,CACN,CAAC;IACJ,CAAC;CACF;AAhBD,0BAgBC"}
