@@ -51,7 +51,7 @@ export interface Demanda {
   };
 }
 
-export type Departamento = 'CUNDINAMARCA';
+export type Departamento = "CUNDINAMARCA";
 
 export interface Juzgado {
   Origen: string;
@@ -62,7 +62,7 @@ export interface Proceso {
   Tipo: Tipo;
 }
 
-export type Tipo = 'PRENDARIO' | 'SINGULAR' | 'HIPOTECARIO' | 'HIPOTECARO';
+export type Tipo = "PRENDARIO" | "SINGULAR" | "HIPOTECARIO" | "HIPOTECARO";
 
 export interface Ubicacion {
   Juzgado: string;
@@ -135,8 +135,8 @@ export interface Oficios {
 }
 
 export interface Notificaciones {
-  '291': The291;
-  '292'?: The291;
+  "291": The291;
+  "292"?: The291;
   AutoNotificado?: string;
   Certimail?: boolean;
   Fisico?: boolean;

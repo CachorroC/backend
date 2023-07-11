@@ -1,4 +1,4 @@
-import { IntCarpetaDemandado } from '#@/interface/demandados';
+import { IntCarpetaDemandado } from "#@/interface/demandados";
 
 export declare function fetchActuacionesByidProceso(
   idProceso: number

@@ -21,19 +21,11 @@ export interface Tarea {
 
 // Converts JSON strings to/from your types
 export class Convert {
-  public static toIntNota(
-    json: string
-  ): IntNota[] {
-    return JSON.parse (
-      json
-    );
+  public static toIntNota(json: string): IntNota[] {
+    return JSON.parse(json);
   }
 
-  public static intNotaToJson(
-    value: IntNota[]
-  ): string {
-    return JSON.stringify (
-      value
-    );
+  public static intNotaToJson(value: IntNota[]): string {
+    return JSON.stringify(value);
   }
 }

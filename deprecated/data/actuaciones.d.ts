@@ -40,11 +40,11 @@ export interface Proceso {
 }
 
 export declare enum Departamento {
-  Antioquia = 'ANTIOQUIA',
-  Bogotá = 'BOGOT\u00C1',
-  Cundinamarca = 'CUNDINAMARCA',
+  Antioquia = "ANTIOQUIA",
+  Bogotá = "BOGOT\u00C1",
+  Cundinamarca = "CUNDINAMARCA",
 }
 
 export declare enum TipoConsulta {
-  NumeroRadicacion = 'NumeroRadicacion',
+  NumeroRadicacion = "NumeroRadicacion",
 }

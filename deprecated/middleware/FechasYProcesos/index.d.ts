@@ -1,4 +1,4 @@
-import { monCarpetaDemandado } from '#@/interface/demandados';
+import { monCarpetaDemandado } from "#@/interface/demandados";
 
 export declare function getActuacionesByidProceso({
   idProceso,

@@ -50,7 +50,7 @@ export interface intDemanda {
 }
 
 export declare enum Departamento {
-  Cundinamarca = 'CUNDINAMARCA',
+  Cundinamarca = "CUNDINAMARCA",
 }
 
 export interface Juzgado {
@@ -59,18 +59,18 @@ export interface Juzgado {
 }
 
 export interface Obligacion {
-  '1': number | string;
-  '2': number | string;
+  "1": number | string;
+  "2": number | string;
 }
 
 export interface Proceso {
-  Tipo: 'HIPOTECARIO' | 'PRENDARIO' | 'SINGULAR';
+  Tipo: "HIPOTECARIO" | "PRENDARIO" | "SINGULAR";
 }
 
 export declare enum Tipo {
-  Hipotecario = 'HIPOTECARIO',
-  Prendario = 'PRENDARIO',
-  Singular = 'SINGULAR',
+  Hipotecario = "HIPOTECARIO",
+  Prendario = "PRENDARIO",
+  Singular = "SINGULAR",
 }
 
 export interface Ubicacion {
@@ -144,8 +144,8 @@ export interface Oficios {
 }
 
 export interface Notificaciones {
-  '291': The291;
-  '292'?: The291;
+  "291": The291;
+  "292"?: The291;
   AutoNotificado?: string;
   Certimail?: boolean;
   Fisico?: boolean;

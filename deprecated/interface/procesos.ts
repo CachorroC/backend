@@ -89,16 +89,12 @@ export class Convert {
   public static toIntConsultaActuaciones(
     json: string
   ): intConsultaActuaciones[] {
-    return JSON.parse (
-      json
-    );
+    return JSON.parse(json);
   }
 
   public static intConsultaActuacionesToJson(
     value: intConsultaActuaciones[]
   ): string {
-    return JSON.stringify (
-      value
-    );
+    return JSON.stringify(value);
   }
 }

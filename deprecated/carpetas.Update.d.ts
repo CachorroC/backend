@@ -1,4 +1,4 @@
-import { IntCarpetas } from './Classes/animals';
+import { IntCarpetas } from "./Classes/animals";
 
 export declare function EditDemandado({
   demandado,

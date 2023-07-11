@@ -1,4 +1,4 @@
-import * as fs from 'fs/promises';
+import * as fs from "fs/promises";
 
 export interface intFulfilledFetchProcesos {
   tipoConsulta: TipoConsulta;
@@ -42,1547 +42,1547 @@ export interface Proceso {
 }
 
 export enum Departamento {
-  Antioquia = 'ANTIOQUIA',
-  Bogotá = 'BOGOTÁ',
-  Cundinamarca = 'CUNDINAMARCA',
+  Antioquia = "ANTIOQUIA",
+  Bogotá = "BOGOTÁ",
+  Cundinamarca = "CUNDINAMARCA",
 }
 
 export enum TipoConsulta {
-  NumeroRadicacion = 'NumeroRadicacion',
+  NumeroRadicacion = "NumeroRadicacion",
 }
 
 const procesos = [
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 011 CIVIL DEL CIRCUITO DE BOGOTÁ ',
-    esPrivado           : true,
-    fechaProceso        : null,
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 011 CIVIL DEL CIRCUITO DE BOGOTÁ ",
+    esPrivado: true,
+    fechaProceso: null,
     fechaUltimaActuacion: null,
-    idConexion          : 320,
-    idProceso           : 80553011,
-    llaveProceso        : '11001310301120170033500',
-    sujetosProcesales   : '--- [ PROCESO PRIVADO ] ---',
+    idConexion: 320,
+    idProceso: 80553011,
+    llaveProceso: "11001310301120170033500",
+    sujetosProcesales: "--- [ PROCESO PRIVADO ] ---",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 001 CIVIL DEL CIRCUITO DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-05-31T00:00:00',
-    fechaUltimaActuacion: '2023-03-10T00:00:00',
-    idConexion          : 310,
-    idProceso           : 1805257424,
-    llaveProceso        : '11001310301120170033500',
+      "JUZGADO 001 CIVIL DEL CIRCUITO DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-05-31T00:00:00",
+    fechaUltimaActuacion: "2023-03-10T00:00:00",
+    idConexion: 310,
+    idProceso: 1805257424,
+    llaveProceso: "11001310301120170033500",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: OMAR DARIO ZEA GALVIS ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: OMAR DARIO ZEA GALVIS ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 017 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-08-09T00:00:00',
-    fechaUltimaActuacion: '2023-05-17T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50621670,
-    llaveProceso        : '11001400300120170100100',
+      "JUZGADO 017 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-08-09T00:00:00",
+    fechaUltimaActuacion: "2023-05-17T00:00:00",
+    idConexion: 259,
+    idProceso: 50621670,
+    llaveProceso: "11001400300120170100100",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: WILSON ALFONSO JIMENEZ MENDIETA ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: WILSON ALFONSO JIMENEZ MENDIETA ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 010 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-10-09T00:00:00',
-    fechaUltimaActuacion: '2023-05-19T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50764880,
-    llaveProceso        : '11001400300120170130900',
+      "JUZGADO 010 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-10-09T00:00:00",
+    fechaUltimaActuacion: "2023-05-19T00:00:00",
+    idConexion: 259,
+    idProceso: 50764880,
+    llaveProceso: "11001400300120170130900",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: ANA BEATRIZ CORREDOR DE OSORIO ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: ANA BEATRIZ CORREDOR DE OSORIO ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 007 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2018-07-18T00:00:00',
-    fechaUltimaActuacion: '2019-01-15T00:00:00',
-    idConexion          : 259,
-    idProceso           : 51315290,
-    llaveProceso        : '11001310303720170045300',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 007 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2018-07-18T00:00:00",
+    fechaUltimaActuacion: "2019-01-15T00:00:00",
+    idConexion: 259,
+    idProceso: 51315290,
+    llaveProceso: "11001310303720170045300",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: DIANA VANESSA NARANJO HERNANDEZ ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: DIANA VANESSA NARANJO HERNANDEZ ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 003 CIVIL DEL CIRCUITO DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-09-11T00:00:00',
-    fechaUltimaActuacion: '2019-09-20T00:00:00',
-    idConexion          : 310,
-    idProceso           : 57718874,
-    llaveProceso        : '11001310303720170045300',
+      "JUZGADO 003 CIVIL DEL CIRCUITO DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-09-11T00:00:00",
+    fechaUltimaActuacion: "2019-09-20T00:00:00",
+    idConexion: 310,
+    idProceso: 57718874,
+    llaveProceso: "11001310303720170045300",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S. A. | Demandado: DIANA VANESSA NARANJO HERNANDEZ ',
+      "Demandante: BANCOLOMBIA S. A. | Demandado: DIANA VANESSA NARANJO HERNANDEZ ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 013 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-10-17T00:00:00',
-    fechaUltimaActuacion: '2023-03-14T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50780430,
-    llaveProceso        : '11001400300220170100200',
+      "JUZGADO 013 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-10-17T00:00:00",
+    fechaUltimaActuacion: "2023-03-14T00:00:00",
+    idConexion: 259,
+    idProceso: 50780430,
+    llaveProceso: "11001400300220170100200",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: JOGLI JOAQUIN OTERO VARGAS ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: JOGLI JOAQUIN OTERO VARGAS ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 003 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-05-26T00:00:00',
-    fechaUltimaActuacion: '2023-04-17T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50468620,
-    llaveProceso        : '11001400300320170088400',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 003 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-05-26T00:00:00",
+    fechaUltimaActuacion: "2023-04-17T00:00:00",
+    idConexion: 259,
+    idProceso: 50468620,
+    llaveProceso: "11001400300320170088400",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: YESID ALBEIRO RAMOS ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: YESID ALBEIRO RAMOS ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 003 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-05-24T00:00:00',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 003 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-05-24T00:00:00",
     fechaUltimaActuacion: null,
-    idConexion          : 320,
-    idProceso           : 113956611,
-    llaveProceso        : '11001400300320170088400',
+    idConexion: 320,
+    idProceso: 113956611,
+    llaveProceso: "11001400300320170088400",
     sujetosProcesales:
-      'Demandante/accionante: BANCOLOMBIA SA | Demandado/indiciado/causante: YESID ALBEIRO RAMOS  (Emplazado) | Defensor Publico: MARIA HELENA SUAREZ GARCIA ',
+      "Demandante/accionante: BANCOLOMBIA SA | Demandado/indiciado/causante: YESID ALBEIRO RAMOS  (Emplazado) | Defensor Publico: MARIA HELENA SUAREZ GARCIA ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 003 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-07-27T00:00:00',
-    fechaUltimaActuacion: '2023-06-01T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50598770,
-    llaveProceso        : '11001400300320170126400',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 003 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-07-27T00:00:00",
+    fechaUltimaActuacion: "2023-06-01T00:00:00",
+    idConexion: 259,
+    idProceso: 50598770,
+    llaveProceso: "11001400300320170126400",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: NIDIA DORANCY GOMEZ BLANCO ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: NIDIA DORANCY GOMEZ BLANCO ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 002 CIVIL DEL CIRCUITO DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-10-03T00:00:00',
-    fechaUltimaActuacion: '2022-06-15T00:00:00',
-    idConexion          : 310,
-    idProceso           : 28937944,
-    llaveProceso        : '11001310302520170073600',
+      "JUZGADO 002 CIVIL DEL CIRCUITO DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-10-03T00:00:00",
+    fechaUltimaActuacion: "2022-06-15T00:00:00",
+    idConexion: 310,
+    idProceso: 28937944,
+    llaveProceso: "11001310302520170073600",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S. A. | Demandado: MIGUEL ANGEL HUERTAS VALENCIA ',
+      "Demandante: BANCOLOMBIA S. A. | Demandado: MIGUEL ANGEL HUERTAS VALENCIA ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 018 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-06-15T00:00:00',
-    fechaUltimaActuacion: '2023-06-02T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50508870,
-    llaveProceso        : '11001400300420170057500',
+      "JUZGADO 018 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-06-15T00:00:00",
+    fechaUltimaActuacion: "2023-06-02T00:00:00",
+    idConexion: 259,
+    idProceso: 50508870,
+    llaveProceso: "11001400300420170057500",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: SONIA MAZUERA ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: SONIA MAZUERA ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 009 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-11-21T00:00:00',
-    fechaUltimaActuacion: '2022-02-04T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50859050,
-    llaveProceso        : '11001400300420170126600',
+      "JUZGADO 009 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-11-21T00:00:00",
+    fechaUltimaActuacion: "2022-02-04T00:00:00",
+    idConexion: 259,
+    idProceso: 50859050,
+    llaveProceso: "11001400300420170126600",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: GILBERTO JAIME BETANCOURT ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: GILBERTO JAIME BETANCOURT ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 007 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2018-04-26T00:00:00',
-    fechaUltimaActuacion: '2023-02-27T00:00:00',
-    idConexion          : 259,
-    idProceso           : 51149410,
-    llaveProceso        : '11001400300420180047500',
+      "JUZGADO 007 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2018-04-26T00:00:00",
+    fechaUltimaActuacion: "2023-02-27T00:00:00",
+    idConexion: 259,
+    idProceso: 51149410,
+    llaveProceso: "11001400300420180047500",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: ADOLFO LEON DAZA FERNANDEZ ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: ADOLFO LEON DAZA FERNANDEZ ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 013 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-06-21T00:00:00',
-    fechaUltimaActuacion: '2023-05-09T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50521190,
-    llaveProceso        : '11001400300620170030200',
+      "JUZGADO 013 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-06-21T00:00:00",
+    fechaUltimaActuacion: "2023-05-09T00:00:00",
+    idConexion: 259,
+    idProceso: 50521190,
+    llaveProceso: "11001400300620170030200",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: ANA RITA GUZMAN GOMEZ ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: ANA RITA GUZMAN GOMEZ ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 011 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-07-26T00:00:00',
-    fechaUltimaActuacion: '2023-05-10T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50593100,
-    llaveProceso        : '11001400300620170041900',
+      "JUZGADO 011 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-07-26T00:00:00",
+    fechaUltimaActuacion: "2023-05-10T00:00:00",
+    idConexion: 259,
+    idProceso: 50593100,
+    llaveProceso: "11001400300620170041900",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: DERLY CATHERINE CASTRO IZQUIERDO ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: DERLY CATHERINE CASTRO IZQUIERDO ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 004 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-11-21T00:00:00',
-    fechaUltimaActuacion: '2023-05-09T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50857820,
-    llaveProceso        : '11001400300620170096400',
+      "JUZGADO 004 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-11-21T00:00:00",
+    fechaUltimaActuacion: "2023-05-09T00:00:00",
+    idConexion: 259,
+    idProceso: 50857820,
+    llaveProceso: "11001400300620170096400",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: HECTOR ALONSO TORRES RIOS ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: HECTOR ALONSO TORRES RIOS ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 017 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2018-04-30T00:00:00',
-    fechaUltimaActuacion: '2023-04-10T00:00:00',
-    idConexion          : 259,
-    idProceso           : 51154840,
-    llaveProceso        : '11001400300620180045400',
+      "JUZGADO 017 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2018-04-30T00:00:00",
+    fechaUltimaActuacion: "2023-04-10T00:00:00",
+    idConexion: 259,
+    idProceso: 51154840,
+    llaveProceso: "11001400300620180045400",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: SMARTITECH SAS | Demandado: EDISSON ARMANDO KARL BUITRAGO ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: SMARTITECH SAS | Demandado: EDISSON ARMANDO KARL BUITRAGO ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 006 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : true,
-    fechaProceso        : null,
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 006 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: true,
+    fechaProceso: null,
     fechaUltimaActuacion: null,
-    idConexion          : 320,
-    idProceso           : 81649171,
-    llaveProceso        : '11001400300620180045400',
-    sujetosProcesales   : '--- [ PROCESO PRIVADO ] ---',
+    idConexion: 320,
+    idProceso: 81649171,
+    llaveProceso: "11001400300620180045400",
+    sujetosProcesales: "--- [ PROCESO PRIVADO ] ---",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 001 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-09-05T00:00:00',
-    fechaUltimaActuacion: '2022-07-21T00:00:00',
-    idConexion          : 259,
-    idProceso           : 112758450,
-    llaveProceso        : '11001400300820170105800',
+      "JUZGADO 001 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-09-05T00:00:00",
+    fechaUltimaActuacion: "2022-07-21T00:00:00",
+    idConexion: 259,
+    idProceso: 112758450,
+    llaveProceso: "11001400300820170105800",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: ANDRES FELIPE GUTIERREZ TRUJILLO ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: ANDRES FELIPE GUTIERREZ TRUJILLO ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 006 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-09-19T00:00:00',
-    fechaUltimaActuacion: '2023-03-01T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50716620,
-    llaveProceso        : '11001400300820170113400',
+      "JUZGADO 006 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-09-19T00:00:00",
+    fechaUltimaActuacion: "2023-03-01T00:00:00",
+    idConexion: 259,
+    idProceso: 50716620,
+    llaveProceso: "11001400300820170113400",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: FANOR DIAZ AGUDELO ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: FANOR DIAZ AGUDELO ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 018 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-11-28T00:00:00',
-    fechaUltimaActuacion: '2022-01-26T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50875780,
-    llaveProceso        : '11001400300920170127900',
+      "JUZGADO 018 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-11-28T00:00:00",
+    fechaUltimaActuacion: "2022-01-26T00:00:00",
+    idConexion: 259,
+    idProceso: 50875780,
+    llaveProceso: "11001400300920170127900",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: JOSE HERNANDO SANCHEZ VALBUENA ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: JOSE HERNANDO SANCHEZ VALBUENA ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 002 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-10-06T00:00:00',
-    fechaUltimaActuacion: '2023-04-27T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50760030,
-    llaveProceso        : '11001400301120170108400',
+      "JUZGADO 002 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-10-06T00:00:00",
+    fechaUltimaActuacion: "2023-04-27T00:00:00",
+    idConexion: 259,
+    idProceso: 50760030,
+    llaveProceso: "11001400301120170108400",
     sujetosProcesales:
-      'Demandante: TITULARIZADORA COLOMBIANA S.A. HITOS | Demandado: JAVIER GONZALEZ TAGUA ',
+      "Demandante: TITULARIZADORA COLOMBIANA S.A. HITOS | Demandado: JAVIER GONZALEZ TAGUA ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 015 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-08-30T00:00:00',
-    fechaUltimaActuacion: '2022-03-17T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50669130,
-    llaveProceso        : '11001400301220170097100',
+      "JUZGADO 015 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-08-30T00:00:00",
+    fechaUltimaActuacion: "2022-03-17T00:00:00",
+    idConexion: 259,
+    idProceso: 50669130,
+    llaveProceso: "11001400301220170097100",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: FABIO ALBERTO RIVERA MESA | Demandado: NELIDA DEL CARMEN RIVERA MESA ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: FABIO ALBERTO RIVERA MESA | Demandado: NELIDA DEL CARMEN RIVERA MESA ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 016 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-09-05T00:00:00',
-    fechaUltimaActuacion: '2023-05-24T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50685530,
-    llaveProceso        : '11001400301320170116200',
+      "JUZGADO 016 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-09-05T00:00:00",
+    fechaUltimaActuacion: "2023-05-24T00:00:00",
+    idConexion: 259,
+    idProceso: 50685530,
+    llaveProceso: "11001400301320170116200",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: CARLOS JAVIER BECERRA BENAVIDES ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: CARLOS JAVIER BECERRA BENAVIDES ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 013 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-09-08T00:00:00',
-    fechaUltimaActuacion: '2023-04-17T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50692590,
-    llaveProceso        : '11001400301320170117800',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 013 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-09-08T00:00:00",
+    fechaUltimaActuacion: "2023-04-17T00:00:00",
+    idConexion: 259,
+    idProceso: 50692590,
+    llaveProceso: "11001400301320170117800",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: SOL JUDITH BUITRAGO DUQUE ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: SOL JUDITH BUITRAGO DUQUE ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 014 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2018-04-09T00:00:00',
-    fechaUltimaActuacion: '2018-04-26T00:00:00',
-    idConexion          : 259,
-    idProceso           : 51107470,
-    llaveProceso        : '11001400301420180040600',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 014 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2018-04-09T00:00:00",
+    fechaUltimaActuacion: "2018-04-26T00:00:00",
+    idConexion: 259,
+    idProceso: 51107470,
+    llaveProceso: "11001400301420180040600",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: JORGE ARMANDO PEREZ JIMENEZ ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: JORGE ARMANDO PEREZ JIMENEZ ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 009 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2018-08-01T00:00:00',
-    fechaUltimaActuacion: '2023-06-01T00:00:00',
-    idConexion          : 259,
-    idProceso           : 51341610,
-    llaveProceso        : '11001400301420180092900',
+      "JUZGADO 009 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2018-08-01T00:00:00",
+    fechaUltimaActuacion: "2023-06-01T00:00:00",
+    idConexion: 259,
+    idProceso: 51341610,
+    llaveProceso: "11001400301420180092900",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: JOSE RODRIGO GARCIA QUINTERO ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: JOSE RODRIGO GARCIA QUINTERO ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 011 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-10-13T00:00:00',
-    fechaUltimaActuacion: '2021-11-08T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50777890,
-    llaveProceso        : '11001400301520170139400',
+      "JUZGADO 011 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-10-13T00:00:00",
+    fechaUltimaActuacion: "2021-11-08T00:00:00",
+    idConexion: 259,
+    idProceso: 50777890,
+    llaveProceso: "11001400301520170139400",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: ANA LUCIA AGUILAR | Demandado: CARMELINA AGUILAR | Demandado: HUMBERTO AVILA MATIAS ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: ANA LUCIA AGUILAR | Demandado: CARMELINA AGUILAR | Demandado: HUMBERTO AVILA MATIAS ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 002 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-02-08T00:00:00',
-    fechaUltimaActuacion: '2022-08-11T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50242270,
-    llaveProceso        : '11001400301620170015700',
+      "JUZGADO 002 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-02-08T00:00:00",
+    fechaUltimaActuacion: "2022-08-11T00:00:00",
+    idConexion: 259,
+    idProceso: 50242270,
+    llaveProceso: "11001400301620170015700",
     sujetosProcesales:
-      'Demandante: BANCO DE BOGOTA | Demandado: WILSON GONZALEZ ',
+      "Demandante: BANCO DE BOGOTA | Demandado: WILSON GONZALEZ ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 018 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-09-06T00:00:00',
-    fechaUltimaActuacion: '2023-05-16T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50687430,
-    llaveProceso        : '11001400301620170087500',
+      "JUZGADO 018 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-09-06T00:00:00",
+    fechaUltimaActuacion: "2023-05-16T00:00:00",
+    idConexion: 259,
+    idProceso: 50687430,
+    llaveProceso: "11001400301620170087500",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: JORGE ALBERTO MARTINEZ BENDECK ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: JORGE ALBERTO MARTINEZ BENDECK ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 017 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-09-20T00:00:00',
-    fechaUltimaActuacion: '2023-05-26T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50721470,
-    llaveProceso        : '11001400301720170119500',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 017 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-09-20T00:00:00",
+    fechaUltimaActuacion: "2023-05-26T00:00:00",
+    idConexion: 259,
+    idProceso: 50721470,
+    llaveProceso: "11001400301720170119500",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: ALIRIO HEREDIA BUITRAGO ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: ALIRIO HEREDIA BUITRAGO ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 017 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-09-19T00:00:00',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 017 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-09-19T00:00:00",
     fechaUltimaActuacion: null,
-    idConexion          : 320,
-    idProceso           : 127748331,
-    llaveProceso        : '11001400301720170119500',
+    idConexion: 320,
+    idProceso: 127748331,
+    llaveProceso: "11001400301720170119500",
     sujetosProcesales:
-      'Demandante/accionante: Banco de Colombia S.A | Demandado/indiciado/causante: ALIRIO  HEREDIA BUITRAGO (Emplazado) | Defensor Privado: MARIA HELENA SUAREZ GARCIA ',
+      "Demandante/accionante: Banco de Colombia S.A | Demandado/indiciado/causante: ALIRIO  HEREDIA BUITRAGO (Emplazado) | Defensor Privado: MARIA HELENA SUAREZ GARCIA ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 015 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-10-18T00:00:00',
-    fechaUltimaActuacion: '2022-03-28T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50782960,
-    llaveProceso        : '11001400301720170133600',
+      "JUZGADO 015 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-10-18T00:00:00",
+    fechaUltimaActuacion: "2022-03-28T00:00:00",
+    idConexion: 259,
+    idProceso: 50782960,
+    llaveProceso: "11001400301720170133600",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: NATALIA CUESTAS MONDRAGON ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: NATALIA CUESTAS MONDRAGON ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 016 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-09-18T00:00:00',
-    fechaUltimaActuacion: '2022-09-16T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50711570,
-    llaveProceso        : '11001400301820170152200',
+      "JUZGADO 016 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-09-18T00:00:00",
+    fechaUltimaActuacion: "2022-09-16T00:00:00",
+    idConexion: 259,
+    idProceso: 50711570,
+    llaveProceso: "11001400301820170152200",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: JOSE AHINSONJOVER TORO VARGAS ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: JOSE AHINSONJOVER TORO VARGAS ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 020 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2010-04-19T00:00:00',
-    fechaUltimaActuacion: '2014-04-02T00:00:00',
-    idConexion          : 259,
-    idProceso           : 45029250,
-    llaveProceso        : '11001400302020100050100',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 020 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2010-04-19T00:00:00",
+    fechaUltimaActuacion: "2014-04-02T00:00:00",
+    idConexion: 259,
+    idProceso: 45029250,
+    llaveProceso: "11001400302020100050100",
     sujetosProcesales:
-      'Demandante: COOMEVA COOPERATIVA FINACIERA | Demandado: HECTOR JULIAN SANCHEZ RAMIREZ | Demandado: CLAUDIA LORENA VINASCO TAPIE ',
+      "Demandante: COOMEVA COOPERATIVA FINACIERA | Demandado: HECTOR JULIAN SANCHEZ RAMIREZ | Demandado: CLAUDIA LORENA VINASCO TAPIE ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 015 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-10-11T00:00:00',
-    fechaUltimaActuacion: '2023-05-15T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50769660,
-    llaveProceso        : '11001400302120170153200',
+      "JUZGADO 015 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-10-11T00:00:00",
+    fechaUltimaActuacion: "2023-05-15T00:00:00",
+    idConexion: 259,
+    idProceso: 50769660,
+    llaveProceso: "11001400302120170153200",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: LIBARDO ALFONSO GONZALEZ TRIVIÑO ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: LIBARDO ALFONSO GONZALEZ TRIVIÑO ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 021 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : true,
-    fechaProceso        : null,
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 021 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: true,
+    fechaProceso: null,
     fechaUltimaActuacion: null,
-    idConexion          : 320,
-    idProceso           : 81620291,
-    llaveProceso        : '11001400302120170153200',
-    sujetosProcesales   : '--- [ PROCESO PRIVADO ] ---',
+    idConexion: 320,
+    idProceso: 81620291,
+    llaveProceso: "11001400302120170153200",
+    sujetosProcesales: "--- [ PROCESO PRIVADO ] ---",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 021 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2018-02-13T00:00:00',
-    fechaUltimaActuacion: '2023-05-24T00:00:00',
-    idConexion          : 259,
-    idProceso           : 51006610,
-    llaveProceso        : '11001400302120180016300',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 021 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2018-02-13T00:00:00",
+    fechaUltimaActuacion: "2023-05-24T00:00:00",
+    idConexion: 259,
+    idProceso: 51006610,
+    llaveProceso: "11001400302120180016300",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: JOSE ANTONIO CASTILLO CORTES ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: JOSE ANTONIO CASTILLO CORTES ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 021 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : true,
-    fechaProceso        : null,
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 021 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: true,
+    fechaProceso: null,
     fechaUltimaActuacion: null,
-    idConexion          : 320,
-    idProceso           : 81643141,
-    llaveProceso        : '11001400302120180016300',
-    sujetosProcesales   : '--- [ PROCESO PRIVADO ] ---',
+    idConexion: 320,
+    idProceso: 81643141,
+    llaveProceso: "11001400302120180016300",
+    sujetosProcesales: "--- [ PROCESO PRIVADO ] ---",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 013 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2018-02-23T00:00:00',
-    fechaUltimaActuacion: '2023-05-26T00:00:00',
-    idConexion          : 259,
-    idProceso           : 51029180,
-    llaveProceso        : '11001400302120180023600',
+      "JUZGADO 013 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2018-02-23T00:00:00",
+    fechaUltimaActuacion: "2023-05-26T00:00:00",
+    idConexion: 259,
+    idProceso: 51029180,
+    llaveProceso: "11001400302120180023600",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: ARTURO LINCE GOMEZ ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: ARTURO LINCE GOMEZ ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 002 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-06-15T00:00:00',
-    fechaUltimaActuacion: '2023-05-29T00:00:00',
-    idConexion          : 259,
-    idProceso           : 111939890,
-    llaveProceso        : '11001400302220170056700',
+      "JUZGADO 002 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-06-15T00:00:00",
+    fechaUltimaActuacion: "2023-05-29T00:00:00",
+    idConexion: 259,
+    idProceso: 111939890,
+    llaveProceso: "11001400302220170056700",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: RHONALD MEZA  TARAPUES ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: RHONALD MEZA  TARAPUES ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 020 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-11-01T00:00:00',
-    fechaUltimaActuacion: '2023-01-31T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50817380,
-    llaveProceso        : '11001400302220170120800',
+      "JUZGADO 020 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-11-01T00:00:00",
+    fechaUltimaActuacion: "2023-01-31T00:00:00",
+    idConexion: 259,
+    idProceso: 50817380,
+    llaveProceso: "11001400302220170120800",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: CALZADO RIVOLI  S.A.S. | Demandado: MARTHA LUCIA CUARTAS  BETANCOURT ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: CALZADO RIVOLI  S.A.S. | Demandado: MARTHA LUCIA CUARTAS  BETANCOURT ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 022 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : true,
-    fechaProceso        : null,
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 022 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: true,
+    fechaProceso: null,
     fechaUltimaActuacion: null,
-    idConexion          : 320,
-    idProceso           : 81647611,
-    llaveProceso        : '11001400302220170120800',
-    sujetosProcesales   : '--- [ PROCESO PRIVADO ] ---',
+    idConexion: 320,
+    idProceso: 81647611,
+    llaveProceso: "11001400302220170120800",
+    sujetosProcesales: "--- [ PROCESO PRIVADO ] ---",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 024 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2018-02-12T00:00:00',
-    fechaUltimaActuacion: '2019-09-27T00:00:00',
-    idConexion          : 259,
-    idProceso           : 51002530,
-    llaveProceso        : '11001400302420180014300',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 024 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2018-02-12T00:00:00",
+    fechaUltimaActuacion: "2019-09-27T00:00:00",
+    idConexion: 259,
+    idProceso: 51002530,
+    llaveProceso: "11001400302420180014300",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: MARTHA ANDREA MORA COLLAZOS ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: MARTHA ANDREA MORA COLLAZOS ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 025 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-08-09T00:00:00',
-    fechaUltimaActuacion: '2023-04-24T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50623380,
-    llaveProceso        : '11001400302520170080700',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 025 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-08-09T00:00:00",
+    fechaUltimaActuacion: "2023-04-24T00:00:00",
+    idConexion: 259,
+    idProceso: 50623380,
+    llaveProceso: "11001400302520170080700",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: JUAN CARLOS TOVAR TOLEDO ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: JUAN CARLOS TOVAR TOLEDO ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 025 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : true,
-    fechaProceso        : null,
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 025 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: true,
+    fechaProceso: null,
     fechaUltimaActuacion: null,
-    idConexion          : 320,
-    idProceso           : 81652411,
-    llaveProceso        : '11001400302520170080700',
-    sujetosProcesales   : '--- [ PROCESO PRIVADO ] ---',
+    idConexion: 320,
+    idProceso: 81652411,
+    llaveProceso: "11001400302520170080700",
+    sujetosProcesales: "--- [ PROCESO PRIVADO ] ---",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 018 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-08-29T00:00:00',
-    fechaUltimaActuacion: '2023-05-24T00:00:00',
-    idConexion          : 259,
-    idProceso           : 112048180,
-    llaveProceso        : '11001400302520170090300',
+      "JUZGADO 018 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-08-29T00:00:00",
+    fechaUltimaActuacion: "2023-05-24T00:00:00",
+    idConexion: 259,
+    idProceso: 112048180,
+    llaveProceso: "11001400302520170090300",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: DARNELLY HERNANDEZ MARTINEZ ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: DARNELLY HERNANDEZ MARTINEZ ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 003 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-05-31T00:00:00',
-    fechaUltimaActuacion: '2023-04-13T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50477000,
-    llaveProceso        : '11001400302620170051100',
+      "JUZGADO 003 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-05-31T00:00:00",
+    fechaUltimaActuacion: "2023-04-13T00:00:00",
+    idConexion: 259,
+    idProceso: 50477000,
+    llaveProceso: "11001400302620170051100",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: LUIS CARLOS GUTIERREZ VELANDIA | Demandado: JAQUELINE RODRIGUEZ COLMENARES ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: LUIS CARLOS GUTIERREZ VELANDIA | Demandado: JAQUELINE RODRIGUEZ COLMENARES ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 026 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-11-15T00:00:00',
-    fechaUltimaActuacion: '2018-10-02T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50846930,
-    llaveProceso        : '11001400302620170129300',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 026 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-11-15T00:00:00",
+    fechaUltimaActuacion: "2018-10-02T00:00:00",
+    idConexion: 259,
+    idProceso: 50846930,
+    llaveProceso: "11001400302620170129300",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: SANDRA MILENA BARRETO BERMUDEZ ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: SANDRA MILENA BARRETO BERMUDEZ ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 016 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-09-05T00:00:00',
-    fechaUltimaActuacion: '2022-06-16T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50685700,
-    llaveProceso        : '11001400302820170084900',
+      "JUZGADO 016 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-09-05T00:00:00",
+    fechaUltimaActuacion: "2022-06-16T00:00:00",
+    idConexion: 259,
+    idProceso: 50685700,
+    llaveProceso: "11001400302820170084900",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: JOSE LUIS TORRES TAMAYO ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: JOSE LUIS TORRES TAMAYO ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 029 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-06-20T00:00:00',
-    fechaUltimaActuacion: '2018-02-22T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50517510,
-    llaveProceso        : '11001400302920170055700',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 029 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-06-20T00:00:00",
+    fechaUltimaActuacion: "2018-02-22T00:00:00",
+    idConexion: 259,
+    idProceso: 50517510,
+    llaveProceso: "11001400302920170055700",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: RAFAEL ERNESTO CADENA PARGA ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: RAFAEL ERNESTO CADENA PARGA ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 002 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-10-09T00:00:00',
-    fechaUltimaActuacion: '2023-05-17T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50763460,
-    llaveProceso        : '11001400303320170147400',
+      "JUZGADO 002 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-10-09T00:00:00",
+    fechaUltimaActuacion: "2023-05-17T00:00:00",
+    idConexion: 259,
+    idProceso: 50763460,
+    llaveProceso: "11001400303320170147400",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: LUIS AUGUSTO SANCHEZ ORTIZ ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: LUIS AUGUSTO SANCHEZ ORTIZ ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 012 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-06-21T00:00:00',
-    fechaUltimaActuacion: '2023-04-27T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50521480,
-    llaveProceso        : '11001400303420170083600',
+      "JUZGADO 012 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-06-21T00:00:00",
+    fechaUltimaActuacion: "2023-04-27T00:00:00",
+    idConexion: 259,
+    idProceso: 50521480,
+    llaveProceso: "11001400303420170083600",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: LUIS ESNEIDER ORDUZ FARFAN ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: LUIS ESNEIDER ORDUZ FARFAN ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 034 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-09-14T00:00:00',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 034 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-09-14T00:00:00",
     fechaUltimaActuacion: null,
-    idConexion          : 320,
-    idProceso           : 81728891,
-    llaveProceso        : '11001400303420170083600',
+    idConexion: 320,
+    idProceso: 81728891,
+    llaveProceso: "11001400303420170083600",
     sujetosProcesales:
-      'Demandante/accionante: Banco Bancolombia SA | Demandado/indiciado/causante: LUIS ESNEIDER ORDUZ FARFAN | Defensor Privado: MARIA HELENA SUAREZ GARCIA | Tercero Vinculado: ACREEEDORES    (Emplazado) ',
+      "Demandante/accionante: Banco Bancolombia SA | Demandado/indiciado/causante: LUIS ESNEIDER ORDUZ FARFAN | Defensor Privado: MARIA HELENA SUAREZ GARCIA | Tercero Vinculado: ACREEEDORES    (Emplazado) ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 036 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-09-06T00:00:00',
-    fechaUltimaActuacion: '2018-09-29T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50688820,
-    llaveProceso        : '11001400303620170084100',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 036 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-09-06T00:00:00",
+    fechaUltimaActuacion: "2018-09-29T00:00:00",
+    idConexion: 259,
+    idProceso: 50688820,
+    llaveProceso: "11001400303620170084100",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: GABRIEL EDUARDO MEJIA LADINO | Demandado: ELDORA ANDREA TRIANA SILVA ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: GABRIEL EDUARDO MEJIA LADINO | Demandado: ELDORA ANDREA TRIANA SILVA ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 015 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2018-07-13T00:00:00',
-    fechaUltimaActuacion: '2023-06-01T00:00:00',
-    idConexion          : 259,
-    idProceso           : 51306830,
-    llaveProceso        : '11001400303620180081800',
+      "JUZGADO 015 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2018-07-13T00:00:00",
+    fechaUltimaActuacion: "2023-06-01T00:00:00",
+    idConexion: 259,
+    idProceso: 51306830,
+    llaveProceso: "11001400303620180081800",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: ADRIANA LUCIA MORA PLATA ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: ADRIANA LUCIA MORA PLATA ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 014 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-06-15T00:00:00',
-    fechaUltimaActuacion: '2023-05-29T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50508570,
-    llaveProceso        : '11001400303720170083900',
+      "JUZGADO 014 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-06-15T00:00:00",
+    fechaUltimaActuacion: "2023-05-29T00:00:00",
+    idConexion: 259,
+    idProceso: 50508570,
+    llaveProceso: "11001400303720170083900",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: JAVIER ROMERO REYES ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: JAVIER ROMERO REYES ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 011 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-10-11T00:00:00',
-    fechaUltimaActuacion: '2022-03-09T00:00:00',
-    idConexion          : 259,
-    idProceso           : 112945420,
-    llaveProceso        : '11001400303720170139100',
+      "JUZGADO 011 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-10-11T00:00:00",
+    fechaUltimaActuacion: "2022-03-09T00:00:00",
+    idConexion: 259,
+    idProceso: 112945420,
+    llaveProceso: "11001400303720170139100",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: JOSE NOEL PUERTA JARAMILLO | Demandado: LUZ DARY PUERTA JARAMILLO ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: JOSE NOEL PUERTA JARAMILLO | Demandado: LUZ DARY PUERTA JARAMILLO ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 008 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2018-02-06T00:00:00',
-    fechaUltimaActuacion: '2023-02-02T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50990920,
-    llaveProceso        : '11001400303720180011100',
+      "JUZGADO 008 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2018-02-06T00:00:00",
+    fechaUltimaActuacion: "2023-02-02T00:00:00",
+    idConexion: 259,
+    idProceso: 50990920,
+    llaveProceso: "11001400303720180011100",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: SANDRA PATRICIA BELTRAN  OVIEDO ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: SANDRA PATRICIA BELTRAN  OVIEDO ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 010 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-06-20T00:00:00',
-    fechaUltimaActuacion: '2022-11-10T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50517060,
-    llaveProceso        : '11001400304220170076000',
+      "JUZGADO 010 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-06-20T00:00:00",
+    fechaUltimaActuacion: "2022-11-10T00:00:00",
+    idConexion: 259,
+    idProceso: 50517060,
+    llaveProceso: "11001400304220170076000",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: JOSE URIEL PAEREZ PERDOMO ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: JOSE URIEL PAEREZ PERDOMO ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 042 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2020-10-16T00:00:00',
-    fechaUltimaActuacion: '2023-03-13T00:00:00',
-    idConexion          : 256,
-    idProceso           : 128164881,
-    llaveProceso        : '11001400304220200053500',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 042 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2020-10-16T00:00:00",
+    fechaUltimaActuacion: "2023-03-13T00:00:00",
+    idConexion: 256,
+    idProceso: 128164881,
+    llaveProceso: "11001400304220200053500",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: SANDRA LEONOR PAEZ MURCIA | Demandado: MARCO TULIO SANCHEZ MEDINA ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: SANDRA LEONOR PAEZ MURCIA | Demandado: MARCO TULIO SANCHEZ MEDINA ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 018 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2018-04-12T00:00:00',
-    fechaUltimaActuacion: '2023-04-27T00:00:00',
-    idConexion          : 259,
-    idProceso           : 114256610,
-    llaveProceso        : '11001400304320180038400',
+      "JUZGADO 018 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2018-04-12T00:00:00",
+    fechaUltimaActuacion: "2023-04-27T00:00:00",
+    idConexion: 259,
+    idProceso: 114256610,
+    llaveProceso: "11001400304320180038400",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: JHONATAN ANDRES BERNAL PARRA ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: JHONATAN ANDRES BERNAL PARRA ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 002 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-07-26T00:00:00',
-    fechaUltimaActuacion: '2022-02-25T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50593640,
-    llaveProceso        : '11001400304520170090500',
+      "JUZGADO 002 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-07-26T00:00:00",
+    fechaUltimaActuacion: "2022-02-25T00:00:00",
+    idConexion: 259,
+    idProceso: 50593640,
+    llaveProceso: "11001400304520170090500",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: URIEL RUIZ DIAZ ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: URIEL RUIZ DIAZ ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 045 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-08-31T00:00:00',
-    fechaUltimaActuacion: '2023-03-07T00:00:00',
-    idConexion          : 261,
-    idProceso           : 110120573,
-    llaveProceso        : '11001400304520170106300',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 045 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-08-31T00:00:00",
+    fechaUltimaActuacion: "2023-03-07T00:00:00",
+    idConexion: 261,
+    idProceso: 110120573,
+    llaveProceso: "11001400304520170106300",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: FLOR ESPERANZA GUTIERREZ ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: FLOR ESPERANZA GUTIERREZ ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 045 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-09-20T00:00:00',
-    fechaUltimaActuacion: '2023-01-23T00:00:00',
-    idConexion          : 261,
-    idProceso           : 9877803,
-    llaveProceso        : '11001400304520170116400',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 045 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-09-20T00:00:00",
+    fechaUltimaActuacion: "2023-01-23T00:00:00",
+    idConexion: 261,
+    idProceso: 9877803,
+    llaveProceso: "11001400304520170116400",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: NIDIA JACQUELINE RIVEROS ARAQUE ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: NIDIA JACQUELINE RIVEROS ARAQUE ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 047 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : true,
-    fechaProceso        : null,
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 047 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: true,
+    fechaProceso: null,
     fechaUltimaActuacion: null,
-    idConexion          : 320,
-    idProceso           : 97088411,
-    llaveProceso        : '11001400304720170152000',
-    sujetosProcesales   : '--- [ PROCESO PRIVADO ] ---',
+    idConexion: 320,
+    idProceso: 97088411,
+    llaveProceso: "11001400304720170152000",
+    sujetosProcesales: "--- [ PROCESO PRIVADO ] ---",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 047 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-08-30T00:00:00',
-    fechaUltimaActuacion: '2022-09-02T00:00:00',
-    idConexion          : 261,
-    idProceso           : 109959053,
-    llaveProceso        : '11001400304720170152000',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 047 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-08-30T00:00:00",
+    fechaUltimaActuacion: "2022-09-02T00:00:00",
+    idConexion: 261,
+    idProceso: 109959053,
+    llaveProceso: "11001400304720170152000",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: MILCIADES GALINDO CASTEBLANCO | Demandado: GERMAN ALONSO SANCHEZ PICO ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: MILCIADES GALINDO CASTEBLANCO | Demandado: GERMAN ALONSO SANCHEZ PICO ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 007 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-10-09T00:00:00',
-    fechaUltimaActuacion: '2022-12-01T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50762570,
-    llaveProceso        : '11001400304820170097400',
+      "JUZGADO 007 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-10-09T00:00:00",
+    fechaUltimaActuacion: "2022-12-01T00:00:00",
+    idConexion: 259,
+    idProceso: 50762570,
+    llaveProceso: "11001400304820170097400",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: ANDERSON REVELO SANTOS ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: ANDERSON REVELO SANTOS ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 014 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-11-21T00:00:00',
-    fechaUltimaActuacion: '2023-01-19T00:00:00',
-    idConexion          : 259,
-    idProceso           : 106185210,
-    llaveProceso        : '11001400305020170133600',
+      "JUZGADO 014 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-11-21T00:00:00",
+    fechaUltimaActuacion: "2023-01-19T00:00:00",
+    idConexion: 259,
+    idProceso: 106185210,
+    llaveProceso: "11001400305020170133600",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: LEONARDO SANABRIA SANABRA ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: LEONARDO SANABRIA SANABRA ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 051 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-09-27T00:00:00',
-    fechaUltimaActuacion: '2023-05-10T00:00:00',
-    idConexion          : 261,
-    idProceso           : 110568033,
-    llaveProceso        : '11001400305120170111300',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 051 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-09-27T00:00:00",
+    fechaUltimaActuacion: "2023-05-10T00:00:00",
+    idConexion: 261,
+    idProceso: 110568033,
+    llaveProceso: "11001400305120170111300",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: RITA CECILIA FERNANDEZ IBAÑEZ ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: RITA CECILIA FERNANDEZ IBAÑEZ ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 004 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2018-07-16T00:00:00',
-    fechaUltimaActuacion: '2023-05-15T00:00:00',
-    idConexion          : 259,
-    idProceso           : 89137980,
-    llaveProceso        : '11001400305120180085000',
+      "JUZGADO 004 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2018-07-16T00:00:00",
+    fechaUltimaActuacion: "2023-05-15T00:00:00",
+    idConexion: 259,
+    idProceso: 89137980,
+    llaveProceso: "11001400305120180085000",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: SANDRA LILIANA CRUZ BELTRAN ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: SANDRA LILIANA CRUZ BELTRAN ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 017 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2018-02-06T00:00:00',
-    fechaUltimaActuacion: '2023-04-13T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50990370,
-    llaveProceso        : '11001400305220180011700',
+      "JUZGADO 017 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2018-02-06T00:00:00",
+    fechaUltimaActuacion: "2023-04-13T00:00:00",
+    idConexion: 259,
+    idProceso: 50990370,
+    llaveProceso: "11001400305220180011700",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA | Demandado: DARLEY JULIED PAEZ ',
+      "Demandante: BANCOLOMBIA | Demandado: DARLEY JULIED PAEZ ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 015 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-09-04T00:00:00',
-    fechaUltimaActuacion: '2023-03-27T00:00:00',
-    idConexion          : 259,
-    idProceso           : 86524020,
-    llaveProceso        : '11001400305520170086000',
+      "JUZGADO 015 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-09-04T00:00:00",
+    fechaUltimaActuacion: "2023-03-27T00:00:00",
+    idConexion: 259,
+    idProceso: 86524020,
+    llaveProceso: "11001400305520170086000",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: GERARDO ANTONIO MONCADA VEGA ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: GERARDO ANTONIO MONCADA VEGA ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 007 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2018-03-01T00:00:00',
-    fechaUltimaActuacion: '2023-05-11T00:00:00',
-    idConexion          : 259,
-    idProceso           : 51042800,
-    llaveProceso        : '11001400305620180022100',
+      "JUZGADO 007 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2018-03-01T00:00:00",
+    fechaUltimaActuacion: "2023-05-11T00:00:00",
+    idConexion: 259,
+    idProceso: 51042800,
+    llaveProceso: "11001400305620180022100",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: CREAS CONSULTORES S.A.S. ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: CREAS CONSULTORES S.A.S. ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 015 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-06-20T00:00:00',
-    fechaUltimaActuacion: '2023-02-27T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50514310,
-    llaveProceso        : '11001400305920170048300',
+      "JUZGADO 015 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-06-20T00:00:00",
+    fechaUltimaActuacion: "2023-02-27T00:00:00",
+    idConexion: 259,
+    idProceso: 50514310,
+    llaveProceso: "11001400305920170048300",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: DANIEL HERNANDEZ GONZALEZ ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: DANIEL HERNANDEZ GONZALEZ ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 007 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2018-02-06T00:00:00',
-    fechaUltimaActuacion: '2022-03-25T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50989890,
-    llaveProceso        : '11001400305920180009000',
+      "JUZGADO 007 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2018-02-06T00:00:00",
+    fechaUltimaActuacion: "2022-03-25T00:00:00",
+    idConexion: 259,
+    idProceso: 50989890,
+    llaveProceso: "11001400305920180009000",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: MARIA MARIN DE OROZCO ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: MARIA MARIN DE OROZCO ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 001 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-09-22T00:00:00',
-    fechaUltimaActuacion: '2023-05-10T00:00:00',
-    idConexion          : 259,
-    idProceso           : 65700110,
-    llaveProceso        : '11001400306320170092400',
+      "JUZGADO 001 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-09-22T00:00:00",
+    fechaUltimaActuacion: "2023-05-10T00:00:00",
+    idConexion: 259,
+    idProceso: 65700110,
+    llaveProceso: "11001400306320170092400",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: HERNANDO PULECIO PAREDES ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: HERNANDO PULECIO PAREDES ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 019 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-12-13T00:00:00',
-    fechaUltimaActuacion: '2023-05-29T00:00:00',
-    idConexion          : 259,
-    idProceso           : 65701460,
-    llaveProceso        : '11001400306320170129000',
+      "JUZGADO 019 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-12-13T00:00:00",
+    fechaUltimaActuacion: "2023-05-29T00:00:00",
+    idConexion: 259,
+    idProceso: 65701460,
+    llaveProceso: "11001400306320170129000",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandante: BANCOLOMBIA | Demandado: DIANA PATRICIA BARRETO OSMA ',
+      "Demandante: BANCOLOMBIA S.A. | Demandante: BANCOLOMBIA | Demandado: DIANA PATRICIA BARRETO OSMA ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 063 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2018-06-15T00:00:00',
-    fechaUltimaActuacion: '2022-04-21T00:00:00',
-    idConexion          : 260,
-    idProceso           : 112495730,
-    llaveProceso        : '11001400306320180065000',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 063 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2018-06-15T00:00:00",
+    fechaUltimaActuacion: "2022-04-21T00:00:00",
+    idConexion: 260,
+    idProceso: 112495730,
+    llaveProceso: "11001400306320180065000",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: JULIO RENE SANCHEZ ARGOTE ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: JULIO RENE SANCHEZ ARGOTE ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 007 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-08-31T00:00:00',
-    fechaUltimaActuacion: '2023-06-05T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50672820,
-    llaveProceso        : '11001400306420170119100',
+      "JUZGADO 007 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-08-31T00:00:00",
+    fechaUltimaActuacion: "2023-06-05T00:00:00",
+    idConexion: 259,
+    idProceso: 50672820,
+    llaveProceso: "11001400306420170119100",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: CESAR UMAÑA CAÑON ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: CESAR UMAÑA CAÑON ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 016 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-11-27T00:00:00',
-    fechaUltimaActuacion: '2023-03-13T00:00:00',
-    idConexion          : 259,
-    idProceso           : 112730580,
-    llaveProceso        : '11001400306420170162300',
+      "JUZGADO 016 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-11-27T00:00:00",
+    fechaUltimaActuacion: "2023-03-13T00:00:00",
+    idConexion: 259,
+    idProceso: 112730580,
+    llaveProceso: "11001400306420170162300",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: ORLANDO ENRIQUE NOVOA BARRETO ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: ORLANDO ENRIQUE NOVOA BARRETO ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 064 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2018-08-28T00:00:00',
-    fechaUltimaActuacion: '2023-02-07T00:00:00',
-    idConexion          : 260,
-    idProceso           : 113353750,
-    llaveProceso        : '11001400306420180102900',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 064 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2018-08-28T00:00:00",
+    fechaUltimaActuacion: "2023-02-07T00:00:00",
+    idConexion: 260,
+    idProceso: 113353750,
+    llaveProceso: "11001400306420180102900",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: SONIA MARCELA MOLINA QIMBAYO ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: SONIA MARCELA MOLINA QIMBAYO ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 015 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-10-10T00:00:00',
-    fechaUltimaActuacion: '2022-09-27T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50765770,
-    llaveProceso        : '11001400306820170130600',
+      "JUZGADO 015 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-10-10T00:00:00",
+    fechaUltimaActuacion: "2022-09-27T00:00:00",
+    idConexion: 259,
+    idProceso: 50765770,
+    llaveProceso: "11001400306820170130600",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A | Demandado: NESTOR JULIO MARTINEZ ORJUELA ',
+      "Demandante: BANCOLOMBIA S.A | Demandado: NESTOR JULIO MARTINEZ ORJUELA ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 068 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2020-10-09T00:00:00',
-    fechaUltimaActuacion: '2023-05-17T00:00:00',
-    idConexion          : 262,
-    idProceso           : 112628300,
-    llaveProceso        : '11001400306820200102100',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 068 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2020-10-09T00:00:00",
+    fechaUltimaActuacion: "2023-05-17T00:00:00",
+    idConexion: 262,
+    idProceso: 112628300,
+    llaveProceso: "11001400306820200102100",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A | Demandado: DIMOIN COLOMBIA SAS ',
+      "Demandante: BANCOLOMBIA S.A | Demandado: DIMOIN COLOMBIA SAS ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 025 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-09-01T00:00:00',
-    fechaUltimaActuacion: '2023-05-17T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50675410,
-    llaveProceso        : '11001400306920170084500',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 025 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-09-01T00:00:00",
+    fechaUltimaActuacion: "2023-05-17T00:00:00",
+    idConexion: 259,
+    idProceso: 50675410,
+    llaveProceso: "11001400306920170084500",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A | Demandado: MARIA OLGA CASTAÑEDA PERUGACHI ',
+      "Demandante: BANCOLOMBIA S.A | Demandado: MARIA OLGA CASTAÑEDA PERUGACHI ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 014 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-06-22T00:00:00',
-    fechaUltimaActuacion: '2021-12-13T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50522530,
-    llaveProceso        : '11001400307020170056600',
+      "JUZGADO 014 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-06-22T00:00:00",
+    fechaUltimaActuacion: "2021-12-13T00:00:00",
+    idConexion: 259,
+    idProceso: 50522530,
+    llaveProceso: "11001400307020170056600",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: NICOLAS FERNANDO MONTOYA ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: NICOLAS FERNANDO MONTOYA ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 007 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-12-13T00:00:00',
-    fechaUltimaActuacion: '2022-03-10T00:00:00',
-    idConexion          : 259,
-    idProceso           : 64793050,
-    llaveProceso        : '11001400307120170125000',
+      "JUZGADO 007 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-12-13T00:00:00",
+    fechaUltimaActuacion: "2022-03-10T00:00:00",
+    idConexion: 259,
+    idProceso: 64793050,
+    llaveProceso: "11001400307120170125000",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: OSCAR HUMBERTO GOMEZ CHUCHIN ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: OSCAR HUMBERTO GOMEZ CHUCHIN ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 073 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-10-25T00:00:00',
-    fechaUltimaActuacion: '2020-11-06T00:00:00',
-    idConexion          : 259,
-    idProceso           : 50801260,
-    llaveProceso        : '11001400307320170141100',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 073 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-10-25T00:00:00",
+    fechaUltimaActuacion: "2020-11-06T00:00:00",
+    idConexion: 259,
+    idProceso: 50801260,
+    llaveProceso: "11001400307320170141100",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: FERNANDO GONZALEZ TELLEZ ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: FERNANDO GONZALEZ TELLEZ ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 004 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2018-11-22T00:00:00',
-    fechaUltimaActuacion: '2023-05-31T00:00:00',
-    idConexion          : 259,
-    idProceso           : 51497380,
-    llaveProceso        : '11001400307620170063500',
+      "JUZGADO 004 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2018-11-22T00:00:00",
+    fechaUltimaActuacion: "2023-05-31T00:00:00",
+    idConexion: 259,
+    idProceso: 51497380,
+    llaveProceso: "11001400307620170063500",
     sujetosProcesales:
-      'Demandante: CARLOS DANIEL CARDENAS AVILES | Demandante: BANCOLOMBIA S.A. | Demandado: FREDY MENESES ',
+      "Demandante: CARLOS DANIEL CARDENAS AVILES | Demandante: BANCOLOMBIA S.A. | Demandado: FREDY MENESES ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 017 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2018-11-23T00:00:00',
-    fechaUltimaActuacion: '2023-05-29T00:00:00',
-    idConexion          : 259,
-    idProceso           : 51499790,
-    llaveProceso        : '11001400307620170101600',
+      "JUZGADO 017 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2018-11-23T00:00:00",
+    fechaUltimaActuacion: "2023-05-29T00:00:00",
+    idConexion: 259,
+    idProceso: 51499790,
+    llaveProceso: "11001400307620170101600",
     sujetosProcesales:
-      'Demandante: MAURICIO BOTERO WOLFF | Demandante: BANCOLOMBIA S.A. | Demandado: BLANCA NUBIA LOPEZ CIFUENTES | Demandado: MARIO DE JESUS OSSA PULGARIN ',
+      "Demandante: MAURICIO BOTERO WOLFF | Demandante: BANCOLOMBIA S.A. | Demandado: BLANCA NUBIA LOPEZ CIFUENTES | Demandado: MARIO DE JESUS OSSA PULGARIN ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 076 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : true,
-    fechaProceso        : null,
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 076 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: true,
+    fechaProceso: null,
     fechaUltimaActuacion: null,
-    idConexion          : 320,
-    idProceso           : 81847081,
-    llaveProceso        : '11001400307620170101600',
-    sujetosProcesales   : '--- [ PROCESO PRIVADO ] ---',
+    idConexion: 320,
+    idProceso: 81847081,
+    llaveProceso: "11001400307620170101600",
+    sujetosProcesales: "--- [ PROCESO PRIVADO ] ---",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 076 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2018-11-23T00:00:00',
-    fechaUltimaActuacion: '2018-11-23T00:00:00',
-    idConexion          : 259,
-    idProceso           : 51500810,
-    llaveProceso        : '11001400307620180005200',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 076 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2018-11-23T00:00:00",
+    fechaUltimaActuacion: "2018-11-23T00:00:00",
+    idConexion: 259,
+    idProceso: 51500810,
+    llaveProceso: "11001400307620180005200",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: DORIS GARZON TALERO | Demandado: ROBERTO RICO RUIZ ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: DORIS GARZON TALERO | Demandado: ROBERTO RICO RUIZ ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 012 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2018-10-26T00:00:00',
-    fechaUltimaActuacion: '2023-05-04T00:00:00',
-    idConexion          : 259,
-    idProceso           : 51465090,
-    llaveProceso        : '11001400307820170097500',
+      "JUZGADO 012 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2018-10-26T00:00:00",
+    fechaUltimaActuacion: "2023-05-04T00:00:00",
+    idConexion: 259,
+    idProceso: 51465090,
+    llaveProceso: "11001400307820170097500",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: JOGLI JOAQUIN OTERO VARGAS ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: JOGLI JOAQUIN OTERO VARGAS ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 016 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2018-10-26T00:00:00',
-    fechaUltimaActuacion: '2022-03-29T00:00:00',
-    idConexion          : 259,
-    idProceso           : 51465700,
-    llaveProceso        : '11001400307820170116400',
+      "JUZGADO 016 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2018-10-26T00:00:00",
+    fechaUltimaActuacion: "2022-03-29T00:00:00",
+    idConexion: 259,
+    idProceso: 51465700,
+    llaveProceso: "11001400307820170116400",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: NESTOR ALBERTO CRISTANCHO LOPEZ ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: NESTOR ALBERTO CRISTANCHO LOPEZ ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 001 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2018-08-09T00:00:00',
-    fechaUltimaActuacion: '2023-01-19T00:00:00',
-    idConexion          : 259,
-    idProceso           : 51357750,
-    llaveProceso        : '11001400307920170108200',
+      "JUZGADO 001 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2018-08-09T00:00:00",
+    fechaUltimaActuacion: "2023-01-19T00:00:00",
+    idConexion: 259,
+    idProceso: 51357750,
+    llaveProceso: "11001400307920170108200",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A | Demandado: JHON ALEXANDER VALENCIA MARQUEZ ',
+      "Demandante: BANCOLOMBIA S.A | Demandado: JHON ALEXANDER VALENCIA MARQUEZ ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 040 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2018-11-02T00:00:00',
-    fechaUltimaActuacion: '2023-03-08T00:00:00',
-    idConexion          : 256,
-    idProceso           : 128433271,
-    llaveProceso        : '11001400307920170114200',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 040 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2018-11-02T00:00:00",
+    fechaUltimaActuacion: "2023-03-08T00:00:00",
+    idConexion: 256,
+    idProceso: 128433271,
+    llaveProceso: "11001400307920170114200",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A | Demandado: PIEDAD MARITZA OLGA ROCIO PRIETO VARGAS ',
+      "Demandante: BANCOLOMBIA S.A | Demandado: PIEDAD MARITZA OLGA ROCIO PRIETO VARGAS ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 001 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2019-05-17T00:00:00',
-    fechaUltimaActuacion: '2023-03-14T00:00:00',
-    idConexion          : 259,
-    idProceso           : 51918470,
-    llaveProceso        : '11001400308120180051400',
+      "JUZGADO 001 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2019-05-17T00:00:00",
+    fechaUltimaActuacion: "2023-03-14T00:00:00",
+    idConexion: 259,
+    idProceso: 51918470,
+    llaveProceso: "11001400308120180051400",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: MARIA CLARA REYES REYES ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: MARIA CLARA REYES REYES ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 018 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2019-01-29T00:00:00',
-    fechaUltimaActuacion: '2023-05-11T00:00:00',
-    idConexion          : 259,
-    idProceso           : 51619370,
-    llaveProceso        : '11001400308220170068000',
+      "JUZGADO 018 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2019-01-29T00:00:00",
+    fechaUltimaActuacion: "2023-05-11T00:00:00",
+    idConexion: 259,
+    idProceso: 51619370,
+    llaveProceso: "11001400308220170068000",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: EDUARDO ENRIQUE ARANGO CHACON ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: EDUARDO ENRIQUE ARANGO CHACON ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'BOGOTÁ',
-    despacho            : 'JUZGADO 082 CIVIL MUNICIPAL DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-06-16T00:00:00',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
+    despacho: "JUZGADO 082 CIVIL MUNICIPAL DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-06-16T00:00:00",
     fechaUltimaActuacion: null,
-    idConexion          : 320,
-    idProceso           : 81869501,
-    llaveProceso        : '11001400308220170068000',
+    idConexion: 320,
+    idProceso: 81869501,
+    llaveProceso: "11001400308220170068000",
     sujetosProcesales:
-      'Demandante/accionante: Banco Bancolombia SA | Demandado/indiciado/causante: EDUARDO ENRIQUE ARANGO CHACON    | Defensor Privado: MARIA HELENA SUAREZ GARCIA ',
+      "Demandante/accionante: Banco Bancolombia SA | Demandado/indiciado/causante: EDUARDO ENRIQUE ARANGO CHACON    | Defensor Privado: MARIA HELENA SUAREZ GARCIA ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 014 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2019-02-15T00:00:00',
-    fechaUltimaActuacion: '2022-03-24T00:00:00',
-    idConexion          : 259,
-    idProceso           : 52160520,
-    llaveProceso        : '11001400308220180096400',
+      "JUZGADO 014 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2019-02-15T00:00:00",
+    fechaUltimaActuacion: "2022-03-24T00:00:00",
+    idConexion: 259,
+    idProceso: 52160520,
+    llaveProceso: "11001400308220180096400",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: JOSE RAMON ESTRADA CASTILLO ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: JOSE RAMON ESTRADA CASTILLO ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'ANTIOQUIA',
-    despacho            : 'JUZGADO 001 CIVIL MUNICIPAL DE ENVIGADO ',
-    esPrivado           : false,
-    fechaProceso        : '2022-05-11T00:00:00',
-    fechaUltimaActuacion: '2022-05-25T00:00:00',
-    idConexion          : 197,
-    idProceso           : 112967583,
-    llaveProceso        : '11001400308220180096400',
+    cantFilas: -1,
+    departamento: "ANTIOQUIA",
+    despacho: "JUZGADO 001 CIVIL MUNICIPAL DE ENVIGADO ",
+    esPrivado: false,
+    fechaProceso: "2022-05-11T00:00:00",
+    fechaUltimaActuacion: "2022-05-25T00:00:00",
+    idConexion: 197,
+    idProceso: 112967583,
+    llaveProceso: "11001400308220180096400",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: JOSE RAMON ESTRADA CASTILLO ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: JOSE RAMON ESTRADA CASTILLO ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 011 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2019-05-23T00:00:00',
-    fechaUltimaActuacion: '2023-05-25T00:00:00',
-    idConexion          : 259,
-    idProceso           : 51935790,
-    llaveProceso        : '11001400308520170084900',
+      "JUZGADO 011 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2019-05-23T00:00:00",
+    fechaUltimaActuacion: "2023-05-25T00:00:00",
+    idConexion: 259,
+    idProceso: 51935790,
+    llaveProceso: "11001400308520170084900",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: JOSE EDWIN GARCES ARDILA ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: JOSE EDWIN GARCES ARDILA ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 005 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2021-03-24T00:00:00',
-    fechaUltimaActuacion: '2023-02-27T00:00:00',
-    idConexion          : 259,
-    idProceso           : 87350810,
-    llaveProceso        : '11001418900820180078500',
+      "JUZGADO 005 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2021-03-24T00:00:00",
+    fechaUltimaActuacion: "2023-02-27T00:00:00",
+    idConexion: 259,
+    idProceso: 87350810,
+    llaveProceso: "11001418900820180078500",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: SANDRA PATRICIA PACHECO RAMIREZ ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: SANDRA PATRICIA PACHECO RAMIREZ ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 017 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2019-11-15T00:00:00',
-    fechaUltimaActuacion: '2023-05-24T00:00:00',
-    idConexion          : 259,
-    idProceso           : 71079290,
-    llaveProceso        : '11001418901220180064400',
+      "JUZGADO 017 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2019-11-15T00:00:00",
+    fechaUltimaActuacion: "2023-05-24T00:00:00",
+    idConexion: 259,
+    idProceso: 71079290,
+    llaveProceso: "11001418901220180064400",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA | Demandado: BIBIANA PATRICIA ESGUERRA VASQUEZ ',
+      "Demandante: BANCOLOMBIA | Demandado: BIBIANA PATRICIA ESGUERRA VASQUEZ ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 011 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2019-06-28T00:00:00',
-    fechaUltimaActuacion: '2023-05-15T00:00:00',
-    idConexion          : 259,
-    idProceso           : 64673240,
-    llaveProceso        : '11001418901220180095100',
+      "JUZGADO 011 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2019-06-28T00:00:00",
+    fechaUltimaActuacion: "2023-05-15T00:00:00",
+    idConexion: 259,
+    idProceso: 64673240,
+    llaveProceso: "11001418901220180095100",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA SA | Demandado: ROSALIA CHARRY SARMIENTO ',
+      "Demandante: BANCOLOMBIA SA | Demandado: ROSALIA CHARRY SARMIENTO ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 014 DE PEQUEÑAS CAUSAS  Y COMPETENCIA MÚLTIPLE DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2019-04-04T00:00:00',
-    fechaUltimaActuacion: '2023-04-12T00:00:00',
-    idConexion          : 259,
-    idProceso           : 51816100,
-    llaveProceso        : '11001418901420190065600',
+      "JUZGADO 014 DE PEQUEÑAS CAUSAS  Y COMPETENCIA MÚLTIPLE DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2019-04-04T00:00:00",
+    fechaUltimaActuacion: "2023-04-12T00:00:00",
+    idConexion: 259,
+    idProceso: 51816100,
+    llaveProceso: "11001418901420190065600",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: LEIDY YANETH VIDAL RODRÍGUEZ ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: LEIDY YANETH VIDAL RODRÍGUEZ ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 014 DE PEQUEÑAS CAUSAS  Y COMPETENCIA MÚLTIPLE DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2019-04-03T00:00:00',
-    fechaUltimaActuacion: '2022-09-12T00:00:00',
-    idConexion          : 320,
-    idProceso           : 135801811,
-    llaveProceso        : '11001418901420190065600',
+      "JUZGADO 014 DE PEQUEÑAS CAUSAS  Y COMPETENCIA MÚLTIPLE DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2019-04-03T00:00:00",
+    fechaUltimaActuacion: "2022-09-12T00:00:00",
+    idConexion: 320,
+    idProceso: 135801811,
+    llaveProceso: "11001418901420190065600",
     sujetosProcesales:
-      'Demandante/accionante: BANCOLOMBIA SA | Demandado/indiciado/causante: LEIDY YANETH VIDAL RODRIGUEZ (Emplazado) ',
+      "Demandante/accionante: BANCOLOMBIA SA | Demandado/indiciado/causante: LEIDY YANETH VIDAL RODRIGUEZ (Emplazado) ",
   },
   {
-    cantFilas   : -1,
-    departamento: 'BOGOTÁ',
+    cantFilas: -1,
+    departamento: "BOGOTÁ",
     despacho:
-      'JUZGADO 002 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2021-03-12T00:00:00',
-    fechaUltimaActuacion: '2023-02-28T00:00:00',
-    idConexion          : 259,
-    idProceso           : 86958040,
-    llaveProceso        : '11001418901620190108500',
+      "JUZGADO 002 CIVIL MUNICIPAL DE EJECUCIÓN DE SENTENCIAS DE BOGOTÁ ",
+    esPrivado: false,
+    fechaProceso: "2021-03-12T00:00:00",
+    fechaUltimaActuacion: "2023-02-28T00:00:00",
+    idConexion: 259,
+    idProceso: 86958040,
+    llaveProceso: "11001418901620190108500",
     sujetosProcesales:
-      'Demandante: BANCOLOMBIA S.A. | Demandado: ANGELICA NATHALY ROZO FRANCO ',
+      "Demandante: BANCOLOMBIA S.A. | Demandado: ANGELICA NATHALY ROZO FRANCO ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'CUNDINAMARCA',
-    despacho            : 'JUZGADO 002 PROMISCUO MUNICIPAL DE CAJICÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2018-02-02T00:00:00',
+    cantFilas: -1,
+    departamento: "CUNDINAMARCA",
+    despacho: "JUZGADO 002 PROMISCUO MUNICIPAL DE CAJICÁ ",
+    esPrivado: false,
+    fechaProceso: "2018-02-02T00:00:00",
     fechaUltimaActuacion: null,
-    idConexion          : 320,
-    idProceso           : 86157021,
-    llaveProceso        : '25126408900220180004800',
+    idConexion: 320,
+    idProceso: 86157021,
+    llaveProceso: "25126408900220180004800",
     sujetosProcesales:
-      'Demandante/accionante: BANCOLOMBIA SA | Demandado/indiciado/causante: JUAN CAMILO CHINGATE PENAGOS (Emplazado) | Defensor Privado: MARIA HELENA SUAREZ GARCIA ',
+      "Demandante/accionante: BANCOLOMBIA SA | Demandado/indiciado/causante: JUAN CAMILO CHINGATE PENAGOS (Emplazado) | Defensor Privado: MARIA HELENA SUAREZ GARCIA ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'CUNDINAMARCA',
-    despacho            : 'JUZGADO 001 CIVIL MUNICIPAL DE CHOCONTÁ ',
-    esPrivado           : false,
-    fechaProceso        : '2017-05-30T00:00:00',
+    cantFilas: -1,
+    departamento: "CUNDINAMARCA",
+    despacho: "JUZGADO 001 CIVIL MUNICIPAL DE CHOCONTÁ ",
+    esPrivado: false,
+    fechaProceso: "2017-05-30T00:00:00",
     fechaUltimaActuacion: null,
-    idConexion          : 320,
-    idProceso           : 86212261,
-    llaveProceso        : '25183400300120170010600',
+    idConexion: 320,
+    idProceso: 86212261,
+    llaveProceso: "25183400300120170010600",
     sujetosProcesales:
-      'Demandante/accionante: BANCOLOMBIA SA | Demandado/indiciado/causante: ALVARO  RODRIGUEZ ALONSO | Defensor Privado: MARIA HELENA SUAREZ GARCIA ',
+      "Demandante/accionante: BANCOLOMBIA SA | Demandado/indiciado/causante: ALVARO  RODRIGUEZ ALONSO | Defensor Privado: MARIA HELENA SUAREZ GARCIA ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'CUNDINAMARCA',
-    despacho            : 'JUZGADO 003 CIVIL MUNICIPAL DE GIRARDOT ',
-    esPrivado           : false,
-    fechaProceso        : '2021-10-27T00:00:00',
-    fechaUltimaActuacion: '2023-03-10T00:00:00',
-    idConexion          : 320,
-    idProceso           : 121826111,
-    llaveProceso        : '25307400300320210053900',
+    cantFilas: -1,
+    departamento: "CUNDINAMARCA",
+    despacho: "JUZGADO 003 CIVIL MUNICIPAL DE GIRARDOT ",
+    esPrivado: false,
+    fechaProceso: "2021-10-27T00:00:00",
+    fechaUltimaActuacion: "2023-03-10T00:00:00",
+    idConexion: 320,
+    idProceso: 121826111,
+    llaveProceso: "25307400300320210053900",
     sujetosProcesales:
-      'Demandante/accionante: BANCOLOMBIA SA | Demandado/indiciado/causante: adriana  vanegas peña | Defensor Privado: CARMEN CECILIA RAMIREZ MUÑOZ ',
+      "Demandante/accionante: BANCOLOMBIA SA | Demandado/indiciado/causante: adriana  vanegas peña | Defensor Privado: CARMEN CECILIA RAMIREZ MUÑOZ ",
   },
   {
-    cantFilas           : -1,
-    departamento        : 'CUNDINAMARCA',
-    despacho            : 'JUZGADO 002 CIVIL MUNICIPAL DE SOACHA ',
-    esPrivado           : false,
-    fechaProceso        : '2017-08-31T00:00:00',
+    cantFilas: -1,
+    departamento: "CUNDINAMARCA",
+    despacho: "JUZGADO 002 CIVIL MUNICIPAL DE SOACHA ",
+    esPrivado: false,
+    fechaProceso: "2017-08-31T00:00:00",
     fechaUltimaActuacion: null,
-    idConexion          : 320,
-    idProceso           : 86374941,
-    llaveProceso        : '25754400300220170026500',
+    idConexion: 320,
+    idProceso: 86374941,
+    llaveProceso: "25754400300220170026500",
     sujetosProcesales:
-      'Demandante/accionante: Banco Bancolombia SA | Demandado/indiciado/causante: JEOVANY  ROJAS CRUZ | Defensor Privado: MARIA HELENA SUAREZ GARCIA ',
+      "Demandante/accionante: Banco Bancolombia SA | Demandado/indiciado/causante: JEOVANY  ROJAS CRUZ | Defensor Privado: MARIA HELENA SUAREZ GARCIA ",
   },
 ];
 
@@ -1622,94 +1622,71 @@ const rawReq: unknown[] = [];
 
 const rawReqWR: unknown[] = [];
 
-const fetchActuaciones = async (
-  idProceso: number, iOfA: string
-) => {
-  fs.mkdir (
-    `src/json/out/actuaciones/${ idProceso }`,
-    {
-      recursive: true,
-    }
-  );
+const fetchActuaciones = async (idProceso: number, iOfA: string) => {
+  fs.mkdir(`src/json/out/actuaciones/${idProceso}`, {
+    recursive: true,
+  });
 
-  const req = await fetch (
-    `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ idProceso }`
+  const req = await fetch(
+    `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${idProceso}`
   );
-  console.log (
-    req.status
-  );
+  console.log(req.status);
   if (!req.ok) {
     const err = req.status;
 
     const errHead = req.headers;
 
     const errorMaker = {
-      head     : errHead,
-      err      : err,
+      head: errHead,
+      err: err,
       idProceso: idProceso,
-      iOfA     : iOfA,
+      iOfA: iOfA,
     };
-    reqNoOk.push (
-      errorMaker
-    );
-    fs.writeFile (
-      `src/json/out/actuaciones/${ idProceso }/reqNoOk.actuaciones.json`,
-      JSON.stringify (
-        reqNoOk
-      )
+    reqNoOk.push(errorMaker);
+    fs.writeFile(
+      `src/json/out/actuaciones/${idProceso}/reqNoOk.actuaciones.json`,
+      JSON.stringify(reqNoOk)
     );
   }
   if (req.ok) {
-    const res = await req.json ();
+    const res = await req.json();
 
     const actuaciones = res.actuaciones;
     if (actuaciones.length === 0) {
       const hasNoActuaciones = {
         ...res,
         idProceso: idProceso,
-        iOfA     : iOfA,
+        iOfA: iOfA,
       };
-      reqOknoActuaciones.push (
-        hasNoActuaciones
-      );
-      fs.writeFile (
-        `src/json/out/actuaciones/${ idProceso }/reqOknoActuaciones.actuaciones.json`,
-        JSON.stringify (
-          reqOknoActuaciones
-        )
+      reqOknoActuaciones.push(hasNoActuaciones);
+      fs.writeFile(
+        `src/json/out/actuaciones/${idProceso}/reqOknoActuaciones.actuaciones.json`,
+        JSON.stringify(reqOknoActuaciones)
       );
     }
     if (actuaciones.length > 0) {
       const hasActuaciones = {
         ...res,
         idProceso: idProceso,
-        iOfA     : iOfA,
+        iOfA: iOfA,
       };
-      reqOkHasActuaciones.push (
-        hasActuaciones
-      );
-      fs.writeFile (
-        `src/json/out/actuaciones/${ idProceso }/reqOkhasActuaciones.actuaciones.json`,
-        JSON.stringify (
-          reqOkHasActuaciones
-        )
+      reqOkHasActuaciones.push(hasActuaciones);
+      fs.writeFile(
+        `src/json/out/actuaciones/${idProceso}/reqOkhasActuaciones.actuaciones.json`,
+        JSON.stringify(reqOkHasActuaciones)
       );
     }
 
     const requestOk = {
       ...res,
       idProceso: idProceso,
-      iOfA     : iOfA,
+      iOfA: iOfA,
     };
-    reqOk.push (
-      requestOk
-    );
+    reqOk.push(requestOk);
 
-    fs.writeFile (
-      `src/json/out/actuaciones/${ idProceso }/reqOk.actuaciones.json`,
-      JSON.stringify (
-        reqOk
-      )
+    fs.writeFile(
+      `src/json/out/actuaciones/${idProceso}/reqOk.actuaciones.json`,
+      JSON.stringify(reqOk)
     );
   }
 
@@ -1717,107 +1694,80 @@ const fetchActuaciones = async (
     const request = {
       ...req.body,
       idProceso: idProceso,
-      iOfA     : iOfA,
+      iOfA: iOfA,
     };
-    reqOk.push (
-      request
-    );
-    fs.writeFile (
-      `src/json/out/actuaciones/${ idProceso }/reqOk.body.actuaciones.json`,
-      JSON.stringify (
-        reqOk
-      )
+    reqOk.push(request);
+    fs.writeFile(
+      `src/json/out/actuaciones/${idProceso}/reqOk.body.actuaciones.json`,
+      JSON.stringify(reqOk)
     );
   }
 
   const request = {
     idProceso: idProceso,
-    iOfA     : iOfA,
+    iOfA: iOfA,
   };
-  rawReq.push (
-    request
-  );
-  fs.writeFile (
-    `src/json/out/actuaciones/${ idProceso }/rawRequest.actuaciones.json`,
-    JSON.stringify (
-      rawReq
-    )
+  rawReq.push(request);
+  fs.writeFile(
+    `src/json/out/actuaciones/${idProceso}/rawRequest.actuaciones.json`,
+    JSON.stringify(rawReq)
   );
 };
 
-const fetchActuacioneswithreturn = async (
-  idProceso: number, iOfA: string
-) => {
-  fs.mkdir (
-    `src/json/out/actuaciones/${ idProceso }`,
-    {
-      recursive: true,
-    }
-  );
+const fetchActuacioneswithreturn = async (idProceso: number, iOfA: string) => {
+  fs.mkdir(`src/json/out/actuaciones/${idProceso}`, {
+    recursive: true,
+  });
 
-  const req = await fetch (
-    `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${ idProceso }`
+  const req = await fetch(
+    `https://consultaprocesos.ramajudicial.gov.co:448/api/v2/Proceso/Actuaciones/${idProceso}`
   );
-  console.log (
-    req.status
-  );
+  console.log(req.status);
   if (!req.ok) {
     const err = req.status;
 
     const errHead = req.headers;
 
     const errorMaker = {
-      head     : errHead,
-      err      : err,
+      head: errHead,
+      err: err,
       idProceso: idProceso,
-      iOfA     : iOfA,
+      iOfA: iOfA,
     };
-    reqNoOkWR.push (
-      errorMaker
-    );
-    fs.writeFile (
-      `src/json/out/actuaciones/${ idProceso }/WR.reqNoOk.actuaciones.json`,
-      JSON.stringify (
-        reqNoOkWR
-      )
+    reqNoOkWR.push(errorMaker);
+    fs.writeFile(
+      `src/json/out/actuaciones/${idProceso}/WR.reqNoOk.actuaciones.json`,
+      JSON.stringify(reqNoOkWR)
     );
     return errorMaker;
   }
   if (req.ok) {
-    const res = await req.json ();
+    const res = await req.json();
 
     const actuaciones = res.actuaciones;
     if (actuaciones.length === 0) {
       const hasNoActuaciones = {
         ...res,
         idProceso: idProceso,
-        iOfA     : iOfA,
+        iOfA: iOfA,
       };
-      reqOknoActuacionesWR.push (
-        hasNoActuaciones
-      );
-      fs.writeFile (
-        `src/json/out/actuaciones/${ idProceso }/WR.reqOknoActuaciones.actuaciones.json`,
-        JSON.stringify (
-          reqOknoActuacionesWR
-        )
+      reqOknoActuacionesWR.push(hasNoActuaciones);
+      fs.writeFile(
+        `src/json/out/actuaciones/${idProceso}/WR.reqOknoActuaciones.actuaciones.json`,
+        JSON.stringify(reqOknoActuacionesWR)
       );
       return hasNoActuaciones;
     }
     if (actuaciones.length > 0) {
       const hasActuaciones = {
         actuaciones: actuaciones,
-        idProceso  : idProceso,
-        iOfA       : iOfA,
+        idProceso: idProceso,
+        iOfA: iOfA,
       };
-      reqOkHasActuacionesWR.push (
-        hasActuaciones
-      );
-      fs.writeFile (
-        `src/json/out/actuaciones/${ idProceso }/WR.reqOkhasActuaciones.actuaciones.json`,
-        JSON.stringify (
-          reqOkHasActuacionesWR
-        )
+      reqOkHasActuacionesWR.push(hasActuaciones);
+      fs.writeFile(
+        `src/json/out/actuaciones/${idProceso}/WR.reqOkhasActuaciones.actuaciones.json`,
+        JSON.stringify(reqOkHasActuacionesWR)
       );
       return hasActuaciones;
     }
@@ -1825,16 +1775,12 @@ const fetchActuacioneswithreturn = async (
     const requestOk = {
       ...res,
       idProceso: idProceso,
-      iOfA     : iOfA,
+      iOfA: iOfA,
     };
-    reqOkWR.push (
-      requestOk
-    );
-    fs.writeFile (
-      `src/json/out/actuaciones/${ idProceso }/WR.reqOk.actuaciones.json`,
-      JSON.stringify (
-        reqOkWR
-      )
+    reqOkWR.push(requestOk);
+    fs.writeFile(
+      `src/json/out/actuaciones/${idProceso}/WR.reqOk.actuaciones.json`,
+      JSON.stringify(reqOkWR)
     );
     return requestOk;
   }
@@ -1843,259 +1789,162 @@ const fetchActuacioneswithreturn = async (
     const request = {
       ...req.body,
       idProceso: idProceso,
-      iOfA     : iOfA,
+      iOfA: iOfA,
     };
-    reqOkWR.push (
-      request
-    );
-    fs.writeFile (
-      `src/json/out/actuaciones/${ idProceso }/WR.reqOk.body.actuaciones.json`,
-      JSON.stringify (
-        reqOkWR
-      )
+    reqOkWR.push(request);
+    fs.writeFile(
+      `src/json/out/actuaciones/${idProceso}/WR.reqOk.body.actuaciones.json`,
+      JSON.stringify(reqOkWR)
     );
     return request;
   }
 
   const request = {
     idProceso: idProceso,
-    iOfA     : iOfA,
+    iOfA: iOfA,
   };
-  rawReqWR.push (
-    request
-  );
-  fs.writeFile (
-    `src/json/out/actuaciones/${ idProceso }/WR.rawRequest.actuaciones.json`,
-    JSON.stringify (
-      rawReqWR
-    )
+  rawReqWR.push(request);
+  fs.writeFile(
+    `src/json/out/actuaciones/${idProceso}/WR.rawRequest.actuaciones.json`,
+    JSON.stringify(rawReqWR)
   );
   return request;
 };
 
-const forEachProceso = procesos.forEach (
-  (
-    proceso, index, procArr
-  ) => {
-    const iOfA = `${ index }-${ procArr.length }`;
-    setTimeout (
-      () => {
-        const idProceso = proceso.idProceso;
-        fetchActuaciones (
-          idProceso,
-          iOfA
-        ).then (
-          (
-            fullfiled
-          ) => {
-            const onFullfiled = {
-              fullfiled: fullfiled,
-              idProceso: idProceso,
-              iOfA     : iOfA,
-            };
-            fullfiledActuaciones.push (
-              onFullfiled
-            );
-            fs.writeFile (
-              'src/json/out/actuaciones/fullfiled.actuaciones.json',
-              JSON.stringify (
-                fullfiledActuaciones
-              )
-            );
-          },
-          (
-            err
-          ) => {
-            console.log (
-              JSON.stringify (
-                err
-              )
-            );
-
-            const notFullfiled = {
-              ...err,
-              idProceso: idProceso,
-              iOfA     : iOfA,
-            };
-            notFullfiledActuaciones.push (
-              notFullfiled
-            );
-
-            fs.writeFile (
-              'src/json/out/actuaciones/notFullfiled.actuaciones.json',
-              JSON.stringify (
-                notFullfiledActuaciones
-              )
-            );
-          }
-        );
-        fetchActuacioneswithreturn (
-          idProceso,
-          iOfA
-        ).then (
-          (
-            ff
-          ) => {
-            const onFullfiledwr = {
-              ...ff,
-              idProceso: idProceso,
-              iOfA     : iOfA,
-            };
-            fullfiledActuacionesWR.push (
-              onFullfiledwr
-            );
-            fs.writeFile (
-              'src/json/out/actuaciones/WRfullfiled.actuaciones.json',
-              JSON.stringify (
-                fullfiledActuacionesWR
-              )
-            );
-            return onFullfiledwr;
-          },
-          (
-            err
-          ) => {
-            console.log (
-              JSON.stringify (
-                err
-              )
-            );
-
-            const notFullfiledwr = {
-              ...err,
-              idProceso: idProceso,
-              iOfA     : iOfA,
-            };
-            noFullfiledActuacionesWR.push (
-              notFullfiledwr
-            );
-
-            fs.writeFile (
-              'src/json/out/actuaciones/WRnotFullfiled.actuaciones.json',
-              JSON.stringify (
-                noFullfiledActuacionesWR
-              )
-            );
-            return notFullfiledwr;
-          }
-        );
-      },
-      index * 1000
-    );
-  }
-);
-
-console.log (
-  forEachProceso
-);
-forEachProceso;
-
-const messyMap = procesos.map (
-  (
-    proceso, index, array
-  ) => {
-    const iOfA = `${ index }-${ array.length }`;
-
+const forEachProceso = procesos.forEach((proceso, index, procArr) => {
+  const iOfA = `${index}-${procArr.length}`;
+  setTimeout(() => {
     const idProceso = proceso.idProceso;
-    fetchActuaciones (
-      idProceso,
-      iOfA
-    ).then (
-      (
-        fullfiled
-      ) => {
+    fetchActuaciones(idProceso, iOfA).then(
+      (fullfiled) => {
         const onFullfiled = {
           fullfiled: fullfiled,
           idProceso: idProceso,
-          iOfA     : iOfA,
+          iOfA: iOfA,
         };
-        fullfiledActuacionesMap.push (
-          onFullfiled
-        );
-        fs.writeFile (
-          'src/json/out/actuaciones/fullfiled.Map.actuaciones.json',
-          JSON.stringify (
-            fullfiledActuacionesMap
-          )
+        fullfiledActuaciones.push(onFullfiled);
+        fs.writeFile(
+          "src/json/out/actuaciones/fullfiled.actuaciones.json",
+          JSON.stringify(fullfiledActuaciones)
         );
       },
-      (
-        err
-      ) => {
-        console.log (
-          JSON.stringify (
-            err
-          )
-        );
+      (err) => {
+        console.log(JSON.stringify(err));
 
         const notFullfiled = {
           ...err,
           idProceso: idProceso,
-          iOfA     : iOfA,
+          iOfA: iOfA,
         };
-        notFullfiledActuacionesMap.push (
-          notFullfiled
-        );
+        notFullfiledActuaciones.push(notFullfiled);
 
-        fs.writeFile (
-          'src/json/out/actuaciones/notFullfiled.Map.actuaciones.json',
-          JSON.stringify (
-            notFullfiledActuacionesMap
-          )
+        fs.writeFile(
+          "src/json/out/actuaciones/notFullfiled.actuaciones.json",
+          JSON.stringify(notFullfiledActuaciones)
         );
       }
     );
-    return fetchActuacioneswithreturn (
-      idProceso,
-      iOfA
-    ).then (
-      (
-        ff
-      ) => {
+    fetchActuacioneswithreturn(idProceso, iOfA).then(
+      (ff) => {
         const onFullfiledwr = {
           ...ff,
           idProceso: idProceso,
-          iOfA     : iOfA,
+          iOfA: iOfA,
         };
-        fullfiledActuacionesWRMap.push (
-          onFullfiledwr
-        );
-        fs.writeFile (
-          'src/json/out/actuaciones/WRfullfiled.Map.actuaciones.json',
-          JSON.stringify (
-            fullfiledActuacionesWRMap
-          )
+        fullfiledActuacionesWR.push(onFullfiledwr);
+        fs.writeFile(
+          "src/json/out/actuaciones/WRfullfiled.actuaciones.json",
+          JSON.stringify(fullfiledActuacionesWR)
         );
         return onFullfiledwr;
       },
-      (
-        err
-      ) => {
-        console.log (
-          JSON.stringify (
-            err
-          )
-        );
+      (err) => {
+        console.log(JSON.stringify(err));
 
         const notFullfiledwr = {
           ...err,
           idProceso: idProceso,
-          iOfA     : iOfA,
+          iOfA: iOfA,
         };
-        noFullfiledActuacionesWRMap.push (
-          notFullfiledwr
-        );
+        noFullfiledActuacionesWR.push(notFullfiledwr);
 
-        fs.writeFile (
-          'src/json/out/actuaciones/notFullfiledWR.Map.actuaciones.json',
-          JSON.stringify (
-            noFullfiledActuacionesWRMap
-          )
+        fs.writeFile(
+          "src/json/out/actuaciones/WRnotFullfiled.actuaciones.json",
+          JSON.stringify(noFullfiledActuacionesWR)
         );
         return notFullfiledwr;
       }
     );
-  }
-);
+  }, index * 1000);
+});
+
+console.log(forEachProceso);
+forEachProceso;
+
+const messyMap = procesos.map((proceso, index, array) => {
+  const iOfA = `${index}-${array.length}`;
+
+  const idProceso = proceso.idProceso;
+  fetchActuaciones(idProceso, iOfA).then(
+    (fullfiled) => {
+      const onFullfiled = {
+        fullfiled: fullfiled,
+        idProceso: idProceso,
+        iOfA: iOfA,
+      };
+      fullfiledActuacionesMap.push(onFullfiled);
+      fs.writeFile(
+        "src/json/out/actuaciones/fullfiled.Map.actuaciones.json",
+        JSON.stringify(fullfiledActuacionesMap)
+      );
+    },
+    (err) => {
+      console.log(JSON.stringify(err));
+
+      const notFullfiled = {
+        ...err,
+        idProceso: idProceso,
+        iOfA: iOfA,
+      };
+      notFullfiledActuacionesMap.push(notFullfiled);
+
+      fs.writeFile(
+        "src/json/out/actuaciones/notFullfiled.Map.actuaciones.json",
+        JSON.stringify(notFullfiledActuacionesMap)
+      );
+    }
+  );
+  return fetchActuacioneswithreturn(idProceso, iOfA).then(
+    (ff) => {
+      const onFullfiledwr = {
+        ...ff,
+        idProceso: idProceso,
+        iOfA: iOfA,
+      };
+      fullfiledActuacionesWRMap.push(onFullfiledwr);
+      fs.writeFile(
+        "src/json/out/actuaciones/WRfullfiled.Map.actuaciones.json",
+        JSON.stringify(fullfiledActuacionesWRMap)
+      );
+      return onFullfiledwr;
+    },
+    (err) => {
+      console.log(JSON.stringify(err));
+
+      const notFullfiledwr = {
+        ...err,
+        idProceso: idProceso,
+        iOfA: iOfA,
+      };
+      noFullfiledActuacionesWRMap.push(notFullfiledwr);
+
+      fs.writeFile(
+        "src/json/out/actuaciones/notFullfiledWR.Map.actuaciones.json",
+        JSON.stringify(noFullfiledActuacionesWRMap)
+      );
+      return notFullfiledwr;
+    }
+  );
+});
 
 messyMap;

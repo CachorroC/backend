@@ -5,168 +5,167 @@
 //   const intCarpeta = Convert.toIntCarpeta(json);
 
 export interface IntCarpeta {
-    _id:                string;
-    Avaluo?:            Avaluo;
-    Carpeta?:           number;
-    Demanda:            Demanda;
-    Deudor:             Deudor;
-    EtapaProcesal?:     EtapaProcesal;
-    Liquidacion?:       Liquidacion;
-    MedidasCautelares?: MedidasCautelares;
-    Notificaciones?:    Notificaciones;
-    SuspencionProceso?: SuspencionProceso;
-    Terminacion?:       Terminacion;
-    idProceso:          number;
-    llaveProceso:       string;
-    Codeudor?:          Codeudor;
+  Avaluo?: Avaluo;
+  Carpeta?: number;
+  Demanda: Demanda;
+  Deudor: Deudor;
+  EtapaProcesal?: EtapaProcesal;
+  Liquidacion?: Liquidacion;
+  MedidasCautelares?: MedidasCautelares;
+  Notificaciones?: Notificaciones;
+  SuspencionProceso?: SuspencionProceso;
+  Terminacion?: Terminacion;
+  idProceso: number;
+  llaveProceso: string;
+  Codeudor?: Codeudor;
 }
 
 export interface Avaluo {
-    Adjudicacion?: Adjudicacion;
-    Remate?:       Adjudicacion;
-    Valor?:        string;
+  Adjudicacion?: Adjudicacion;
+  Remate?: Adjudicacion;
+  Valor?: string;
 }
 
 export interface Adjudicacion {
-    Fecha: Date;
+  Fecha: string;
 }
 
 export interface Codeudor {
-    Id:         number[] | number;
-    Nombre:     string[] | string;
-    Direccion?: string;
-    Tel?:       Tel;
+  Id: number[] | number;
+  Nombre: string[] | string;
+  Direccion?: string;
+  Tel?: Tel;
 }
 
 export interface Tel {
-    Fijo:    number;
-    Celular: number;
+  Fijo: number;
+  Celular: number;
 }
 
 export interface Demanda {
-    Departamento:               Departamento;
-    Municipio:                  string;
-    VencimientoPagare?:         Date;
-    EntregadeGarantiasAbogado?: Date;
-    Radicado:                   string;
-    CapitalAdeudado?:           string;
-    Proceso:                    Proceso;
-    Ubicacion:                  Ubicacion;
-    Juzgado?:                   Juzgado;
-    Obligacion?:                { [key: string]: number | string };
+  Departamento: Departamento;
+  Municipio: string;
+  VencimientoPagare?: string;
+  EntregadeGarantiasAbogado?: string;
+  Radicado: string;
+  CapitalAdeudado?: string;
+  Proceso: Proceso;
+  Ubicacion: Ubicacion;
+  Juzgado?: Juzgado;
+  Obligacion?: { [key: string]: number | string };
 }
 
 export type Departamento = 'CUNDINAMARCA';
 
 export interface Juzgado {
-    Origen:     string;
-    Ejecucion?: string;
+  Origen: string;
+  Ejecucion?: string;
 }
 
 export interface Proceso {
-    Tipo: Tipo;
+  Tipo: Tipo;
 }
 
 export type Tipo = 'PRENDARIO' | 'SINGULAR' | 'HIPOTECARIO';
 
 export interface Ubicacion {
-    Juzgado: string;
+  Juzgado: string;
 }
 
 export interface Deudor {
-    Id?:        number;
-    Email?:     string;
-    Nombre:     string;
-    Direccion?: string;
-    Tel?:       Tel;
+  Id?: number;
+  Email?: string;
+  Nombre: string;
+  Direccion?: string;
+  Tel?: Tel;
 }
 
 export interface EtapaProcesal {
-    Etapa:  string;
-    Fecha?: EtapaProcesalFecha;
+  Etapa: string;
+  Fecha?: EtapaProcesalFecha;
 }
 
 export interface EtapaProcesalFecha {
-    MandamientodePago?:   Date;
-    PresentacionDemanda?: Date;
+  MandamientodePago?: string;
+  PresentacionDemanda?: string;
 }
 
 export interface Liquidacion {
-    Costas?:       Costas;
-    Fecha:         LiquidacionFecha;
-    ValorCredito?: string;
+  Costas?: Costas;
+  Fecha: LiquidacionFecha;
+  ValorCredito?: string;
 }
 
 export interface Costas {
-    FechaAprobacion: Date;
-    Valor?:          number;
+  FechaAprobacion: string;
+  Valor?: number;
 }
 
 export interface LiquidacionFecha {
-    Aprobacion?:   Date;
-    Presentacion?: Date;
-    Solicitud?:    Date;
-    Sentencia?:    Date;
+  Aprobacion?: string;
+  Presentacion?: string;
+  Solicitud?: string;
+  Sentencia?: string;
 }
 
 export interface MedidasCautelares {
-    Bienes:                 string;
-    MedidaSolicitada:       string;
-    Extra?:                 string;
-    PlacaoNumeroMatricula?: string;
-    DescripcionMedida?:     string;
-    Fecha?:                 MedidasCautelaresFecha;
-    FechaRadicaccion?:      Date;
-    Oficios?:               Oficios;
-    RespuestaEmbargo?:      boolean;
-    FechaOrdena?:           Date;
-    Oficio?:                Oficio;
+  Bienes: string;
+  MedidaSolicitada: string;
+  Extra?: string;
+  PlacaoNumeroMatricula?: string;
+  DescripcionMedida?: string;
+  Fecha?: MedidasCautelaresFecha;
+  FechaRadicaccion?: string;
+  Oficios?: Oficios;
+  RespuestaEmbargo?: boolean;
+  FechaOrdena?: string;
+  Oficio?: Oficio;
 }
 
 export interface MedidasCautelaresFecha {
-    Captura?:                    number;
-    Secuestro?:                  string;
-    DecretoSecuestrooCaptura?:   Date;
-    SolicitudCapturaoSecuestro?: Date;
+  Captura?: number;
+  Secuestro?: string;
+  DecretoSecuestrooCaptura?: string;
+  SolicitudCapturaoSecuestro?: string;
 }
 
 export interface Oficio {
-    Numero: number;
-    Fecha:  Date;
+  Numero: number;
+  Fecha: string;
 }
 
 export interface Oficios {
-    FechaRetiro: Date;
+  FechaRetiro: string;
 }
 
 export interface Notificaciones {
-    '291':           The291;
-    '292'?:          The291;
-    AutoNotificado?: Date;
-    Certimail?:      boolean;
-    Fisico?:         boolean;
-    Tipo?:           string;
+  '291': The291;
+  '292'?: The291;
+  AutoNotificado?: string;
+  Certimail?: boolean;
+  Fisico?: boolean;
+  Tipo?: string;
 }
 
 export interface The291 {
-    AportaNotificacion?: Date;
-    Recibo?:             Date;
-    Resultado?:          boolean;
+  AportaNotificacion?: string;
+  Recibo?: string;
+  Resultado?: boolean;
 }
 
 export interface SuspencionProceso {
-    TerminoSuspencion: string;
-    Fecha:             Date;
+  TerminoSuspencion: string;
+  Fecha: string;
 }
 
 export interface Terminacion {
-    Causal: string;
-    Fecha:  TerminacionFecha;
+  Causal: string;
+  Fecha: TerminacionFecha;
 }
 
 export interface TerminacionFecha {
-    AutoTerminacion:    Date;
-    RadicacionMemorial: Date;
+  AutoTerminacion: string;
+  RadicacionMemorial: string;
 }
 
 // Converts JSON strings to/from your types
