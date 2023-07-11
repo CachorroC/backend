@@ -22,19 +22,40 @@ const Collection = async () => {
 };
 
 const Transform = async () => {
+  const carpetasMap = new Map ();
+
   const collection = await Collection ();
 
+  const carpetasRaw = await collection
+    .find (
+      {
+      }
+    )
+    .toArray ();
 
-  const carpetasRaw = await collection.find (
-    {
+  carpetasRaw.forEach (
+    (
+      carpeta, index, arr
+    ) => {
+      const carpetaToMongo =
+        {
+          ...carpeta,
+          _id: carpeta._id.toString ()
+        };
+
+      console.log (
+        carpeta._id.toString ()
+      );
+      return carpetasMap.set (
+        carpeta._id.toHexString (),
+        carpetaToMongo
+      );
     }
-  ).toArray ();
-
-  const values = carpetasRaw.values ();
-  console.log (
-    values
   );
-  return carpetasRaw;
+  console.log (
+    carpetasMap
+  );
+  return carpetasMap;
 };
 
 const tr = Transform ()
