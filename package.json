@@ -1,5 +1,6 @@
 {
   "name": "com.rsasesorjuridico.backend",
+  "packageManager": "yarn@3.6.1",
   "dependencies": {
     "@types/tinycolor2": "^1.4.3",
     "dayjs": "^1.11.7",
