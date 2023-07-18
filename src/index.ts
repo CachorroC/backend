@@ -1,3 +1,3 @@
-import * as Koa from 'koa';
+import Application from "koa";
 
-const app = new Koa ();
+const app = new Application();

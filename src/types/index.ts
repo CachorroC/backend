@@ -55,7 +55,7 @@ export interface Demanda {
   Obligacion?: { [key: string]: number | string };
 }
 
-export type Departamento = 'CUNDINAMARCA';
+export type Departamento = "CUNDINAMARCA";
 
 export interface Juzgado {
   Origen: string;
@@ -66,7 +66,7 @@ export interface Proceso {
   Tipo: Tipo;
 }
 
-export type Tipo = 'PRENDARIO' | 'SINGULAR' | 'HIPOTECARIO';
+export type Tipo = "PRENDARIO" | "SINGULAR" | "HIPOTECARIO";
 
 export interface Ubicacion {
   Juzgado: string;
@@ -139,8 +139,8 @@ export interface Oficios {
 }
 
 export interface Notificaciones {
-  '291': The291;
-  '292'?: The291;
+  "291": The291;
+  "292"?: The291;
   AutoNotificado?: string;
   Certimail?: boolean;
   Fisico?: boolean;
@@ -170,19 +170,11 @@ export interface TerminacionFecha {
 
 // Converts JSON strings to/from your types
 export class Convert {
-  public static toIntCarpeta(
-    json: string
-  ): IntCarpeta[] {
-    return JSON.parse (
-      json
-    );
+  public static toIntCarpeta(json: string): IntCarpeta[] {
+    return JSON.parse(json);
   }
 
-  public static intCarpetaToJson(
-    value: IntCarpeta[]
-  ): string {
-    return JSON.stringify (
-      value
-    );
+  public static intCarpetaToJson(value: IntCarpeta[]): string {
+    return JSON.stringify(value);
   }
 }

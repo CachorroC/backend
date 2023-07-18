@@ -1816,7 +1816,7 @@ async function run() {
     const carpetasCollection = database.collection("Demandados");
 
     const result = await carpetasCollection.insertMany(carpetas, {
-      ordered: true,
+      ordered: false,
     });
     console.log(`${result.insertedCount} documents were inserted`);
   } finally {

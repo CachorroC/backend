@@ -1,1 +1,1 @@
-const carpetas = {}
+const carpetas = {};
